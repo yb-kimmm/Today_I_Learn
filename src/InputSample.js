@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , { useState , useRef } from 'react';
 
 function InputSample(){
     const [inputs , setInputs] = useState({
@@ -6,6 +6,7 @@ function InputSample(){
         nickname : '',
     });
 
+    const nameInput = useRef();
     const {name , nickname} = inputs;
      
     const onChange = (e) => {
@@ -23,6 +24,8 @@ function InputSample(){
             name :'',
             nickname : ''
         })
+
+        nameInput.current.focus();
     };
 
     return(
@@ -31,7 +34,9 @@ function InputSample(){
                 name = 'name'
                 placeholder='name'
                 onChange={onChange} 
-                value={name} />
+                value={name} 
+                ref = {nameInput}
+                />
             <input 
                 name = 'nickname' 
                 placeholder='nickname'  
