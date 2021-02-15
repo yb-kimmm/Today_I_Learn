@@ -1,20 +1,19 @@
-import React , {Component} from 'react';
+import React, { Component } from 'react';
 
 class Hello extends Component {
   static defaultProps = {
-    name : '이름없음';
+    name: '이름없음',
   };
 
-   render (){
-      const { color , isSpecial , name} = this.props;
-      return (
-         <div style = {{color}}> 
-            {isSpecial && <b>*</b>}
-            안녕하세요 {name}
-         </div>
-      )
-   }
-
+  render() {
+    const { color, isSpecial, name } = this.props;
+    return (
+      <div style={{ color }}>
+        {isSpecial && <b>*</b>}
+        안녕하세요 {name}
+      </div>
+    );
+  }
 }
 
 // function Hello({name , color , isSpecial}){
@@ -22,15 +21,15 @@ class Hello extends Component {
 //       <div style={
 //          {color}
 //       }>
-//          {isSpecial && 123}   
+//          {isSpecial && 123}
 //          안녕하세요 {name}
 //       </div>
 
 //    );
 // }
 
-Hello.defaultProps={
-   name : "Tom"
-}
+Hello.defaultProps = {
+  name: 'Tom',
+};
 
 export default Hello;

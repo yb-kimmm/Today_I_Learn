@@ -5,7 +5,7 @@ import { UserDispatch } from './App';
 const CreateUser = () => {
   const [{ username, email }, onChange, reset] = useInputs({
     username: '',
-    email: ''
+    email: '',
   });
 
   const nextId = useRef(4);
@@ -17,8 +17,8 @@ const CreateUser = () => {
       user: {
         id: nextId.current,
         username,
-        email
-      }
+        email,
+      },
     });
     reset();
     nextId.current += 1;
