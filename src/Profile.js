@@ -2,7 +2,7 @@ import React from 'react';
 
 // 프로필에서 사용 할 데이터
 const profileData = {
-    kyb: {
+  kyb: {
     name: '김용빈',
     description:
       '크크킄ㅋㅋㅋㅋㅋ'

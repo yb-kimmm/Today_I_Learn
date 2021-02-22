@@ -6,11 +6,7 @@ function RouterHookSample(){
     console.log({history, location,match});
     return null;
 
-    return (
-        <div>
-        </div>
-
-    )
+    
 }
 
 export default RouterHookSample;
