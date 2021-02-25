@@ -13,4 +13,8 @@ router - bodyparser 1.2\
 
 ### `3. nunjucks`
 
-html template 로 기존의 html을 템플릿화 시켜 간단하게 작성할 수 있도록 도와준다.
+html template 로 기존의 html을 템플릿화 시켜 간단하게 작성할 수 있도록 도와준다.\
+
+
+template 상속 
+{% block content -%} {% endblock %} 을 이용하여 상속하여 재사용 할 수 있다.
