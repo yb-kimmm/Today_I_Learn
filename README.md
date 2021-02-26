@@ -1,4 +1,4 @@
-# Node.js 1일차 공부 Expess
+# Node.js 공부 Expess
 
 ### `1. package-json`
 
@@ -15,6 +15,9 @@ router - bodyparser 1.2\
 
 html template 로 기존의 html을 템플릿화 시켜 간단하게 작성할 수 있도록 도와준다.\
 
-
-template 상속 
+template 상속
 {% block content -%} {% endblock %} 을 이용하여 상속하여 재사용 할 수 있다.
+
+### `4. Middle Ware`
+
+중간 요청을 제외하여 코드의 재사용성을 늘린다.
