@@ -15,3 +15,5 @@ const main = async () => {
   process.on('SIGTERM', () => server.shutdown());
   process.on('SIGINT', () => server.shutdown());
 };
+
+main();

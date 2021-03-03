@@ -11,6 +11,8 @@ const main = async () => {
 
 main();
 
+// 스크린샷 예제
+
 // const main = async () => {
 //   const browser = await puppeteer.launcher();
 //   const page = await browser.newPage();
