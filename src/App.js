@@ -1,86 +1,38 @@
-import React, { useReducer, useMemo } from 'react';
-import UserList from './UserList';
-import CreateUser from './CreateUser';
-import produce from 'immer';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function countActiveUsers(users) {
-  console.log('활성 사용자 수를 세는중...');
-  return users.filter((user) => user.active).length;
-}
+const App = () => {
+  const [data, setData] = useState({ hits: [] });
+  const [query, setQuery] = useState('react');
 
-const initialState = {
-  users: [
-    {
-      id: 1,
-      username: 'velopert',
-      email: 'public.velopert@gmail.com',
-      active: true,
-    },
-    {
-      id: 2,
-      username: 'tester',
-      email: 'tester@example.com',
-      active: false,
-    },
-    {
-      id: 3,
-      username: 'liz',
-      email: 'liz@example.com',
-      active: false,
-    },
-  ],
-};
+  useEffect(() => {
+    let completed = false;
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'CREATE_USER':
-      return produce(state, (draft) => {
-        draft.users.push(action.user);
-      });
-    // return {
-    //   users: state.users.concat(action.user)
-    // };
-    case 'TOGGLE_USER':
-      return produce(state, (draft) => {
-        const user = draft.users.find((user) => user.id === action.id);
-        user.active = !user.active;
-      });
-    // return {
-    //   ...state,
-    //   users: state.users.map(user =>
-    //     user.id === action.id ? { ...user, active: !user.active } : user
-    //   )
-    // };
-    case 'REMOVE_USER':
-      return produce(state, (draft) => {
-        const index = draft.users.findIndex((user) => user.id === action.id);
-        draft.users.splice(index, 1);
-      });
-    // return {
-    //   ...state,
-    //   users: state.users.filter(user => user.id !== action.id)
-    // };
-    default:
-      return state;
-  }
-}
+    async function get() {
+      const result = await axios(
+        `https://hn.algolia.com/api/v1/search?query=${query}`
+      );
+      if (!completed) setData(result.data);
+    }
 
-// UserDispatch 라는 이름으로 내보내줍니다.
-export const UserDispatch = React.createContext(null);
+    get();
+    return () => {
+      completed = true;
+    };
+  }, [query]);
 
-function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const { users } = state;
-
-  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
-    <UserDispatch.Provider value={dispatch}>
-      <CreateUser />
-      <UserList users={users} />
-      <div>활성사용자 수 : {count}</div>
-    </UserDispatch.Provider>
+    <>
+      <input value={query} onChange={(e) => setQuery(e.target.value)} />
+      <ul>
+        {data.map((item) => {
+          <li key={item.objectId}>
+            <a href={item.url}>{item.title}</a>
+          </li>;
+        })}
+      </ul>
+    </>
   );
-}
+};
 
 export default App;
