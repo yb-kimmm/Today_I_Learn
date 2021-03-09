@@ -2,6 +2,7 @@
 title: "첫번째 포스트 테스트입니다."
 categories:
   - posts
+comments: true
 ---
 
 2021.03.08 첫번째 포스트입니다.
@@ -16,3 +17,10 @@ categories:
   - [ ] Push my commits to GitHub
   - [x] Open a pull request
 -->
+
+{% if page.comments != false %}
+
+<div id= "post-disqus" class="container">
+  {% include disqus.html %}
+</div>
+{% endif %}

@@ -1,9 +1,10 @@
 ---
-title:  "Exclude Post from Search Index"
+title: "Exclude Post from Search Index"
 search: false
-categories: 
+categories:
   - Jekyll
 last_modified_at: 2018-02-19T08:06:00-05:00
+comments: true
 ---
 
 This post should not appear in the search index because it has the following YAML Front Matter:
@@ -27,3 +28,10 @@ algolia:
     - _posts/2017-11-28-post-exclude-search.md
     - subdirectory/*.html
 ```
+
+{% if page.comments != false %}
+
+<div id= "post-disqus" class="container">
+  {% include disqus.html %}
+</div>
+{% endif %}
