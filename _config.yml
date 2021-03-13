@@ -229,6 +229,11 @@ compress_html:
   ignore:
     envs: development
 
+# collections
+
+sidebar:
+  nav: "docs"
+
 # Defaults
 defaults:
   # _posts
@@ -242,9 +247,12 @@ defaults:
       comments: true
       share: true
       related: true
+      sidebar:
+        nav: "docs"
 
-# collections
+  # _docs
+
 collections:
   portfolio:
     output: true
-    permalink: /collection/collection/
+    permalink: /:collection/:path/
