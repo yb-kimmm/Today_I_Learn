@@ -2,7 +2,7 @@
 title: "첫번째 포스트 테스트입니다."
 categories:
   - posts
-comments: true
+
 ---
 
 2021.03.08 첫번째 포스트입니다.

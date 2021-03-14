@@ -14,13 +14,7 @@ main:
 
   # documentation links
 docs:
-  - title: Getting Started
+  - title: 공통
     children:
-      - title: "Quick-Start Guide"
-        url: /study/quick-start-guide/
-
-      - title: "Quick-Start Guide"
-        url: /study/quick-start-guide/
-
-      - title: "Quick-Start Guide"
-        url: /study/quick-start-guide/
+      - title: "마크다운 작성법 총정리"
+        url: /study/2021-03-13-markdown/
