@@ -1,5 +1,5 @@
 import simplejson as json
 
-a = input()
+# a = input()
 
-print('hello world' + a)
+# print('hello world' + a)
