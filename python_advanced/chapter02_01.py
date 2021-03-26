@@ -11,10 +11,11 @@
 
 # 일반적인 튜플 사용
 
+from collections import namedtuple
+from math import sqrt
 pt1 = (1.0, 5.0)
 pt2 = (2.5, 1.5)
 
-from math import sqrt
 
 line_leng1 = sqrt((pt2[0] - pt1[0]) ** 2 + (pt2[1] - pt1[1]) ** 2)
 
@@ -22,7 +23,6 @@ print('EX1-1 -', line_leng1)
 
 # 네임드 튜플 사용
 
-from collections import namedtuple
 
 # 네임드 튜플 선언
 Point = namedtuple('Point', 'x y')
@@ -43,7 +43,7 @@ print('EX1-3 -', line_leng1 == line_leng2)
 Point1 = namedtuple('Point', ['x', 'y'])
 Point2 = namedtuple('Point', 'x, y')
 Point3 = namedtuple('Point', 'x y')
-Point4 = namedtuple('Point', 'x y x class', rename=True) # Default=False
+Point4 = namedtuple('Point', 'x y x class', rename=True)  # Default=False
 
 # 출력
 print('EX2-1 -', Point1, Point2, Point3, Point4)
@@ -68,8 +68,8 @@ print()
 print()
 
 # 사용
-print('EX3-1 -', p1[0] + p2[1]) # Index Error 주의
-print('EX3-2 -', p1.x + p2.y) # 클래스 변수 접근 방식
+print('EX3-1 -', p1[0] + p2[1])  # Index Error 주의
+print('EX3-2 -', p1.x + p2.y)  # 클래스 변수 접근 방식
 
 # Unpacking
 x, y = p3
@@ -84,7 +84,7 @@ print()
 
 # 네임드 튜플 메소드
 
-temp = [52, 38] 
+temp = [52, 38]
 
 # _make() : 새로운 객체 생성
 p4 = Point1._make(temp)
@@ -121,26 +121,13 @@ ranks = 'A B C D'.split()
 # List Comprehension
 students = [Classes(rank, number) for rank in ranks for number in numbers]
 
-print('EX5-1 -', len(students))
-print('EX5-2 -', students)
+print(students)
 
 # 가독성 X
-
-students2 = [Classes(rank, number) 
-                    for rank in 'A B C D'.split() 
-                        for number in [str(n) 
-                            for n in range(1,21)]]
-
-
 print()
 print()
 
-print('EX6-1 -', len(students2))
-print('EX6-2 -', students2)
+students2 = [Classes(rank, number) for rank in 'A B C D'.split()
+             for number in [str(n) for n in range(1, 21)]]
 
-print()
-print()
-
-# 출력
-for s in students:
-    print('EX7-1 -', s)
+print(students2)
