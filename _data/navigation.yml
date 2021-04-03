@@ -29,3 +29,6 @@ docs:
 
       - title: "연결리스트 (LinkedList) "
         url: /study/algorithm/2021-03-29-linkedList/
+
+      - title: "트리 (Tree) "
+        url: /study/algorithm/2021-04-03-tree/
