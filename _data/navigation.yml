@@ -32,3 +32,6 @@ docs:
 
       - title: "트리 (Tree) "
         url: /study/algorithm/2021-04-03-tree/
+
+      - title: "힙 (Heap) "
+        url: /study/algorithm/2021-04-04-heap/
