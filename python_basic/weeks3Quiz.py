@@ -226,6 +226,8 @@ class Node:
 
 
 class ChainedHashTable(HashTable):
+
+    def __init__(self, )
     pass
     # # Test code
 
