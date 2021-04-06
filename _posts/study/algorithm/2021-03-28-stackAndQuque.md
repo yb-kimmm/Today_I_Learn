@@ -4,7 +4,7 @@ permalink: /study/algorithm/2021-03-28-stackAndQuque/
 comments: true
 ---
 
-## 1. 스택이란
+## 1. 스택이란?
 
 스택(stack)은 제한적으로 접근할 수 있는 나열 구조이다.
 그 접근 방법은 언제나 목록의 끝에서만 일어난다. 끝먼저내기 목록(Pushdown list)이라고도 한다.
