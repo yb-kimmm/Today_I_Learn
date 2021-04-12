@@ -15,23 +15,108 @@
 
 class PriorityQueue:
     def __init__(self):
-
-        pass
+        self.heap_array = list()
+        self.heap_array.append(None)
 
     def is_empty(self):
-        pass
-
-    def put(self, data):
-        pass
+        if len(self.heap_array) <= 1:
+            return True
+        else:
+            return False
 
     def get(self):
-        pass
+        if self.is_empty():
+            print('get')
+            return None
+
+        returned_data = self.heap_array[1]
+        self.heap_array[1] = self.heap_array[-1]
+        del self.heap_array[-1]
+        popped_idx = 1
+
+        # print(self.heap_array)
+
+        while self.move_down(popped_idx):
+            left_child_popped_idx = popped_idx * 2
+            right_child_popped_idx = popped_idx * 2 + 1
+
+            if right_child_popped_idx >= len(self.heap_array):
+                if self.heap_array[popped_idx][0] < self.heap_array[left_child_popped_idx][0]:
+                    self.heap_array[popped_idx], self.heap_array[left_child_popped_idx] = self.heap_array[
+                        left_child_popped_idx], self.heap_array[popped_idx]
+                    popped_idx = left_child_popped_idx
+            else:
+                if self.heap_array[left_child_popped_idx][0] > self.heap_array[right_child_popped_idx][0]:
+                    if self.heap_array[popped_idx][0] < self.heap_array[left_child_popped_idx][0]:
+                        self.heap_array[popped_idx], self.heap_array[left_child_popped_idx] = self.heap_array[
+                            left_child_popped_idx], self.heap_array[popped_idx]
+                        popped_idx = left_child_popped_idx
+                else:
+                    if self.heap_array[popped_idx][0] < self.heap_array[right_child_popped_idx][0]:
+                        self.heap_array[popped_idx], self.heap_array[right_child_popped_idx] = self.heap_array[
+                            right_child_popped_idx], self.heap_array[popped_idx]
+                        popped_idx = right_child_popped_idx
 
     def peek(self):
-        pass
+        if self.is_empty():
+            return None
+        else:
+            return self.heap_array[1]
+
+    def put(self, data):
+        if self.is_empty():
+            self.heap_array.append(data)
+            return True
+
+        self.heap_array.append(data)
+
+        # print(self.heap_array)
+        inserted_idx = len(self.heap_array) - 1
+        while self.move_up(inserted_idx):
+            parent_idx = inserted_idx // 2
+            # swap
+            self.heap_array[inserted_idx], self.heap_array[parent_idx] = self.heap_array[parent_idx],  self.heap_array[inserted_idx]
+            inserted_idx = parent_idx
+        return True
+
+    def move_up(self, inserted_idx):
+        if inserted_idx <= 1:
+            return False
+
+        parent_idx = inserted_idx // 2
+        if self.heap_array[inserted_idx] > self.heap_array[parent_idx]:
+            return True
+        else:
+            return False
+
+    def move_down(self, popped_idx):
+        left_child_popped_idx = popped_idx * 2
+        right_child_popped_idx = popped_idx * 2 + 1
+
+        # case 1 : 왼쪽 자식 노드도 없을 때
+        if left_child_popped_idx >= len(self.heap_array):
+            return False
+        # case 2 : 오른쪽 자식 노드만 없을 떄
+        elif right_child_popped_idx >= len(self.heap_array):
+            if self.heap_array[popped_idx] < self.heap_array[left_child_popped_idx]:
+                return True
+            else:
+                return False
+        # case 3 : 왼쪽 오른쪽 자식 모두 있을 떄
+        else:
+            if self.heap_array[left_child_popped_idx] > self.heap_array[right_child_popped_idx]:
+                if self.heap_array[popped_idx] < self.heap_array[left_child_popped_idx]:
+                    return True
+                else:
+                    return False
+            else:
+                if self.heap_array[popped_idx] < self.heap_array[right_child_popped_idx]:
+                    return True
+                else:
+                    return False
 
 
-# ```
+# # ```
 
 
 pq = PriorityQueue()
@@ -61,20 +146,20 @@ print(pq.get())
 # - 알고리즘의 시간복잡도는 `O(N)` 이하로 제한된다.
 
 
-# def countUniques(a):
-#     # print(len(a))
-#     tem = a[0]
-#     count = 1
-#     for i in range(1, len(a)):
-#         if tem != a[i]:
-#             count += 1
-#             tem = a[i]
+def countUniques(a):
+    # print(len(a))
+    tem = a[0]
+    count = 1
+    for i in range(1, len(a)):
+        if tem != a[i]:
+            count += 1
+            tem = a[i]
 
-#     return count
+    return count
 
 
-# print(countUniques([-1, 1, 1, 1, 1, 4, 4, 4, 4, 10, 14, 14]))  # 5
-# print(countUniques([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]))  # 2
+print(countUniques([-1, 1, 1, 1, 1, 4, 4, 4, 4, 10, 14, 14]))  # 5
+print(countUniques([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]))  # 2
 
 # ----
 
@@ -86,24 +171,24 @@ print(pq.get())
 #  (즉, 주어진 모든 문자열의 앞의 몇개의 문자가 일치하는지 출력하라)
 
 # # ```python
-# def solution(a):
-#     count = 0
-#     l = 0
+def solution(a):
+    count = 0
+    l = 0
 
-#     while l < len(a[0]):
-#         temp = a[0][l]
-#         for i in range(1, len(a)):
-#             if temp != a[i][l]:
-#                 return count
+    while l < len(a[0]):
+        temp = a[0][l]
+        for i in range(1, len(a)):
+            if temp != a[i][l]:
+                return count
 
-#         count += 1
-#         l += 1
+        count += 1
+        l += 1
 
-#     return count
+    return count
 
 
-# /print(solution(['abcd', 'abcd', 'abcd', 'abcd', 'abcd']))  # 3
-# print(solution(['abcd', 'gbce', 'abchg', 'abcfwqw', 'abcdfg']))  # 0
+print(solution(['abcd', 'abcd', 'abcd', 'abcd', 'abcd']))  # 3
+print(solution(['abcd', 'gbce', 'abchg', 'abcfwqw', 'abcdfg']))  # 0
 
 # ----
 
@@ -126,17 +211,30 @@ print(pq.get())
 # ```python
 # import random
 
+lst = list()
 
-# def solution(a):
 
-#     i = (n % 10) ** 2
-#     i += (n//10) ** 2
+def solution(n):
+    str1 = list(str(n))
 
-#     if i == 1:
-#         return True
-#     else:
-#         return solution(i)
+    lst = [int(number) ** 2 for number in str1]
 
+    total = 0
+    for i in range(0, len(lst)):
+        total += lst[i]
+
+    k, s = divmod(total, 10)
+
+    if k in lst:
+        return False
+    lst.append(k)
+
+    if s != 1:
+        return solution(total)
+    return True
+
+
+print(solution(81))
 
 # data_list = random.sample(range(100), 10)
 
