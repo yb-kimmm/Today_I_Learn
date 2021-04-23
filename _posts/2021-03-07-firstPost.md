@@ -14,7 +14,8 @@ categories:
 
 ### 2021년 목표!!
 
-- [ ] SQLD , SQLP 자격증 공부
+- [ ] SQLD 자격증 공부
+- [ ] 정보보안기사 자격증 공부
 
 <!-- 주석
   - [ ] Push my commits to GitHub
