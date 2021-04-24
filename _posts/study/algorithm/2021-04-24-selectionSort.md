@@ -1,6 +1,6 @@
 ---
 title: "[알고리줌] 선택정렬"
-permalink: /study/algorithm/2021-04-24-insertionSort/
+permalink: /study/algorithm/2021-04-24-selectionSort/
 comments: true
 ---
 
