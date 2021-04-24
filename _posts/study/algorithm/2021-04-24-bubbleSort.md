@@ -1,5 +1,5 @@
 ---
-title: "[알고리줌] 버블정렬"
+title: "[알고리즘] 버블정렬"
 permalink: /study/algorithm/2021-04-24-bubbleSort/
 comments: true
 ---

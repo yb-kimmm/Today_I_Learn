@@ -1,5 +1,5 @@
 ---
-title: "[알고리줌] 병합정렬"
+title: "[알고리즘] 병합정렬"
 permalink: /study/algorithm/2021-04-24-mergeSort/
 comments: true
 ---

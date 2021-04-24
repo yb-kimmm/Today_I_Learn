@@ -1,5 +1,5 @@
 ---
-title: "[알고리줌] 선택정렬"
+title: "[알고리즘] 선택정렬"
 permalink: /study/algorithm/2021-04-24-selectionSort/
 comments: true
 ---
