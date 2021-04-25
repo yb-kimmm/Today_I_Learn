@@ -1,4 +1,5 @@
 # 블랙잭 백준 2798
+
 inputN, inputM = list(map(int, input().split(' ')))
 data = list(map(int, input().split(' ')))
 
