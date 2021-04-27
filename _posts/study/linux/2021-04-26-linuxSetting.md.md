@@ -67,5 +67,4 @@ comments: true
   ![](/assets/images/linuxInstall/os5.png)
 
 - 설치 대상은 클릭하여 하드를 선택 한 후 완료 버튼을 누른다.
-
-  http://mirror.centos.org/centos/8/BaseOS/x86_64/os/
+- 설치 소스는 http://mirror.centos.org/centos/8/BaseOS/x86_64/os/ 링크를 입력한 후 확인을 누른다.
