@@ -1,5 +1,5 @@
 ---
-title: "[리눅스] 맥에서 CentOS 8 초기셋팅하기"
+title: "[리눅스] 맥에서 CentOS 8 초기셋팅하기(1)"
 permalink: /study/linux/2021-04-26-linuxSetting/
 comments: true
 ---
@@ -48,23 +48,6 @@ comments: true
 
 - 실행을 한다.
 
-  ![](/assets/images/linuxInstall/os1.png)
+> 이후 설치 과정은 다음 포스트에서 진행한다.
 
-- 초기화면이 다음과 같이 뜨게 된다.
-
-  ![](/assets/images/linuxInstall/os2.png)
-
-- Keyboard를 클릭하여 영어(미국)을 추가한다.
-
-  ![](/assets/images/linuxInstall/os3.png)
-
-- 언어는 한국어로 선택한다.
-
-  ![](/assets/images/linuxInstall/os4.png)
-
-- 시간대는 서울로 선택한다.
-
-  ![](/assets/images/linuxInstall/os5.png)
-
-- 설치 대상은 클릭하여 하드를 선택 한 후 완료 버튼을 누른다.
-- 설치 소스는 http://mirror.centos.org/centos/8/BaseOS/x86_64/os/ 링크를 입력한 후 확인을 누른다.
+<!--- 설치 소스는 http://mirror.centos.org/centos/8/BaseOS/x86_64/os/ 링크를 입력한 후 확인을 누른다. !-->
