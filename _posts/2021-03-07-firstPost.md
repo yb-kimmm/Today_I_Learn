@@ -9,7 +9,6 @@ categories:
 ### 앞으로의 목표!!
 
 - [ ] 1주일에 1개씩 포스팅
-- [ ] 단기간 Task 페이지
 - [ O ] MarkDown(MD) 파일 작성법 공부 및 포스팅
 - [ ] 리눅스 , Docker , Kubernates 공부
 
