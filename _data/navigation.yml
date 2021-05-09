@@ -56,3 +56,15 @@ docs:
 
       - title: "순차탐색과 이진탐색"
         url: /study/algorithm/2021-04-24-seqSearchAndBinarySearch/
+
+      - title: "BFS"
+      url: /study/algorithm/2021-05-05-dfs/
+
+      - title: "DFS"
+      url: /study/algorithm/2021-05-05-dfs/
+
+      - title: "그래프"
+      url: /study/algorithm/2021-05-05-Graph/
+
+      - title: "탐욕 알고리즘"
+      url: /study/algorithm/2021-05-05-greedy/
