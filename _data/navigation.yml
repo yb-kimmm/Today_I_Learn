@@ -30,13 +30,13 @@ docs:
       - title: "연결리스트 (LinkedList) "
         url: /study/algorithm/2021-03-29-linkedList/
 
-      - title: "트리 (Tree) "
+      - title: "트리 (Tree)"
         url: /study/algorithm/2021-04-03-tree/
 
-      - title: "힙 (Heap) "
+      - title: "힙 (Heap)"
         url: /study/algorithm/2021-04-04-heap/
 
-      - title: "버블정렬 (BubbleSort) "
+      - title: "버블정렬 (BubbleSort)"
         url: /study/algorithm/2021-04-24-bubbleSort/
 
       - title: "삽입정렬 (InsertionSort)"
