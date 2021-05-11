@@ -45,7 +45,7 @@ docs:
       - title: "선택정렬 (SelectionSort) "
         url: /study/algorithm/2021-04-24-selectionSort/
 
-      - title: "병합정렬 (MergeSort) "
+      - title: "병합정렬 (MergeSort)"
         url: /study/algorithm/2021-04-24-mergeSort/
 
       - title: "힙 정렬 (HeapSort)"
