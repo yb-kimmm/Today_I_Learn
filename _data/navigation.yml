@@ -51,7 +51,7 @@ docs:
       - title: "힙 정렬 (HeapSort)"
         url: /study/algorithm/2021-04-24-heapSort/
 
-      - title: "동적계획법 , 분할정복"
+      - title: "동적계획법, 분할정복"
         url: /study/algorithm/2021-04-24-dpadc/
 
       - title: "순차탐색과 이진탐색"
