@@ -27,7 +27,7 @@ docs:
       - title: "스택과 큐"
         url: /study/algorithm/2021-03-28-stackAndQuque/
 
-      - title: "연결리스트 (LinkedList) "
+      - title: "연결리스트 (LinkedList)"
         url: /study/algorithm/2021-03-29-linkedList/
 
       - title: "트리 (Tree)"
