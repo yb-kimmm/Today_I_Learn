@@ -16,7 +16,7 @@ main:
 docs:
   - title: 공통
     children:
-      - title: "마크다운 작성법 총정리 "
+      - title: "마크다운 작성법 총정리  "
         url: /study/common/2021-03-13-markdown/
 
   - title: 자료구조 및 알고리즘
