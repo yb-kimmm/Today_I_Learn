@@ -21,7 +21,7 @@ docs:
 
   - title: 자료구조 및 알고리즘
     children:
-      - title: "배열"
+      - title: " 배열 "
         url: /study/algorithm/2021-03-28-array/
 
       - title: "스택과 큐"
