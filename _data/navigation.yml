@@ -57,7 +57,7 @@ docs:
       - title: "순차탐색과 이진탐색"
         url: /study/algorithm/2021-04-24-seqSearchAndBinarySearch/
 
-      - title: "BFS"
+      - title: "BFS "
         url: /study/algorithm/2021-05-05-dfs/
 
       - title: "DFS"
