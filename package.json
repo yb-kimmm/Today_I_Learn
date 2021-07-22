@@ -6,7 +6,8 @@
   "scripts": {
     "server": "nodemon src/main.js",
     "start": "npx nodemon -e js,html app.js",
-    "test": "mocha"
+    "test": "mocha" ,
+    "lint" :"eslint src/**/*"
   },
   "author": "",
   "license": "ISC",
