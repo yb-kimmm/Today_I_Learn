@@ -35,6 +35,7 @@ async function getPosts() {
   const json = fs.promises.readFile(DB_JSON_FILE_NAME, 'utf-8');
   return JSON.parse(json).posts;
 }
+
 /**
  * @Param {Post[]} posts
  */
