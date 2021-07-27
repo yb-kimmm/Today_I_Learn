@@ -16,6 +16,7 @@ const numBlocksPerCharater = {
   a: 0,
   b: 0,
 };
+
 /** @type {string | undefined} */
 let prevCharacter;
 let chunkCount = 0;
