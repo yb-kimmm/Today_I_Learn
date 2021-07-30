@@ -30,6 +30,7 @@ rs.on('data', (data) => {
     .reduce((sum, curr) => sum + curr, 0);
 });
 
+//
 rs.on('end', () => {
   log('Event : end');
 });
