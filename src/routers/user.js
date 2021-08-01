@@ -24,19 +24,22 @@ router.get('/', (req, res) => {
 
 router.param('id', async (req, res, next, value) => {
   try {
+    // @ts-ignore
+    const user = USERS[value];
+
     if (!user) {
-      const err = new Error('User not found');
+      const err = new Error('User not found.');
+      // @ts-ignore
       err.statusCode = 404;
       throw err;
     }
 
     // @ts-ignore
-    req.user = USERS[value];
+    req.user = user;
     next();
   } catch (err) {
     next(err);
   }
-  const user = USERS[value];
 });
 
 router.get('/:id', (req, res) => {
