@@ -1,73 +1,24 @@
 // @ts-check
 
-// 프레임워크 없이 간단한 토이프로젝트 웹 서버 만들어주기
+const express = require('express');
+const app = express();
 
-/**
- *  블로그 포스팅 서비스
- * - 로컬 파일을 데이터베이스로 활용활 예정(JSON)
- * - 인증 로직은 넣지 않을 예정
- * - RESTful API를 사용합니다.
- */
+const PORT = 5000;
 
-const http = require('http');
+app.use(express.json());
+app.set('views', 'src/views');
+app.set('view engine', 'pug');
 
-const { routes } = require('./api');
+const userRouter = require('./routers/user');
 
-const server = http.createServer((req, res) => {
-  async function main() {
-    const route = routes.find(
-      (_route) =>
-        req.url &&
-        req.method &&
-        _route.url.test(req.url) &&
-        _route.method === req.method
-    );
+app.use('/users', userRouter);
+app.use('/public', express.static('src/public'));
 
-    if (!req.url || !route) {
-      res.statusCode = 404;
-      res.end('Not found');
-      return;
-    }
-
-    const regexResult = route.url.exec(req.url);
-
-    if (!regexResult) {
-      res.statusCode = 404;
-      res.end('Not found');
-      return;
-    }
-
-    /** @type {Object.<string , *> | undefined} */
-    const reqBody =
-      (req.headers['content-type'] === 'application/json' &&
-        (await new Promise((resolve, reject) => {
-          req.setEncoding('utf-8');
-          req.on('data', (data) => {
-            try {
-              resolve(JSON.parse(data));
-            } catch {
-              reject(new Error('Ill_formed json'));
-            }
-          });
-        }))) ||
-      undefined;
-
-    const result = await route.callback(regexResult, reqBody);
-    result.statusCode = result.statusCode;
-
-    if (typeof result.body === 'string') {
-      res.end(result.body);
-    } else {
-      res.setHeader('Content-Type', 'application/json; charset=utf-8');
-      res.end(JSON.stringify(result.body));
-    }
-  }
-
-  main();
+app.use((err, req, res, next) => {
+  res.statusCode = err.statusCode || 500;
+  res.send(err.message);
 });
 
-const PORT = 4000;
-
-server.listen(PORT, () => {
-  console.log(`This server is listening at port : ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`The Express server is listening at port : ${PORT}`);
 });
