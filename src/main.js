@@ -17,15 +17,33 @@ async function main() {
     {
       name: 'Foo',
       birthYear: 2000,
+      contacts: [
+        {
+          type: 'phone',
+          number: '+8201012345678',
+        },
+      ],
     },
 
     {
       name: 'Bar',
       birthYear: 1995,
+      contacts: [
+        {
+          type: 'tel',
+          number: '+04112341234',
+        },
+      ],
     },
     {
       name: 'Baz',
       birthYear: 1990,
+      contacts: [
+        {
+          type: 'phone',
+          number: '+8201012345678',
+        },
+      ],
     },
     {
       name: 'Poo',
