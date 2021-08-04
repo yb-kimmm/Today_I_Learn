@@ -1,6 +1,5 @@
 const { MongoClient } = require('mongodb');
-const uri =
-  'mongodb+srv://ybUser:1234@youtubeclone.5qfhq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const uri = 'db접속정보';
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
