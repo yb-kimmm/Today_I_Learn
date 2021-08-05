@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const uri = 'db접속정보';
+const uri = 'db접속정보'; // mongo db
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
