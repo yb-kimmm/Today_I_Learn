@@ -1,96 +1,131 @@
 // @ts-check
 
+/* 키워드로 검색해서 나온 이미지를 원하는 사이즈로 리사이징해서 돌려주는 서버. */
+
 require('dotenv').config();
 
-const Koa = require('koa');
-const Pug = require('koa-pug');
+const fs = require('fs');
 const path = require('path');
-const route = require('koa-route');
-const serve = require('koa-static');
-const websockify = require('koa-websocket');
-const mount = require('koa-mount');
-const mongoClient = require('./mongo');
+const http = require('http');
+const { createApi } = require('unsplash-js');
+const { default: fetch } = require('node-fetch');
+const { pipeline } = require('stream');
+const { promisify } = require('util');
+const sharp = require('sharp');
+const { default: imageSize } = require('image-size');
 
-const app = websockify(new Koa());
-
-// @ts-ignore
-// eslint-disable-next-line no-new
-new Pug({
-  viewPath: path.resolve(__dirname, './views'),
-  app,
+const unsplash = createApi({
+  accessKey: process.env.UNSPLASH_API_ACCESS_KEY,
+  // @ts-ignore
+  fetch,
 });
 
-app.use(mount('/public', serve('src/public')));
+/**
+ * @param {string} query
+ */
+async function searchImage(query) {
+  const result = await unsplash.search.getPhotos({ query });
 
-app.use(async (ctx) => {
-  await ctx.render('main');
-});
+  if (!result.response) {
+    throw new Error('Failed to search image.');
+  }
 
-/* eslint-disable-next-line no-underscore-dangle */
-const _client = mongoClient.connect();
+  const image = result.response.results[0];
 
-async function getChatsCollection() {
-  const client = await _client;
-  return client.db().collection('chats');
+  if (!image) {
+    throw new Error('No image found.');
+  }
+
+  return {
+    description: image.description || image.alt_description,
+    url: image.urls.regular,
+  };
 }
 
-// Using routes
-app.ws.use(
-  route.all('/ws', async (ctx) => {
-    const chatsCollection = await getChatsCollection();
-    const chatsCursor = chatsCollection.find(
-      {},
-      {
-        sort: {
-          createdAt: 1,
-        },
-      }
-    );
+/**
+ * 이미지를 Unsplash에서 검색하거나, 이미 있다면 캐시된 이미지를 리턴합니다.
+ * @param {string} query
+ */
+async function getCachedImageOrSearchedImage(query) {
+  const imageFilePath = path.resolve(__dirname, `../unsplash-images/${query}`);
 
-    const chats = await chatsCursor.toArray();
-    ctx.websocket.send(
-      JSON.stringify({
-        type: 'sync',
-        payload: {
-          chats,
-        },
-      })
-    );
+  if (fs.existsSync(imageFilePath)) {
+    return {
+      message: `Returning cached image: ${query}`,
+      stream: fs.createReadStream(imageFilePath),
+    };
+  }
 
-    ctx.websocket.on('message', async (data) => {
-      if (typeof data !== 'string') {
-        return;
-      }
+  const result = await searchImage(query);
+  const resp = await fetch(result.url);
 
-      /** @type {Chat} */
-      const chat = JSON.parse(data);
+  await promisify(pipeline)(resp.body, fs.createWriteStream(imageFilePath));
+  const size = imageSize(imageFilePath);
 
-      await chatsCollection.insertOne({
-        ...chat,
-        createdAt: new Date(),
-      });
+  return {
+    message: `Returning new image: ${query}, width: ${size.width}, height: ${size.height}`,
+    stream: fs.createReadStream(imageFilePath),
+  };
+}
 
-      const { nickname, message } = chat;
+/**
+ * @param {string} url
+ */
+function convertURLToImageInfo(url) {
+  const urlObj = new URL(url, 'http://localhost:5000');
 
-      const { server } = app.ws;
+  /**
+   * @param {string} name
+   * @param {number} defaultValue
+   * @returns
+   */
+  function getSearchParam(name, defaultValue) {
+    const str = urlObj.searchParams.get(name);
+    return str ? parseInt(str, 10) : defaultValue;
+  }
 
-      if (!server) {
-        return;
-      }
+  const width = getSearchParam('width', 400);
+  const height = getSearchParam('height', 400);
 
-      server.clients.forEach((client) => {
-        client.send(
-          JSON.stringify({
-            type: 'chat',
-            payload: {
-              message,
-              nickname,
-            },
+  return {
+    query: urlObj.pathname.slice(1),
+    width,
+    height,
+  };
+}
+
+const server = http.createServer((req, res) => {
+  async function main() {
+    if (!req.url) {
+      res.statusCode = 400;
+      res.end('Needs URL.');
+      return;
+    }
+
+    const { query, width, height } = convertURLToImageInfo(req.url);
+    try {
+      const { stream } = await getCachedImageOrSearchedImage(query);
+      await promisify(pipeline)(
+        stream,
+        sharp()
+          .resize(width, height, {
+            fit: 'contain',
+            background: '#ffffff',
           })
-        );
-      });
-    });
-  })
-);
+          .png(),
+        res
+      );
+    } catch (e) {
+      res.statusCode = 400;
+      res.end();
+    }
+  }
 
-app.listen(5000);
+  main();
+});
+
+const PORT = 5000;
+
+server.listen(PORT, () => {
+  console.log('The server is listening at port', PORT);
+});
