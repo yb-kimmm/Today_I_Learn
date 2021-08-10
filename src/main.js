@@ -14,6 +14,9 @@ const { Octokit } = require('octokit');
 
 program.version('0.0.1');
 
+const OWNER = 'nan-yb';
+const REPO = 'learn-node';
+
 const octokit = new Octokit({ auth: GITHUB_ACCESS_TOKEN });
 program
   .command('me')
@@ -31,8 +34,8 @@ program
   .description('List issus wuth bug label')
   .action(async () => {
     const result = await octokit.rest.issues.listForRepo({
-      owner: 'nan-yb',
-      repo: 'learn-node',
+      owner: OWNER,
+      repo: REPO,
       lavels: 'bug',
     });
     // result.data.forEach((issue) => {
@@ -54,13 +57,6 @@ program
     // console.log(result);
   });
 
-// 풀 리퀘스트를 모두 검사해서 , 만약 너무 diff가 큰 풀 리퀘스트가 있으면 ' too-big ' 이라는 레이블을 붙인다.
-
-program
-  .command('check-prs')
-  .description('Check pull request status')
-  .action(async () => {
-    console.log('Check PRs!');
-  });
+// 풀 리퀘스트를 모두 검사해서 , 만약 너무 diff가 큰(100줄) 풀 리퀘스트가 있으면 ' too-big ' 이라는 레이블을 붙인다.
 
 program.parse(process.argv);
