@@ -25,8 +25,6 @@ program
     const {
       data: { login },
     } = await octokit.rest.users.getAuthenticated();
-
-    console.log('Hello , %s', login);
   });
 
 program
@@ -51,8 +49,6 @@ program
       title: issue.title,
       number: issue.number,
     }));
-
-    console.log(output);
 
     // console.log(result);
   });
