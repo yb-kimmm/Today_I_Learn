@@ -36,9 +36,6 @@ program
       repo: REPO,
       lavels: 'bug',
     });
-    // result.data.forEach((issue) => {
-    // console.log(issue.number, issue.labels);
-    // });
 
     const issuesWithBugLabel = result.data.filter(
       (issue) =>
@@ -49,8 +46,6 @@ program
       title: issue.title,
       number: issue.number,
     }));
-
-    // console.log(result);
   });
 
 // 풀 리퀘스트를 모두 검사해서 , 만약 너무 diff가 큰(100줄) 풀 리퀘스트가 있으면 ' too-big ' 이라는 레이블을 붙인다.
