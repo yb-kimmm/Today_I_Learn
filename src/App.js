@@ -6,7 +6,7 @@ function App() {
   const array1 = ['apple', 'banana', 'orange'];
   return (
     <div className="App">
-      <MainHeader text="Hello world"></MainHeader>
+      <MainHeader></MainHeader>
       <ul>
         {array1.map(v => {
           return <CustomList text={v}></CustomList>;
