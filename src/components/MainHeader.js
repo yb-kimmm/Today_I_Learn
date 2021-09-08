@@ -4,7 +4,7 @@ function MainHeader() {
   const [tasks, setTask] = useState([
     {
       id: 0,
-      text: '강의 듣기',
+      text: '강의 듣기.',
     },
   ]);
   const inputRef = useRef();
