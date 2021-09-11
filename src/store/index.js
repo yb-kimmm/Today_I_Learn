@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
-
-import todo from './modules/todo';
+import score from './modules/score';
 
 export default combineReducers({
-  todo, // 서브 리듀서
+  // 서브 리듀서 ...
+  score,
 });
-
-// 루트 리듀서
