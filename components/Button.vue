@@ -1,22 +1,26 @@
-<template lang="">
-  <a :class="[styleType]" @click.prevent="clickEvent"></a>
+<template>
+  <a :class="[styleType]" @click.prevent="clickEvent">{{text}}</a>
 </template>
 <script>
 export default {
-  props : {
-    clickEvent:{
+  props: {
+    clickEvent: {
       type: Function
     },
-    text :{
-      type:String,
-      default : []
+    text: {
+      type: String,
+      defualt: ""
+    },
+    styleType: {
+      type: String,
+      default: "pink"
     }
   }
-}
+};
 </script>
 <style lang="scss">
-a{ 
-position: relative;
+a {
+  position: relative;
   display: inline-block;
   cursor: pointer;
   outline: none;
@@ -34,7 +38,6 @@ position: relative;
   transform-style: preserve-3d;
   user-select: none;
   transition: transform 0.15s ease-out, background 0.15s ease-out;
-
   &::before {
     content: "";
     position: absolute;
@@ -53,14 +56,14 @@ position: relative;
   &:hover {
     background: #ffe9e9;
     transform: translateY(0.25em);
-  };
+  }
   &.blue {
-    display : block ;
-    margin-bottom : 29px;
-    background : #fefefe;
-    padding:1.8em;
-    border-color : #8599b1;
-    &::before{
+    display: block;
+    margin-bottom: 29px;
+    background: #fefefe;
+    padding: 1.8em;
+    border-color: #8599b1;
+    &::before {
       box-shadow: 0 0 0 2px #8599b1, 0 0.625em 0 0 #e2efff;
       background: #c4d8f9;
     }
