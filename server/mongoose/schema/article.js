@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const Article = new Schema({
   // 필수
@@ -18,4 +19,5 @@ const Article = new Schema({
   mention: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
+Article.plugin(AutoIncrement, { inc_field: "id" });
 module.export = Article;
