@@ -4,7 +4,8 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const Article = new Schema({
   // 필수
-  title: { type: String, required: true, unique: true },
+  title: { type: String, required: true },
+  author: { type: Schema.Types.ObjectId, ref: "User", required: true },
   content: { type: String, required: true },
   createdAt: { type: Date, default: Date.now, required: true },
   board: { type: Schema.Types.ObjectId, ref: "Board", required: true },
@@ -13,11 +14,12 @@ const Article = new Schema({
   thumbupCount: { type: Number, default: 0 },
   viewScore: { type: Number, default: 0 },
   commentCount: { type: Number, default: 0 },
+  deleteTime: { type: Number, default: 0 },
 
   // {옵션} : 사용자가 게시글에 추가할 수 있는 데이터
   articleImgAddress: { type: String },
   mention: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-Article.plugin(AutoIncrement, { inc_field: "id" });
-module.export = Article;
+Article.plugin(AutoIncrement, { inc_field: "key" });
+module.exports = Article;

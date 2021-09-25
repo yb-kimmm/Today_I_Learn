@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { article } = require("./router");
+const { article, user, company, board, comment, reply } = require("./router");
 const app = express();
 const PORT = 3000;
 
@@ -10,6 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // 기능
 app.use(article);
+app.use(company);
+app.use(board);
+app.use(user);
+app.use(comment);
+app.use(reply);
 
 app.get("/", (req, res) => {
   res.send("Server is Running!");
