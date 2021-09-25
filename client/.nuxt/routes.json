@@ -1,0 +1,8 @@
+[
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]
