@@ -1,34 +1,13 @@
+num = int(input())
+answer = 0
 
-inputN= list(map(int, input().split(' ')))
+for i in range(1, num+1):
+    coef_num_list = list(map(int, str(i)))
+    answer = i + sum(coef_num_list)
 
-data = 154;
-result = 0; 
-cal  = 10 ;
+    if answer == num:
+        print(i)
+        break
 
-remain = 0;
-remain = int(data / 100);
-print(remain)
-remain = int(data / 10);
-print(remain)
-remain = int(data % 10);
-print(remain)
-# remain += data / 100;
-
-# while(inputN[0] != result):
-#   remain = 0;
-#   data += 1;  
-  
-#   remain += data % 10;
-#   remain += data % 100;
-
-#   result = data + remain;
-  
-#   print(result, data , sep='_')
-
-
-
-
-
-
-
-
+    if i == num:
+        print(0)
