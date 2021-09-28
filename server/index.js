@@ -3,10 +3,14 @@ const cors = require("cors");
 const { article, user, company, board, comment, reply } = require("./router");
 const app = express();
 const PORT = 3000;
+const SECRET = "@askdasklF!@#123dnasdnkas";
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// JWT 시크릿 할당
+app.set("jwt-secret", SECRET);
 
 // 기능
 app.use(article);
