@@ -1,8 +1,16 @@
 [
   {
+    "name": "company",
+    "path": "/company",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/company.vue",
+    "chunkName": "pages/company",
+    "_name": "_065e4481"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_7fa80956"
   }
 ]

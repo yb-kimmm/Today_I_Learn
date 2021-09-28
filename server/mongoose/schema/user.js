@@ -20,7 +20,7 @@ User.virtual("password").set(function (password) {
 
 // 살트 생성 함수
 User.method("makeSalt", () => {
-  return Math.round(new Date().valueOf() * Math.random()) + "Hello YB";
+  return Math.round(new Date().valueOf() * Math.random()) + "HelloYB";
 });
 
 //해쉬된 비밀번호 생성 함수
