@@ -2,13 +2,46 @@
   <div class="main-container">
     <main>
       <SearchBar/>  
-      <BoardCard/>
+      <BestBoardCard/>
+      <BoardCard v-for="b in mainContent" :key="b.slug"/>
     </main>    
   </div>
 </template>
 
+
 <script>
-export default{}
+import BestBoardCard from "@/components/Main/BestBoardCard";
+import BoardCard from "@/components/Main/BoardCard";
+
+export default{
+  components: {
+    BestBoardCard,
+    BoardCard
+  },
+  data(){
+    return {
+      mainContent : []
+    }
+  },
+  created(){
+    this.getRecentBoardArticleList();
+  },
+  methods: {
+    async getRecentBoardArticleList(){
+      const data = await this.$api.$get("/main")
+      if(data.error){
+        return
+      }
+
+      this.mainContent = data.content;
+
+
+
+
+    }
+  },
+
+}
 </script>
 
 <style>
