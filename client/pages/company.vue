@@ -1,6 +1,5 @@
 <template>
   <div>
-    <GNB/>
   </div>
 </template>
 
