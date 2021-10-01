@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Nuxt/>
     <GNB />
+    <Nuxt/>
   </div>
 </template>
 <script>

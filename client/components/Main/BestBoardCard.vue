@@ -1,36 +1,73 @@
 <template>
-  <div class="board-card">
+  <div class="best board-card">
     <div class="head">
-      <div class="board-icod"></div>
-      <h2>{{title}}</h2>
-      <nuxt-link 
+      <div class="title-side">
+        <div class="board-icon"></div>
+        <h2>토픽 베스트</h2>
+      </div>
+      <nuxt-link
         :to="{
-          name : 'topics' , 
-          params : {
-            id : slug
-          }
-      }">더보기 > </nuxt-link>
-
-      
-
+        name: 'topics-id',
+        params: {
+          id: '토픽-베스트'
+        }
+      }"
+      >더보기 ></nuxt-link>
+    </div>
+    <div class="body">
+      <ul class="article-list">
+        <li v-for="a in articleList" :key="a._id">
+          <div class="article-title">
+            <span class="board-tag">{{boardList[a.board]}}</span>
+            <span>{{a.title}}</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 <script>
+// import { ThumbsUpIcon, MessageCircleIcon } from "vue-feather-icons";
 export default {
-  props : {
-    title : {
-      type:String , 
-      required:true
-    },
-    slug : {
-      type:String , 
-      required:true
-    } ,
-
+  props: {
+    articleList: {
+      type: Array,
+      default: []
+    }
+  },
+  components: {
+    // MessageCircleIcon,
+    // ThumbsUpIcon
+  },
+  data() {
+    return {
+      boardList: {}
+    };
+  },
+  created() {
+    this.getBoardList();
+  },
+  methods: {
+    async getBoardList() {
+      const data = await this.$api.$get("/board/list");
+      if (!Array.isArray(data)) {
+        return;
+      }
+      data.forEach(v => {
+        this.boardList[v._id] = v.title;
+      });
+    }
   }
-}
+};
 </script>
-<style lang="">
-  
+<style lang="scss">
+.board-tag {
+  font-size: 12px;
+  padding: 2px;
+  border: solid 1px #94969b;
+  color: #94969b;
+  margin-right: 5px;
+  position: relative;
+  top: -2px;
+}
 </style>
