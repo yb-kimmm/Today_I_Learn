@@ -1,11 +1,15 @@
 
-iter = int(input())
+iter = w, h = map(int, input().split())
 
 myList = []
 
 for k in range(0, iter):
-    w, h = map(int, input().split())
+
     myList.append((w, h))
 
 
-print(myList)
+myList = sorted(myList, key=lambda x: (x[0], x[1]))
+
+
+for k in range(0,  len(myList)):
+    print(myList[k][0], myList[k][1], sep=" ")
