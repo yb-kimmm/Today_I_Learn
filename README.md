@@ -2,4 +2,4 @@
 
 ### 9.25 [blind] clone coding start
 
-.
+### 10.08 [blind] 게시판 ---
