@@ -12,7 +12,7 @@ const Article = new Schema({
 
   // 동적으로 변동될 수 있는 데이터
   thumbupCount: { type: Number, default: 0 },
-  viewScore: { type: Number, default: 0 },
+  viewCount: { type: Number, default: 0 },
   commentCount: { type: Number, default: 0 },
   deleteTime: { type: Number, default: 0 },
 

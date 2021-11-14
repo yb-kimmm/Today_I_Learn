@@ -32,7 +32,7 @@ export default {
     };
   },
   created() {
-    this.getRecentBoardArticleList();
+    this.getRecentBoardArticleList();  
   },
   methods: {
     async getRecentBoardArticleList() {
