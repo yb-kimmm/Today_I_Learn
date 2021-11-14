@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-// import { ThumbsUpIcon, MessageCircleIcon } from "vue-feather-icons";
+import { ThumbsUpIcon, MessageCircleIcon } from "vue-feather-icons";
 export default {
   props: {
     articleList: {
@@ -36,8 +36,8 @@ export default {
     }
   },
   components: {
-    // MessageCircleIcon,
-    // ThumbsUpIcon
+    MessageCircleIcon,
+    ThumbsUpIcon
   },
   data() {
     return {
