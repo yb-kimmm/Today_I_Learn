@@ -45,7 +45,6 @@ export default {
         this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
         return;
       }
-
       this.logout();
     },
     logout() {

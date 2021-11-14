@@ -8,6 +8,8 @@ const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
 let store = {};
 
 (function updateModules () {
+  store = normalizeRoot(require('../store/index.js'), 'store/index.js')
+
   // If store is an exported method = classic mode (deprecated)
 
   if (typeof store === 'function') {
@@ -31,6 +33,7 @@ let store = {};
     module.hot.accept([
       '../store/article.js',
       '../store/board.js',
+      '../store/index.js',
       '../store/main.js',
       '../store/modal.js',
       '../store/search.js',

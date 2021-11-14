@@ -1,13 +1,11 @@
-<template >
+<template>
   <div class="wrap-search">
     <img class="search-icon" src="/icon/search.png" alt="검색" />
     <input type="text" />
   </div>
 </template>
 <script>
-export default {
-  
-}
+export default {};
 </script>
 <style lang="scss" scoped>
 .wrap-search {

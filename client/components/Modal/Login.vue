@@ -58,18 +58,20 @@ export default {
         email: this.email,
         password: this.password
       });
+
       // 로그인 에러 캐칭
       if (data.error) {
         return;
       }
+
       this.$store.commit("user/SET_USER", {
         email: data.email,
         nickname: data.nickname,
         token: data.token
       });
+
       this.$store.commit("modal/SET_LOGIN_MODAL_CLOSE");
     },
-  
     timeModifier() {
       this.leftTime -= 1;
       if (this.leftTime <= 0) {

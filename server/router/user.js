@@ -3,11 +3,11 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { User } = require("../mongoose/model");
 
+// 로그인 요청
 router.post("/user/login", async (req, res) => {
   const { email, password } = req.body;
 
   const loginUser = await User.findOne({ email: email });
-
   if (!loginUser._id) {
     return res.send({
       error: true,
@@ -33,12 +33,11 @@ router.post("/user/login", async (req, res) => {
     },
     secret,
     {
-      expiresIn: "7d", //7일
+      expiresIn: "7d",
       issuer: "blind_clone_coding",
       subject: "auth",
     }
   );
-
   res.send({
     email: loginUser.email,
     nickname: loginUser.nickname,
@@ -67,14 +66,12 @@ router.get("/user/token", (req, res) => {
   if (!authorization) {
     return res.send(false);
   }
-
   const token = authorization.split(" ")[1];
   const secret = req.app.get("jwt-secret");
   jwt.verify(token, secret, (err, data) => {
     if (err) {
       res.send(err);
     }
-
     res.send({
       email: data.email,
       nickname: data.nickname,

@@ -20,7 +20,7 @@
           <span class="article-title">{{a.title}}</span>
           <div class="count-display">
             <div class="count-item">
-              <!-- <EyeIcon size="1x" class="icon" /> -->
+              <EyeIcon size="1x" class="icon" />
               {{a.viewCount}}
             </div>
           </div>
@@ -30,7 +30,8 @@
   </div>
 </template>
 <script>
-// import { EyeIcon } from "vue-feather-icons";
+import { EyeIcon } from "vue-feather-icons";
+
 export default {
   props: {
     title: {
@@ -47,7 +48,7 @@ export default {
     }
   },
   components: {
-    // EyeIcon
+    EyeIcon
   }
 };
 </script>

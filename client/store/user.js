@@ -1,4 +1,4 @@
-// 로그인사용자 상태
+// 로그인 사용자 상태
 export const state = () => ({
   email: null,
   nickname: null

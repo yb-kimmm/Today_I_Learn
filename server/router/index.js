@@ -1,15 +1,17 @@
 const article = require("./article");
-const company = require("./company");
-const user = require("./user");
 const board = require("./board");
 const comment = require("./comment");
+const company = require("./company");
 const reply = require("./reply");
+const search = require("./search");
+const user = require("./user");
 
 module.exports = {
   article,
-  company,
-  user,
   board,
   comment,
+  company,
   reply,
+  search,
+  user
 };

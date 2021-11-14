@@ -1,4 +1,4 @@
-// 검색결과 상태
+// 검색 결과의 상태
 export const state = () => ({});
 
 export const mutations = {};

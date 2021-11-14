@@ -7,6 +7,27 @@
     "_name": "_065e4481"
   },
   {
+    "name": "post-key",
+    "path": "/post/:key?",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/post/_key.vue",
+    "chunkName": "pages/post/_key",
+    "_name": "_7e72849a"
+  },
+  {
+    "name": "search-query",
+    "path": "/search/:query?",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/search/_query.vue",
+    "chunkName": "pages/search/_query",
+    "_name": "_2abe2f94"
+  },
+  {
+    "name": "topics-id",
+    "path": "/topics/:id?",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/topics/_id.vue",
+    "chunkName": "pages/topics/_id",
+    "_name": "_2f7c140a"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/index.vue",

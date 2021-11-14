@@ -11,7 +11,7 @@ const User = new Schema({
   company: { type: Schema.Types.ObjectId, ref: "Company" },
 });
 
-// password는 가상 선택자 ,save 명령
+// password는 가상 선택자
 User.virtual("password").set(function (password) {
   this._password = password;
   this.salt = this.makeSalt();
@@ -20,10 +20,10 @@ User.virtual("password").set(function (password) {
 
 // 살트 생성 함수
 User.method("makeSalt", () => {
-  return Math.round(new Date().valueOf() * Math.random()) + "HelloYB";
+  return Math.round(new Date().valueOf() * Math.random()) + "HelloFastcampus!";
 });
 
-//해쉬된 비밀번호 생성 함수
+// 해시된 비밀번호 생성 함수
 User.method("encryptPassword", function (plainPassword) {
   return crypto
     .createHmac("sha256", this.salt)
@@ -34,7 +34,6 @@ User.method("encryptPassword", function (plainPassword) {
 // 사용자 인증 함수
 User.method("authenticate", function (plainPassword) {
   const inputPassword = this.encryptPassword(plainPassword);
-
   return inputPassword === this.hashedPassword;
 });
 

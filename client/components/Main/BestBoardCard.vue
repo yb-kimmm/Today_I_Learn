@@ -21,6 +21,16 @@
             <span class="board-tag">{{boardList[a.board]}}</span>
             <span>{{a.title}}</span>
           </div>
+          <div class="count-display">
+            <div class="count-item">
+              <ThumbsUpIcon size="1x" class="icon" />
+              <span>{{a.thumbupCount}}</span>
+            </div>
+            <div class="count-item">
+              <MessageCircleIcon size="1x" class="icon" />
+              <span>{{a.commentCount}}</span>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -50,9 +60,11 @@ export default {
   methods: {
     async getBoardList() {
       const data = await this.$api.$get("/board/list");
+
       if (!Array.isArray(data)) {
         return;
       }
+
       data.forEach(v => {
         this.boardList[v._id] = v.title;
       });
