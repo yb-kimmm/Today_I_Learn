@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <main>
-      <SearchBar />
+      <Searchbar />
       <BestBoardCard v-if="mainContent[0]" :articleList="mainContent[0].content" />
       <div class="board-card-container">
         <BoardCard
@@ -20,6 +20,7 @@
 import BestBoardCard from "@/components/Main/BestBoardCard";
 import BoardCard from "@/components/Main/BoardCard";
 import RealtimeFamousCompany from "@/components/Main/RealtimeFamousCompany";
+
 export default {
   components: {
     BestBoardCard,
@@ -32,14 +33,16 @@ export default {
     };
   },
   created() {
-    this.getRecentBoardArticleList();  
+    this.getRecentBoardArticleList();
   },
   methods: {
     async getRecentBoardArticleList() {
       const data = await this.$api.$get("/main");
+
       if (data.error) {
         return;
       }
+
       this.mainContent = data.content;
     }
   }

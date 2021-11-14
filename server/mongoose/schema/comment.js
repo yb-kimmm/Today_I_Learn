@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// 댓글
 const Comment = new Schema({
-  // 필수
   author: { type: Schema.Types.ObjectId, ref: "User" },
   article: { type: Schema.Types.ObjectId, ref: "Article" },
   content: { type: String, required: true },
@@ -10,10 +10,12 @@ const Comment = new Schema({
 
   // 동적으로 변동될 수 있는 데이터
   thumbupCount: { type: Number, default: 0 },
-  deleteTime: { type: Number, default: 0 },
-
-  // {옵션} : 사용자가 게시글에 추가할 수 있는 데이터
+  replyCount: { type: Number, default: 0 },
+  deleteTime: {type: Number, default: 0},
+  
+  // (옵션): 사용자가 게시글에 추가할 수 있는 데이터
   articleImgAddress: { type: String },
+  
 });
 
 module.exports = Comment;

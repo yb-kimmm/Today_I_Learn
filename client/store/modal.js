@@ -1,6 +1,7 @@
-// Modal 상태
+// 모달 상태
 export const state = () => ({
-  login: { show: false, directLogin: false }
+  login: { show: false, directLogin: false },
+  writing: false
 });
 
 export const mutations = {
@@ -15,6 +16,9 @@ export const mutations = {
       show: false,
       directLogin: false
     };
+  },
+  SET_WRITING_MODAL_STATE(state, display) {
+    state.writing = display;
   }
 };
 

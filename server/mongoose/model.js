@@ -9,6 +9,7 @@ const model = (() => {
     console.log("Connecting mongodb!");
   });
 
+  // 몽고디비 앱 엑세스 주소
   mongoose.connect(
     `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@ybdb.5qfhq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     {
@@ -17,11 +18,11 @@ const model = (() => {
     }
   );
 
+  // 스키마 연결
   const model = {};
   for (let key in schema) {
     model[key] = mongoose.model(key, schema[key]);
   }
-
   return model;
 })();
 

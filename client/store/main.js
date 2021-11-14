@@ -1,4 +1,4 @@
-// 메인페이지 상태
+// 메인 페이지의 상태
 export const state = () => ({});
 
 export const mutations = {};

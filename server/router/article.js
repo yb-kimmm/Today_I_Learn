@@ -1,19 +1,71 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const router = express.Router();
-const { Article, Comment } = require("../mongoose/model");
+const jwt = require("jsonwebtoken");
+const { Article, Comment, Reply } = require("../mongoose/model");
 
 // 개별 게시글 가져오는 라우트
-router.get("/article/:id", async (req, res) => {
-  const { id } = req.params;
-  const article = await Article.findById(id);
-  const comment = await Comment.find({ article: id });
-  res.send({ article, comment });
+router.get("/article/:key", async (req, res) => {
+  const { key } = req.params;
+  const article = await Article.findOne({ key: key })
+    .populate("board")
+    .populate({
+      path: "author",
+      populate: { path: "company" },
+    });
+
+  const commentList = await Comment.find({ article: article._id }).populate({
+    path: "author",
+    populate: { path: "company" },
+  });
+
+  Promise.all(
+    commentList.map(async (v) => {
+      const replies = await Reply.find({ comment: v._doc._id }).populate({
+        path: "author",
+        populate: { path: "company" },
+      });
+      return {
+        ...v._doc,
+        author: {
+          ...v._doc.author._doc,
+          nickname: `${v._doc.author._doc.nickname[0]}${"*".repeat(
+            v._doc.author._doc.nickname.length - 1
+          )}`,
+        },
+        replies: replies.map((r) => {
+          return {
+            ...r._doc,
+            author: {
+              ...r._doc.author._doc,
+              nickname: `${r._doc.author._doc.nickname[0]}${"*".repeat(
+                r._doc.author._doc.nickname.length - 1
+              )}`,
+            },
+          };
+        }), // 대댓글 배열
+      };
+    })
+  )
+    .then((comment) => {
+      res.send({
+        article: {
+          ...article._doc,
+          author: {
+            ...article._doc.author._doc,
+            nickname: `${article.author._doc.nickname[0]}${"*".repeat(
+              article._doc.author._doc.nickname.length - 1
+            )}`,
+          },
+        },
+        comment: comment,
+      });
+    })
+    .catch(() => {});
 });
 
-//게시글 추가
+// 게시글 추가
 router.post("/article/create", async (req, res) => {
-  const { title, content, board, author } = req.body;
+  const { title, content, board, image } = req.body;
   const { authorization } = req.headers;
 
   if (!authorization) {
@@ -22,6 +74,7 @@ router.post("/article/create", async (req, res) => {
       msg: "토큰이 존재하지 않음",
     });
   }
+
   const token = authorization.split(" ")[1];
   const secret = req.app.get("jwt-secret");
 
@@ -29,20 +82,25 @@ router.post("/article/create", async (req, res) => {
     if (err) {
       res.send(err);
     }
-
-    const payload = { author: data.id, title, content, board };
+    const payload = {
+      author: data.id,
+      title,
+      content,
+      board,
+      articleImgAddress: image,
+    };
     const newArticle = await Article(payload).save();
     res.send(newArticle);
   });
 });
 
-// 게시글 수정하기
+// 게시글 수정
 router.patch("/article/update", async (req, res) => {
   const { id, author, content } = req.body;
   const updatedArticle = await Article.findOneAndUpdate(
     {
       _id: id,
-      author: author,
+      author,
     },
     {
       content,
