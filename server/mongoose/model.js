@@ -15,6 +15,7 @@ const model = (() => {
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     }
   );
 

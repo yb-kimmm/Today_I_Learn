@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { article, user, company, board, comment, reply } = require("./router");
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 const SECRET = "@askdasklF!@#123dnasdnkas";
 
 app.use(cors());
