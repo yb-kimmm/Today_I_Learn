@@ -17,6 +17,8 @@ import nuxt_plugin_plugin_0fca3172 from 'nuxt_plugin_plugin_0fca3172' // Source:
 import nuxt_plugin_moment_d795e9e0 from 'nuxt_plugin_moment_d795e9e0' // Source: ./moment.js (mode: 'all')
 import nuxt_plugin_axios_5f257788 from 'nuxt_plugin_axios_5f257788' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_api_22834091 from 'nuxt_plugin_api_22834091' // Source: ../plugins/api.js (mode: 'all')
+import nuxt_plugin_time_0f59c796 from 'nuxt_plugin_time_0f59c796' // Source: ../plugins/time.js (mode: 'all')
+import nuxt_plugin_infinite_3e901e22 from 'nuxt_plugin_infinite_3e901e22' // Source: ../plugins/infinite.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -56,7 +58,7 @@ Object.defineProperty(Vue.prototype, '$nuxt', {
 
 Vue.use(Meta, {"keyName":"head","attribute":"data-n-head","ssrAttribute":"data-n-head-ssr","tagIDKeyName":"hid"})
 
-const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
+const defaultTransition = {"name":"page","mode":"out-in","appear":true,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
 const originalRegisterModule = Vuex.Store.prototype.registerModule
 
@@ -76,15 +78,12 @@ async function createApp(ssrContext, config = {}) {
   // Add this.$router into store actions/mutations
   store.$router = router
 
-  // Fix SSR caveat https://github.com/nuxt/nuxt.js/issues/3757#issuecomment-414689141
-  store.registerModule = registerModule
-
   // Create Root instance
 
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"client","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+    head: {"title":"blind-front","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
 
     store,
     router,
@@ -229,6 +228,14 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_api_22834091(app.context, inject)
   }
 
+  if (typeof nuxt_plugin_time_0f59c796 === 'function') {
+    await nuxt_plugin_time_0f59c796(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_infinite_3e901e22 === 'function') {
+    await nuxt_plugin_infinite_3e901e22(app.context, inject)
+  }
+
   // Lock enablePreview in context
   if (process.static && process.client) {
     app.context.enablePreview = function () {
@@ -238,14 +245,12 @@ async function createApp(ssrContext, config = {}) {
 
   // Wait for async component to be resolved first
   await new Promise((resolve, reject) => {
-    // Ignore 404s rather than blindly replacing URL in browser
-    if (process.client) {
-      const { route } = router.resolve(app.context.route.fullPath)
-      if (!route.matched.length) {
-        return resolve()
-      }
+    const { route } = router.resolve(app.context.route.fullPath)
+    // Ignore 404s rather than blindly replacing URL
+    if (!route.matched.length && process.client) {
+      return resolve()
     }
-    router.replace(app.context.route.fullPath, resolve, (err) => {
+    router.replace(route, resolve, (err) => {
       // https://github.com/vuejs/vue-router/blob/v3.4.3/src/util/errors.js
       if (!err._isRouter) return reject(err)
       if (err.type !== 2 /* NavigationFailureType.redirected */) return resolve()

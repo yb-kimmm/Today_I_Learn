@@ -54,6 +54,7 @@ router.get("/board/:slug", async (req, res) => {
   const { lastIndex } = req.query; // 무한 스크롤 구현시 사용할 부분
 
   const board = await Board.findOne({ slug });
+
   if (!board._id) {
     return res.send({
       article: [],

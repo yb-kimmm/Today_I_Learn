@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "client",
+    title: "blind-front",
     htmlAttrs: {
       lang: "en"
     },
@@ -13,6 +13,8 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
+  ssr: false,
+  target: "server",
   server: {
     port: 8000
   },
@@ -20,7 +22,14 @@ export default {
   css: ["@/assets/global.scss", "@/assets/board.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/api.js"],
+  plugins: [
+    "@/plugins/api.js",
+    "@/plugins/time.js",
+    {
+      src: "@/plugins/infinite.js",
+      ssr: false
+    }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -32,13 +41,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "@nuxtjs/style-resources",
-    "@nuxtjs/moment"
+    "@nuxtjs/moment",
+    "@nuxtjs/style-resources"
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
 };
