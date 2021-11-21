@@ -27,7 +27,7 @@ export default {
   components: {
     SmallSearchbar,
     LoginModal,
-    WritingModal
+    WritingModal,
   },
   computed: {
     ...mapState(["user"])
