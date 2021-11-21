@@ -2,12 +2,20 @@
   <div v-if="modal.login.show" class="modal-outside">
     <div id="login-modal">
       <div class="head">
-        <h5>{{modal.login.directLogin ? "로그인": "블라인드 OTP 안전 인증"}}</h5>
+
+        <div v-if="!modal.otp.show" class="body">
+          <h5>{{modal.login.directLogin ? "로그인": "회원가입"}}</h5>
+        </div>
+        
+        <div v-else class="body">
+          <h5>블라인드 OTP 인증</h5>
+        </div>
+
         <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')" class="close-btn">
           <img src="/icon/close.png" alt="닫기" />
         </a>
       </div>
-      <div v-if="!modal.login.directLogin" class="body">
+      <div v-if="modal.otp.show" class="body">
         <p>블라인드 앱의 마이페이지 > 블라인드 웹 로그인 메뉴에서 아래 생성된 일회용 인증코드 8자리를 입력하시면 웹에서도 모든 기능을 이용할 수 있습니다.</p>
         <div class="info">블라인드 OTP</div>
         <button class="otp-btn">U - 460 - 6051</button>
@@ -24,9 +32,15 @@
         </div>
         <button class="login-btn" @click="loginWithEmail">이메일로 로그인</button>
       </div>
-      <div v-if="!modal.login.directLogin" class="foot">
-        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_LOGIN')">블라인드에 처음이신가요?</a>
+
+      <div v-if="!modal.register.directRegister" class="foot">
+        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_REGISTER')">블라인드에 처음이신가요?</a>
       </div>
+
+      <div v-if="!modal.login.directLogin" class="foot">
+        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_LOGIN')">로그인 하러가기</a>
+      </div>
+
     </div>
   </div>
 </template>
@@ -39,8 +53,9 @@ export default {
       leftTime: 180,
       displayTime: "3분",
       email: null,
-      password: null
-    };
+      password: null,
+      otpYn : false
+      };
   },
   watch: {
     "modal.login.show": function(to, from) {
@@ -53,7 +68,20 @@ export default {
     }
   },
   methods: {
+    ifOtfYn() {
+      otpYn = this.otpYn;
+      console.log(modal.login.directLogin)
+      return otpYn;
+    },
+
+   
     async loginWithEmail() {
+
+      if( this.email || this.password ){
+        alert("다시 입력해주세요.!")
+        return;
+      }
+
       const data = await this.$axios.$post(`http://localhost:3000/user/login`, {
         email: this.email,
         password: this.password
