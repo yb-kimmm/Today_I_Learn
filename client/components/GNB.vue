@@ -20,7 +20,7 @@
 </template>
 <script>
 import SmallSearchbar from "@/components/GNB/SmallSearchbar";
-import LoginModal from "@/components/Modal/Login";
+import LoginModal from "@/components/Modal/LoginAndRegister";
 import WritingModal from "@/components/Modal/Writing";
 import { mapState } from "vuex";
 export default {

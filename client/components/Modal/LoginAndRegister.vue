@@ -1,24 +1,44 @@
 <template>
-    <div  class="body">
-      <div class="row">
-        <label for="user-email">이메일</label>
-        <input id="user-email" type="email" v-model="email" />
+  <div v-if="modal.login.show" class="modal-outside">
+    <div id="login-modal">
+      <div class="head">
+        <h5>{{modal.login.directLogin ? "회원가입": "로그인"}}</h5>
+
+        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')" class="close-btn">
+          <img src="/icon/close.png" alt="닫기" />
+        </a>
       </div>
-      <div class="row">
-        <label for="user-password">비밀번호</label>
-        <input id="user-password" type="password" v-model="password" />
+
+
+      <div v-if="modal.register.directRegister" class="foot">
+        <RegisterModal/>
+        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_LOGIN')">로그인 하러가기</a>
       </div>
-      <button class="login-btn" @click="loginWithEmail">이메일로 로그인</button>
+
+      <div v-if="modal.login.directLogin" class="foot">
+        <LoginModal/>
+        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_REGISTER')">블라인드에 처음이신가요?</a>
+      </div>
+
     </div>
+  </div>
 </template>
 <script>
 import { mapState } from "vuex";
 
+import LoginModal from "@/components/Modal/Login";
+import RegisterModal from "@/components/Modal/Register";
 
 export default {
+  components: {
+      LoginModal,
+      RegisterModal
+  },
   computed: { ...mapState(["modal"]) },
   data() {
     return {
+      leftTime: 180,
+      displayTime: "3분",
       email: null,
       password: null,
       otpYn : false

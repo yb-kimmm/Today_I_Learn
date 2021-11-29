@@ -21,33 +21,29 @@ export default {
     return {
       email: null,
       password: null,
-      otpYn : false
+      nickname: null
       };
   },
   
   methods: {
-    async loginWithEmail() {
+    async createRegister() {
 
       if( this.email || this.password ){
         alert("다시 입력해주세요.!")
         return;
       }
 
-      const data = await this.$axios.$post(`http://localhost:3000/user/login`, {
+      const data = await this.$axios.$post(`http://localhost:3000/user/register`, {
         email: this.email,
-        password: this.password
+        password: this.password,
+        nickname: this.nickname,
       });
-
+      
       // 로그인 에러 캐칭
       if (data.error) {
         return;
       }
 
-      this.$store.commit("user/SET_USER", {
-        email: data.email,
-        nickname: data.nickname,
-        token: data.token
-      });
 
       this.$store.commit("modal/SET_LOGIN_MODAL_CLOSE");
     },

@@ -35,6 +35,9 @@
   "ArticleReplyCard": {
     "description": "Auto imported from components/Article/ReplyCard.vue"
   },
+  "GNBSmallSearchbar": {
+    "description": "Auto imported from components/GNB/SmallSearchbar.vue"
+  },
   "CompanyCard": {
     "description": "Auto imported from components/CompanyReview/CompanyCard.vue"
   },
@@ -44,21 +47,6 @@
   "CompanyReviewSection": {
     "description": "Auto imported from components/CompanyReview/ReviewSection.vue"
   },
-  "GNBSmallSearchbar": {
-    "description": "Auto imported from components/GNB/SmallSearchbar.vue"
-  },
-  "SearchResultCompanyInfoCard": {
-    "description": "Auto imported from components/SearchResult/CompanyInfoCard.vue"
-  },
-  "ModalConfirm": {
-    "description": "Auto imported from components/Modal/Confirm.vue"
-  },
-  "ModalLogin": {
-    "description": "Auto imported from components/Modal/Login.vue"
-  },
-  "ModalWriting": {
-    "description": "Auto imported from components/Modal/Writing.vue"
-  },
   "MainBestBoardCard": {
     "description": "Auto imported from components/Main/BestBoardCard.vue"
   },
@@ -67,5 +55,23 @@
   },
   "MainRealtimeFamousCompany": {
     "description": "Auto imported from components/Main/RealtimeFamousCompany.vue"
+  },
+  "ModalConfirm": {
+    "description": "Auto imported from components/Modal/Confirm.vue"
+  },
+  "ModalLogin": {
+    "description": "Auto imported from components/Modal/Login.vue"
+  },
+  "ModalLoginAndRegister": {
+    "description": "Auto imported from components/Modal/LoginAndRegister.vue"
+  },
+  "ModalRegister": {
+    "description": "Auto imported from components/Modal/Register.vue"
+  },
+  "ModalWriting": {
+    "description": "Auto imported from components/Modal/Writing.vue"
+  },
+  "SearchResultCompanyInfoCard": {
+    "description": "Auto imported from components/SearchResult/CompanyInfoCard.vue"
   }
 }
