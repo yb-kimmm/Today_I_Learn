@@ -18,7 +18,7 @@ def getScope(lst):
 
 
 def getMode(lst):
-    return result
+    return lst
 
 
 N = int(input())
