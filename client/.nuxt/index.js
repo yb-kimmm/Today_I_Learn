@@ -13,12 +13,12 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_0fca3172 from 'nuxt_plugin_plugin_0fca3172' // Source: ./components/plugin.js (mode: 'all')
-import nuxt_plugin_moment_d795e9e0 from 'nuxt_plugin_moment_d795e9e0' // Source: ./moment.js (mode: 'all')
-import nuxt_plugin_axios_5f257788 from 'nuxt_plugin_axios_5f257788' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_api_22834091 from 'nuxt_plugin_api_22834091' // Source: ../plugins/api.js (mode: 'all')
-import nuxt_plugin_time_0f59c796 from 'nuxt_plugin_time_0f59c796' // Source: ../plugins/time.js (mode: 'all')
-import nuxt_plugin_infinite_3e901e22 from 'nuxt_plugin_infinite_3e901e22' // Source: ../plugins/infinite.js (mode: 'client')
+import nuxt_plugin_plugin_3a7f48bf from 'nuxt_plugin_plugin_3a7f48bf' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_moment_7a8d4b14 from 'nuxt_plugin_moment_7a8d4b14' // Source: .\\moment.js (mode: 'all')
+import nuxt_plugin_axios_3672b93c from 'nuxt_plugin_axios_3672b93c' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_api_22834091 from 'nuxt_plugin_api_22834091' // Source: ..\\plugins\\api.js (mode: 'all')
+import nuxt_plugin_time_0f59c796 from 'nuxt_plugin_time_0f59c796' // Source: ..\\plugins\\time.js (mode: 'all')
+import nuxt_plugin_infinite_3e901e22 from 'nuxt_plugin_infinite_3e901e22' // Source: ..\\plugins\\infinite.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -212,16 +212,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_0fca3172 === 'function') {
-    await nuxt_plugin_plugin_0fca3172(app.context, inject)
+  if (typeof nuxt_plugin_plugin_3a7f48bf === 'function') {
+    await nuxt_plugin_plugin_3a7f48bf(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_moment_d795e9e0 === 'function') {
-    await nuxt_plugin_moment_d795e9e0(app.context, inject)
+  if (typeof nuxt_plugin_moment_7a8d4b14 === 'function') {
+    await nuxt_plugin_moment_7a8d4b14(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_5f257788 === 'function') {
-    await nuxt_plugin_axios_5f257788(app.context, inject)
+  if (typeof nuxt_plugin_axios_3672b93c === 'function') {
+    await nuxt_plugin_axios_3672b93c(app.context, inject)
   }
 
   if (typeof nuxt_plugin_api_22834091 === 'function') {

@@ -1,33 +1,15 @@
 <template>
-  <div class="wrap-search">
-    <img class="search-icon" src="/icon/search.png" alt="검색" />
-    <input type="text" />
-  </div>
+  <div class=" bg-gray-200">
+    <div class="container h-screen flex justify-center items-center">
+        <div class="relative">
+            <div class="absolute top-4 left-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> </div> <input type="text" class="h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search anything...">
+            <div class="absolute top-2 right-2"> <button class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">Search</button> </div>
+        </div>
+    </div>
+</div>
 </template>
 <script>
 export default {};
 </script>
 <style lang="scss" scoped>
-.wrap-search {
-  width: 260px;
-  margin-right: 8px;
-  input {
-    width: 100%;
-    height: 40px;
-    padding: 0 10px 0 41px;
-    border: 1px solid #d4d4d4;
-    border-radius: 20px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  .search-icon {
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 17px;
-    text-indent: -9999px;
-    opacity: 0.4;
-    width: 20px;
-    height: 20px;
-  }
-}
 </style>
