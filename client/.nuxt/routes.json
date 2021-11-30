@@ -2,36 +2,36 @@
   {
     "name": "company",
     "path": "/company",
-    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\company.vue",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/company.vue",
     "chunkName": "pages/company",
-    "_name": "_d33b3722"
+    "_name": "_065e4481"
   },
   {
     "name": "post-key",
     "path": "/post/:key?",
-    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\post\\\\_key.vue",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/post/_key.vue",
     "chunkName": "pages/post/_key",
-    "_name": "_1ce2ca3e"
+    "_name": "_7e72849a"
   },
   {
     "name": "search-query",
     "path": "/search/:query?",
-    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\search\\\\_query.vue",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/search/_query.vue",
     "chunkName": "pages/search/_query",
-    "_name": "_0c0ad1ef"
+    "_name": "_2abe2f94"
   },
   {
     "name": "topics-id",
     "path": "/topics/:id?",
-    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\topics\\\\_id.vue",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/topics/_id.vue",
     "chunkName": "pages/topics/_id",
-    "_name": "_ba8d2bf0"
+    "_name": "_2f7c140a"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\index.vue",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_246f4cc4"
+    "_name": "_7fa80956"
   }
 ]

@@ -8,7 +8,7 @@ const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
 let store = {};
 
 (function updateModules () {
-  store = normalizeRoot(require('..\\store\\index.js'), 'store/index.js')
+  store = normalizeRoot(require('../store/index.js'), 'store/index.js')
 
   // If store is an exported method = classic mode (deprecated)
 
@@ -19,25 +19,25 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('..\\store\\article.js'), 'article.js')
-  resolveStoreModules(require('..\\store\\board.js'), 'board.js')
-  resolveStoreModules(require('..\\store\\main.js'), 'main.js')
-  resolveStoreModules(require('..\\store\\modal.js'), 'modal.js')
-  resolveStoreModules(require('..\\store\\search.js'), 'search.js')
-  resolveStoreModules(require('..\\store\\user.js'), 'user.js')
+  resolveStoreModules(require('../store/article.js'), 'article.js')
+  resolveStoreModules(require('../store/board.js'), 'board.js')
+  resolveStoreModules(require('../store/main.js'), 'main.js')
+  resolveStoreModules(require('../store/modal.js'), 'modal.js')
+  resolveStoreModules(require('../store/search.js'), 'search.js')
+  resolveStoreModules(require('../store/user.js'), 'user.js')
 
   // If the environment supports hot reloading...
 
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '..\\store\\article.js',
-      '..\\store\\board.js',
-      '..\\store\\index.js',
-      '..\\store\\main.js',
-      '..\\store\\modal.js',
-      '..\\store\\search.js',
-      '..\\store\\user.js',
+      '../store/article.js',
+      '../store/board.js',
+      '../store/index.js',
+      '../store/main.js',
+      '../store/modal.js',
+      '../store/search.js',
+      '../store/user.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()

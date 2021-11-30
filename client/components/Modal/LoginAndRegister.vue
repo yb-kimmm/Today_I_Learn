@@ -2,7 +2,7 @@
   <div v-if="modal.login.show" class="modal-outside">
     <div id="login-modal">
       <div class="head">
-        <h5>{{modal.login.directLogin ? "회원가입": "로그인"}}</h5>
+        <h5>{{modal.login.directLogin ? "로그인": "회원가입"}}</h5>
 
         <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')" class="close-btn">
           <img src="/icon/close.png" alt="닫기" />

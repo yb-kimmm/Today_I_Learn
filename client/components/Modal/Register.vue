@@ -1,9 +1,12 @@
 <template>
   <div v-if="modal.login.show" class="modal-outside">
     <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')" class="close-btn">
-        <img src="/icon/close.png" alt="닫기" />
-      </a>
+      <button @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
       <div class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
