@@ -21,19 +21,13 @@ export default {
     return {
       email: null,
       password: null,
-      otpYn : false
       };
   },
   
   methods: {
     async loginWithEmail() {
 
-      if( this.email || this.password ){
-        alert("다시 입력해주세요.!")
-        return;
-      }
-
-      const data = await this.$axios.$post(`http://localhost:3000/user/login`, {
+      const data = await this.$axios.$post(`http://localhost:8080/user/login`, {
         email: this.email,
         password: this.password
       });
@@ -85,18 +79,7 @@ export default {
         padding: 12px;
       }
     }
-    .otp-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgb(55, 172, 201);
-      border: none;
-      color: white;
-      font-size: 40px;
-      font-weight: 400;
-      width: 100%;
-      height: 82px;
-    }
+    
     .login-btn {
       display: flex;
       justify-content: center;

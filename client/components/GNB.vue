@@ -3,15 +3,28 @@
     <nav>
       <div class="side-block">
         <nuxt-link to="/" id="logo-btn">
-          <img src="/logo/main.png" alt="블라인드 로고" />
+          <img src="/logo/main.png" alt="블라인드 로고" width="150" />
         </nuxt-link>
         <nuxt-link to="/" :class="['text-menu', $route.name === 'index' && 'active']">홈</nuxt-link>
         <!-- <nuxt-link to="/company" :class="['text-menu', $route.name === 'company' && 'active']">기업 리뷰</nuxt-link> -->
       </div>
       <div class="side-block">
-        <SmallSearchbar />
-        <a @click.prevent="clickWritingButton" id="write-btn">글쓰기</a>
-        <a @click.prevent="clickLoginButton" id="login-btn">{{user.email ? "로그아웃": "로그인"}}</a>
+        <!-- <SmallSearchbar /> -->
+        <button @click.prevent="clickWritingButton"  class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
+          <svg class="group-hover:text-light-blue-600 text-light-blue-500 mr-2" width="12" height="20" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"/>
+          </svg>
+          글쓰기
+        </button>
+
+        <button @click.prevent="clickLoginButton"  class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
+          <svg class="group-hover:text-light-blue-600 text-light-blue-500 mr-2" width="18" height="20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          {{!user.email   ? "로그인": "로그아웃"}}
+        </button>
+
+        
       </div>
       <LoginModal />
       <WritingModal />
@@ -30,7 +43,7 @@ export default {
     WritingModal,
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user","modal"])
   },
   methods: {
     clickWritingButton() {
@@ -52,6 +65,8 @@ export default {
         email: null,
         nickname: null
       });
+
+      alert("로그아웃.!")
     }
   }
 };
@@ -81,31 +96,7 @@ nav {
       font-size: 20px;
       margin-right: 30px;
     }
-    #write-btn {
-      background: rgb(218, 50, 56);
-      color: white;
-      font-size: 14px;
-      height: 40px;
-      margin-left: 10px;
-      width: 82px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
-    #login-btn {
-      background: white;
-      color: rgb(34, 34, 34);
-      font-size: 14px;
-      border: solid 1px rgb(212, 212, 212);
-      height: 40px;
-      margin-left: 10px;
-      width: 82px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
+    
   }
 }
 </style>
