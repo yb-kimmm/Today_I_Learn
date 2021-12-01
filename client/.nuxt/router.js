@@ -4,11 +4,11 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _065e4481 = () => interopDefault(import('../pages/company.vue' /* webpackChunkName: "pages/company" */))
-const _7e72849a = () => interopDefault(import('../pages/post/_key.vue' /* webpackChunkName: "pages/post/_key" */))
-const _2abe2f94 = () => interopDefault(import('../pages/search/_query.vue' /* webpackChunkName: "pages/search/_query" */))
-const _2f7c140a = () => interopDefault(import('../pages/topics/_id.vue' /* webpackChunkName: "pages/topics/_id" */))
-const _7fa80956 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _d33b3722 = () => interopDefault(import('..\\pages\\company.vue' /* webpackChunkName: "pages/company" */))
+const _1ce2ca3e = () => interopDefault(import('..\\pages\\post\\_key.vue' /* webpackChunkName: "pages/post/_key" */))
+const _0c0ad1ef = () => interopDefault(import('..\\pages\\search\\_query.vue' /* webpackChunkName: "pages/search/_query" */))
+const _ba8d2bf0 = () => interopDefault(import('..\\pages\\topics\\_id.vue' /* webpackChunkName: "pages/topics/_id" */))
+const _246f4cc4 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -23,23 +23,23 @@ export const routerOptions = {
 
   routes: [{
     path: "/company",
-    component: _065e4481,
+    component: _d33b3722,
     name: "company"
   }, {
     path: "/post/:key?",
-    component: _7e72849a,
+    component: _1ce2ca3e,
     name: "post-key"
   }, {
     path: "/search/:query?",
-    component: _2abe2f94,
+    component: _0c0ad1ef,
     name: "search-query"
   }, {
     path: "/topics/:id?",
-    component: _2f7c140a,
+    component: _ba8d2bf0,
     name: "topics-id"
   }, {
     path: "/",
-    component: _7fa80956,
+    component: _246f4cc4,
     name: "index"
   }],
 
