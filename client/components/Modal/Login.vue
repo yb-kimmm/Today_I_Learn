@@ -7,7 +7,7 @@
           Sign in to your account
         </h2>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <div class="mt-8 space-y-6">
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -50,7 +50,7 @@
         <div class="justify-center relative w-full text-center">
           <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_REGISTER')">블라인드에 처음이신가요?</a>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -64,11 +64,16 @@ export default {
     return {
       email: null,
       password: null,
-      };
+    };
   },
   
   methods: {
     async loginWithEmail() {
+
+      if ( !this.email || !this.password ){
+        alert("데이터를 입력해주세요")
+        return
+      }
 
       const data = await this.$axios.$post(`http://localhost:8080/user/login`, {
         email: this.email,

@@ -26,14 +26,12 @@
             <input v-model="password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
           </div>
 
-         
 
 
           <div class="relative">
-            <select class="block appearance-none w-full  bg-gray-200 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-              <option>New Mexico</option>
-              <option>Missouri</option>
-              <option>Texas</option>
+            <select v-model="company" class="block appearance-none w-full  bg-gray-200 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+              <option :value="null" >콘텐츠를 선택하세요.</option>
+              <option v-for="company in companys" v-bind:key="company.id" v-bind:value="company._id" >{{company.name}}</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -64,43 +62,46 @@
 
 <script>
 import { mapState } from "vuex";
-
-
 export default {
   computed: { ...mapState(["modal"]) },
   data() {
     return {
-      email: null,
-      password: null,
-      nickname: null
+        email: null,
+        password: null,
+        nickname: null,
+        company : null,
+        companys : []
       };
   },
-  
+  created: function() {
+    this.getCompany()
+  },
   methods: {
+    async getCompany(){
+      const data =  await this.$axios.$get(`http://localhost:8080/company/list`)
+      this.companys = data
+    },
     async createRegister() {
-
-      if( this.email || this.password ){
+      if( !this.email || !this.password ){
         alert("다시 입력해주세요.!")
         return;
       }
 
-      const data = await this.$axios.$post(`http://localhost:3000/user/register`, {
+
+      const data = await this.$axios.$post(`http://localhost:8080/user/create`, {
         email: this.email,
         password: this.password,
         nickname: this.nickname,
+        company: this.company,
       });
       
       // 로그인 에러 캐칭
       if (data.error) {
         return;
       }
-
       this.$store.commit("modal/SET_LOGIN_MODAL_CLOSE");
     },
     
   }
 };
 </script>
-<!-->
-
-
