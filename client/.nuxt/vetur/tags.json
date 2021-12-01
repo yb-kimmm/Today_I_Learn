@@ -2,23 +2,20 @@
   "Foot": {
     "description": "Auto imported from components/Foot.vue"
   },
-  "GNB": {
-    "description": "Auto imported from components/GNB.vue"
-  },
   "GlobalArticleCard": {
     "description": "Auto imported from components/GlobalArticleCard.vue"
   },
-  "Searchbar": {
-    "description": "Auto imported from components/Searchbar.vue"
+  "GNB": {
+    "description": "Auto imported from components/GNB.vue"
+  },
+  "SearchBar": {
+    "description": "Auto imported from components/SearchBar.vue"
   },
   "ArticleBreadcrumb": {
     "description": "Auto imported from components/Article/Breadcrumb.vue"
   },
   "ArticleCommentCard": {
     "description": "Auto imported from components/Article/CommentCard.vue"
-  },
-  "ArticleCommentList": {
-    "description": "Auto imported from components/Article/CommentList.vue"
   },
   "ArticleContentCard": {
     "description": "Auto imported from components/Article/ContentCard.vue"
@@ -44,6 +41,15 @@
   "CompanyReviewSection": {
     "description": "Auto imported from components/CompanyReview/ReviewSection.vue"
   },
+  "MainBestBoardCard": {
+    "description": "Auto imported from components/Main/BestBoardCard.vue"
+  },
+  "MainBoardCard": {
+    "description": "Auto imported from components/Main/BoardCard.vue"
+  },
+  "MainRealtimeFamousCompany": {
+    "description": "Auto imported from components/Main/RealtimeFamousCompany.vue"
+  },
   "GNBSmallSearchbar": {
     "description": "Auto imported from components/GNB/SmallSearchbar.vue"
   },
@@ -61,15 +67,6 @@
   },
   "ModalWriting": {
     "description": "Auto imported from components/Modal/Writing.vue"
-  },
-  "MainBestBoardCard": {
-    "description": "Auto imported from components/Main/BestBoardCard.vue"
-  },
-  "MainBoardCard": {
-    "description": "Auto imported from components/Main/BoardCard.vue"
-  },
-  "MainRealtimeFamousCompany": {
-    "description": "Auto imported from components/Main/RealtimeFamousCompany.vue"
   },
   "SearchResultCompanyInfoCard": {
     "description": "Auto imported from components/SearchResult/CompanyInfoCard.vue"

@@ -2,36 +2,36 @@
   {
     "name": "company",
     "path": "/company",
-    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/company.vue",
+    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\company.vue",
     "chunkName": "pages/company",
-    "_name": "_065e4481"
+    "_name": "_d33b3722"
   },
   {
     "name": "post-key",
     "path": "/post/:key?",
-    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/post/_key.vue",
+    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\post\\\\_key.vue",
     "chunkName": "pages/post/_key",
-    "_name": "_7e72849a"
+    "_name": "_1ce2ca3e"
   },
   {
     "name": "search-query",
     "path": "/search/:query?",
-    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/search/_query.vue",
+    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\search\\\\_query.vue",
     "chunkName": "pages/search/_query",
-    "_name": "_2abe2f94"
+    "_name": "_0c0ad1ef"
   },
   {
     "name": "topics-id",
     "path": "/topics/:id?",
-    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/topics/_id.vue",
+    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\topics\\\\_id.vue",
     "chunkName": "pages/topics/_id",
-    "_name": "_2f7c140a"
+    "_name": "_ba8d2bf0"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/index.vue",
+    "component": "D:\\\\dev\\\\tutorial-fullstack\\\\client\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_7fa80956"
+    "_name": "_246f4cc4"
   }
 ]

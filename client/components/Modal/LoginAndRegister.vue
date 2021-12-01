@@ -2,7 +2,7 @@
   <div v-if="modal.login.show" class="modal-outside">
     <div id="login-modal">
       <div class="head">
-        <h5>{{modal.login.directLogin ? "로그인": "회원가입"}}</h5>
+        <h5>{{!modal.login.directLogin ? "회원가입": "로그인"}}</h5>
 
         <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')" class="close-btn">
           <img src="/icon/close.png" alt="닫기" />
@@ -12,12 +12,11 @@
 
       <div v-if="modal.register.directRegister" class="foot">
         <RegisterModal/>
-        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_LOGIN')">로그인 하러가기</a>
       </div>
 
       <div v-if="modal.login.directLogin" class="foot">
         <LoginModal/>
-        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_REGISTER')">블라인드에 처음이신가요?</a>
+        
       </div>
 
     </div>
@@ -140,11 +139,7 @@ export default {
   }
   .foot {
     color: rgb(160, 160, 174);
-    font-size: 14px;
-    line-height: 17.5px;
-    text-align: center;
-    text-decoration: underline;
-    padding: 30px;
+    
   }
 }
 </style>
