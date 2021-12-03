@@ -14,6 +14,7 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_plugin_0fca3172 from 'nuxt_plugin_plugin_0fca3172' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_buefy_210476d9 from 'nuxt_plugin_buefy_210476d9' // Source: ./buefy.js (mode: 'all')
 import nuxt_plugin_moment_d795e9e0 from 'nuxt_plugin_moment_d795e9e0' // Source: ./moment.js (mode: 'all')
 import nuxt_plugin_axios_5f257788 from 'nuxt_plugin_axios_5f257788' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_api_22834091 from 'nuxt_plugin_api_22834091' // Source: ../plugins/api.js (mode: 'all')
@@ -83,7 +84,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"yb-dev","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+    head: {"title":"yb-dev","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@5.8.55\u002Fcss\u002Fmaterialdesignicons.min.css","rel":"preload","as":"style","onload":"this.rel='stylesheet'"}],"style":[],"script":[]},
 
     store,
     router,
@@ -216,6 +217,10 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_plugin_0fca3172(app.context, inject)
   }
 
+  if (typeof nuxt_plugin_buefy_210476d9 === 'function') {
+    await nuxt_plugin_buefy_210476d9(app.context, inject)
+  }
+
   if (typeof nuxt_plugin_moment_d795e9e0 === 'function') {
     await nuxt_plugin_moment_d795e9e0(app.context, inject)
   }
@@ -245,14 +250,12 @@ async function createApp(ssrContext, config = {}) {
 
   // Wait for async component to be resolved first
   await new Promise((resolve, reject) => {
-    // Ignore 404s rather than blindly replacing URL in browser
-    if (process.client) {
-      const { route } = router.resolve(app.context.route.fullPath)
-      if (!route.matched.length) {
-        return resolve()
-      }
+    const { route } = router.resolve(app.context.route.fullPath)
+    // Ignore 404s rather than blindly replacing URL
+    if (!route.matched.length && process.client) {
+      return resolve()
     }
-    router.replace(app.context.route.fullPath, resolve, (err) => {
+    router.replace(route, resolve, (err) => {
       // https://github.com/vuejs/vue-router/blob/v3.4.3/src/util/errors.js
       if (!err._isRouter) return reject(err)
       if (err.type !== 2 /* NavigationFailureType.redirected */) return resolve()

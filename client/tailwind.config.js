@@ -8,6 +8,7 @@ module.exports = {
         sky: colors.sky,
         cyan: colors.cyan,
       },
+      backgroundImage: {},
     },
   },
   variants: {},

@@ -45,6 +45,7 @@ export default {
     "@nuxtjs/moment",
     "@nuxtjs/style-resources",
     "@nuxtjs/tailwindcss",
+    "nuxt-buefy",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
