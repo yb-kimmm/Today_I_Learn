@@ -1,19 +1,29 @@
 <template>
-  <div class="main-container">
-    <main>
-      <Searchbar />
-      <BestBoardCard v-if="mainContent[0]" :articleList="mainContent[0].content" />
-      <div class="board-card-container">
-        <BoardCard
-          v-for="b in mainContent"
-          :key="b.slug"
-          :title="b.title"
-          :slug="b.slug"
-          :articleList="b.content"
-        />
+  <div>
+    <div class="container mx-auto px-4 my-4">
+      <div  style="background-image : url('/main/okinawa.png'); height: 41rem; " class=" justify-center items-end pb-4 flex rounded-3xl " >
+        <h2 class="text-white font-bold text-3xl">YBlog</h2>
       </div>
-    </main>
-    <RealtimeFamousCompany />
+    </div>
+
+    <div class="main-container">
+      <main>
+        <Searchbar />
+        <BestBoardCard v-if="mainContent[0]" :articleList="mainContent[0].content" />
+        <div class="board-card-container">
+          <BoardCard
+            v-for="b in mainContent"
+            :key="b.slug"
+            :title="b.title"
+            :slug="b.slug"
+            :articleList="b.content"
+          />
+        </div>
+      </main>
+      <RealtimeFamousCompany />
+    </div>
+
+    
   </div>
 </template>
 <script>
