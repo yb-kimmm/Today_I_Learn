@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="container mx-auto px-4 my-4">
-      <div  style="background-image : url('/main/okinawa.png'); height: 41rem; " class=" justify-center items-end pb-4 flex rounded-3xl " >
+    <div class="container mx-auto px-4 my-4 ">
+      <div  style="background-image : url('/main/okinawa.png'); height: 36rem;  " class="mx-auto justify-center items-end pb-4 flex rounded-3xl " >
         <h2 class="text-white font-bold text-3xl">YBlog</h2>
       </div>
     </div>
@@ -24,18 +24,21 @@
     </div>
 
     
+    <Footer/>
   </div>
 </template>
 <script>
 import BestBoardCard from "@/components/Main/BestBoardCard";
 import BoardCard from "@/components/Main/BoardCard";
 import RealtimeFamousCompany from "@/components/Main/RealtimeFamousCompany";
+import Footer from "@/components/Foot";
 
 export default {
   components: {
     BestBoardCard,
     BoardCard,
-    RealtimeFamousCompany
+    RealtimeFamousCompany,
+    Footer
   },
   data() {
     return {
@@ -63,6 +66,7 @@ export default {
   display: flex;
   margin: auto;
   width: 100%;
+  justify-content : space-between;;
   max-width: 1100px;
   main {
     width: 100%;

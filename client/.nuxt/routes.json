@@ -7,6 +7,13 @@
     "_name": "_065e4481"
   },
   {
+    "name": "write",
+    "path": "/write",
+    "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/write.vue",
+    "chunkName": "pages/write",
+    "_name": "_5bf6e9e3"
+  },
+  {
     "name": "post-key",
     "path": "/post/:key?",
     "component": "/Volumes/D/dev/javascript/vue-tutorial/first-fullstack-app/client/pages/post/_key.vue",

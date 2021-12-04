@@ -908,6 +908,11 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@headlessui/vue@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.4.2.tgz#1098f52cb6c583772708a980b3487222ac0ae65e"
+  integrity sha512-+uOaPwHncxHZ6JBwYycu3YxDDrY0v1tcxCtK04H1WGBLBm07dqVi38Q2RB7eY867FUhD0sL6q+Fj69rVn8P0OQ==
+
 "@heroicons/vue@^1.0.5":
   version "1.0.5"
   resolved "https://registry.npmjs.org/@heroicons/vue/-/vue-1.0.5.tgz"
@@ -1339,6 +1344,17 @@
     tailwindcss "^2.2.2"
     ufo "^0.7.5"
 
+"@nuxtjs/vuetify@^1.12.2":
+  version "1.12.2"
+  resolved "https://registry.npmjs.org/@nuxtjs/vuetify/-/vuetify-1.12.2.tgz"
+  integrity sha512-S6RKTAHxvtA8ViZQObiV7JYoJmykZ4gNzOQTcn0D+gFL4chuM9ma+XCuXVLcNm48w6CxVFBtjYiorAp2Km5JOw==
+  dependencies:
+    deepmerge "^4.2.2"
+    sass "~1.32.13"
+    sass-loader "^12.3.0"
+    vuetify "^2.6"
+    vuetify-loader "^1.7.3"
+
 "@nuxtjs/youch@^4.2.3":
   version "4.2.3"
   resolved "https://registry.npmjs.org/@nuxtjs/youch/-/youch-4.2.3.tgz"
@@ -1352,6 +1368,33 @@
   version "1.0.0-next.15"
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.15.tgz"
   integrity sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==
+
+"@toast-ui/editor@^2.5.4":
+  version "2.5.4"
+  resolved "https://registry.npmjs.org/@toast-ui/editor/-/editor-2.5.4.tgz"
+  integrity sha512-XsuYlPQxhec9dHQREFAigjE4enHSuGMF7D0YQ6wW7phmusvAu0FnJfZUPjJBoU/GKz7WP5U6fKU9/P+8j65D8A==
+  dependencies:
+    "@types/codemirror" "0.0.71"
+    codemirror "^5.48.4"
+
+"@toast-ui/vue-editor@^2.5.4":
+  version "2.5.4"
+  resolved "https://registry.npmjs.org/@toast-ui/vue-editor/-/vue-editor-2.5.4.tgz"
+  integrity sha512-+1d/ROsKiv0M+hV7cC1E1kOlRWawsghug3ARIJEJR0TAUBhQm5qwaKuuyVclYPjuRpOTVZNppKMTGyNKuTAVug==
+  dependencies:
+    "@toast-ui/editor" "^2.5.4"
+
+"@types/codemirror@0.0.71":
+  version "0.0.71"
+  resolved "https://registry.npmjs.org/@types/codemirror/-/codemirror-0.0.71.tgz"
+  integrity sha512-b2oEEnno1LIGKMR7uBEsr40al1UijF1HEpRn0+Yf1xOLl24iQgB7DBpZVMM7y54G5wCNoclDrRO65E6KHPNO2w==
+  dependencies:
+    "@types/tern" "*"
+
+"@types/estree@*":
+  version "0.0.50"
+  resolved "https://registry.npmjs.org/@types/estree/-/estree-0.0.50.tgz"
+  integrity sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==
 
 "@types/html-minifier-terser@^5.0.0":
   version "5.1.1"
@@ -1404,6 +1447,13 @@
   version "1.0.7"
   resolved "https://registry.npmjs.org/@types/tapable/-/tapable-1.0.7.tgz"
   integrity sha512-0VBprVqfgFD7Ehb2vd8Lh9TG3jP98gvr8rgehQqzztZNI7o8zS8Ad4jyZneKELphpuE212D8J70LnSNQSyO6bQ==
+
+"@types/tern@*":
+  version "0.23.4"
+  resolved "https://registry.npmjs.org/@types/tern/-/tern-0.23.4.tgz"
+  integrity sha512-JAUw1iXGO1qaWwEOzxTKJZ/5JxVeON9kvGZ/osgZaJImBnyjyn0cjovPsf6FNLmyGY8Vw9DoXZCMlfMkMwHRWg==
+  dependencies:
+    "@types/estree" "*"
 
 "@types/uglify-js@*":
   version "3.13.0"
@@ -2414,6 +2464,11 @@ caller-path@^2.0.0:
   dependencies:
     caller-callsite "^2.0.0"
 
+callsite@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/callsite/-/callsite-1.0.0.tgz"
+  integrity sha1-KAOY5dZkvXQDi28JBRU+borxvCA=
+
 callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/callsites/-/callsites-2.0.0.tgz"
@@ -2525,6 +2580,21 @@ chardet@^0.7.0:
   resolved "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.1, chokidar@^3.5.1, chokidar@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.2.tgz"
+  integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
+  dependencies:
+    anymatch "~3.1.2"
+    braces "~3.0.2"
+    glob-parent "~5.1.2"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.6.0"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
 chokidar@^2.1.8:
   version "2.1.8"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-2.1.8.tgz"
@@ -2543,21 +2613,6 @@ chokidar@^2.1.8:
     upath "^1.1.1"
   optionalDependencies:
     fsevents "^1.2.7"
-
-chokidar@^3.4.1, chokidar@^3.5.1, chokidar@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.2.tgz"
-  integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
-  dependencies:
-    anymatch "~3.1.2"
-    braces "~3.0.2"
-    glob-parent "~5.1.2"
-    is-binary-path "~2.1.0"
-    is-glob "~4.0.1"
-    normalize-path "~3.0.0"
-    readdirp "~3.6.0"
-  optionalDependencies:
-    fsevents "~2.3.2"
 
 chownr@^1.1.1:
   version "1.1.4"
@@ -2679,6 +2734,11 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/code-point-at/-/code-point-at-1.1.0.tgz"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
+
+codemirror@^5.48.4:
+  version "5.64.0"
+  resolved "https://registry.npmjs.org/codemirror/-/codemirror-5.64.0.tgz"
+  integrity sha512-fqr6CtDQdJ6iNMbD8NX2gH2G876nNDk+TO1rrYkgWnqQdO3O1Xa9tK6q+psqhJJgE5SpbaDcgdfLmukoUVE8pg==
 
 collection-visit@^1.0.0:
   version "1.0.0"
@@ -3277,6 +3337,13 @@ debug@^4.3.2:
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
   dependencies:
     ms "2.1.2"
+
+decache@^4.6.0:
+  version "4.6.1"
+  resolved "https://registry.npmjs.org/decache/-/decache-4.6.1.tgz"
+  integrity sha512-ohApBM8u9ygepJCjgBrEZSSxPjc0T/PJkD+uNyxXPkqudyUpdXpwJYp0VISm2WrPVzASU6DZyIi6BWdyw7uJ2Q==
+  dependencies:
+    callsite "^1.0.0"
 
 decamelize-keys@^1.1.0:
   version "1.1.0"
@@ -6122,7 +6189,7 @@ number-is-nan@^1.0.0:
 
 nuxt-buefy@^0.4.13:
   version "0.4.13"
-  resolved "https://registry.yarnpkg.com/nuxt-buefy/-/nuxt-buefy-0.4.13.tgz#fdc3db015578c28806f173fcbe7cbad4890f5f80"
+  resolved "https://registry.npmjs.org/nuxt-buefy/-/nuxt-buefy-0.4.13.tgz"
   integrity sha512-XhUZ+uvVQSgNTSfcfqzQgT0ZmN7h9d2y/+6x+XhfaMrcRj0Tn6Wu0fmO8y8nUL3TOTATSqbJUbdolr+G9XdkCA==
   dependencies:
     buefy "^0.9.13"
@@ -7941,6 +8008,14 @@ sass-loader@^10.1.0:
     schema-utils "^3.0.0"
     semver "^7.3.2"
 
+sass-loader@^12.3.0:
+  version "12.3.0"
+  resolved "https://registry.npmjs.org/sass-loader/-/sass-loader-12.3.0.tgz"
+  integrity sha512-6l9qwhdOb7qSrtOu96QQ81LVl8v6Dp9j1w3akOm0aWHyrTYtagDt5+kS32N4yq4hHk3M+rdqoRMH+lIdqvW6HA==
+  dependencies:
+    klona "^2.0.4"
+    neo-async "^2.6.2"
+
 sass-resources-loader@^2.2.3:
   version "2.2.3"
   resolved "https://registry.npmjs.org/sass-resources-loader/-/sass-resources-loader-2.2.3.tgz"
@@ -7950,6 +8025,13 @@ sass-resources-loader@^2.2.3:
     chalk "^4.1.0"
     glob "^7.1.6"
     loader-utils "^2.0.0"
+
+sass@~1.32.13:
+  version "1.32.13"
+  resolved "https://registry.npmjs.org/sass/-/sass-1.32.13.tgz"
+  integrity sha512-dEgI9nShraqP7cXQH+lEXVf73WOPCse0QlFzSD8k+1TcOxCMwVXfQlr0jtoluZysQOyJGnfr21dLvYKDJq8HkA==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
 
 sax@~1.2.4:
   version "1.2.4"
@@ -8241,9 +8323,9 @@ source-map-resolve@^0.5.0:
     urix "^0.1.0"
 
 source-map-support@~0.5.12, source-map-support@~0.5.19:
-  version "0.5.19"
-  resolved "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.19.tgz"
-  integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
+  version "0.5.21"
+  resolved "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.21.tgz"
+  integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
   dependencies:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
@@ -9258,6 +9340,20 @@ vue@^2.6.12:
   version "2.6.14"
   resolved "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
+
+vuetify-loader@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.npmjs.org/vuetify-loader/-/vuetify-loader-1.7.3.tgz"
+  integrity sha512-1Kt6Rfvuw3i9BBlxC9WTMnU3WEU7IBWQmDX+fYGAVGpzWCX7oHythUIwPCZGShHSYcPMKSDbXTPP8UvT5RNw8Q==
+  dependencies:
+    decache "^4.6.0"
+    file-loader "^6.2.0"
+    loader-utils "^2.0.0"
+
+vuetify@^2.6:
+  version "2.6.1"
+  resolved "https://registry.npmjs.org/vuetify/-/vuetify-2.6.1.tgz"
+  integrity sha512-WtqarqEIJlhiwl1TShtkq58xtfbHpn4BjkuQtsL7mAs2eHCo7QjA3tUm7Dx/NmDc4wa2ghUUth36jTdG+CCWRg==
 
 vuex@^3.6.2:
   version "3.6.2"

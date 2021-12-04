@@ -25,6 +25,7 @@ export default {
   plugins: [
     "@/plugins/api.js",
     "@/plugins/time.js",
+    "@/plugins/tui-editor.js",
     {
       src: "@/plugins/infinite.js",
       ssr: false,
@@ -46,7 +47,11 @@ export default {
     "@nuxtjs/style-resources",
     "@nuxtjs/tailwindcss",
     "nuxt-buefy",
+    "@nuxtjs/vuetify",
   ],
+  tui: {
+    editor: {},
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

@@ -6,7 +6,7 @@
           <img src="/logo/main.png" alt="블라인드 로고" width="150" />
         </nuxt-link>
         <nuxt-link to="/" :class="['text-menu', $route.name === 'index' && 'active']">홈</nuxt-link>
-        <!-- <nuxt-link to="/company" :class="['text-menu', $route.name === 'company' && 'active']">기업 리뷰</nuxt-link> -->
+        <nuxt-link to="/write" :class="['text-menu', $route.name === 'write' && 'active']">글쓰기</nuxt-link>
       </div>
       <div class="side-block">
         <!-- <SmallSearchbar /> -->
