@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container mx-auto px-4 my-4 ">
-      <div  style="background-image : url('/main/okinawa.png'); height: 36rem;  " class="mx-auto justify-center items-end pb-4 flex rounded-3xl " >
+      <div  style="background-image : url('/main/okinawa.png'); height: 36rem;" class="mx-auto justify-center items-end pb-4 flex rounded-3xl " >
         <h2 class="text-white font-bold text-3xl">YBlog</h2>
       </div>
     </div>
