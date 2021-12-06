@@ -1,12 +1,13 @@
-const colors = require("tailwindcss/colors");
+// const colors = require("tailwindcss/colors");
 
 module.exports = {
-  mode: "jit",
+  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  // mode: "jit",
   theme: {
     extend: {
       colors: {
-        sky: colors.sky,
-        cyan: colors.cyan,
+        // sky: colors.sky,
+        // cyan: colors.cyan,
       },
       backgroundImage: {},
     },

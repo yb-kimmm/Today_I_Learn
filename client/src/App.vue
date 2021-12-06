@@ -1,0 +1,23 @@
+<template>
+  <div id="app">
+    <Layout/>
+    <router-view></router-view>
+  </div>
+</template>
+<script>
+import Vue from 'vue'
+import Vuex from 'vuex'
+import VueRouter from 'vue-router'
+import Layout from './layout/Layout'
+
+
+Vue.use(Vuex)
+Vue.use(VueRouter)
+
+export default {
+  name: "App",
+  components: {
+    Layout
+  }
+};
+</script>
