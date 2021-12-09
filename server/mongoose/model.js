@@ -11,7 +11,7 @@ const model = (() => {
 
   // 몽고디비 앱 엑세스 주소
   mongoose.connect(
-    `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@ybdb.5qfhq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@cluster0.5qfhq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

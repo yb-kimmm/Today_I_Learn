@@ -1,38 +1,19 @@
 <template>
   <div>
     <div class="container mx-auto px-4 my-4 ">
-      <div  style="background-image : url('/static/main/okinawa.png'); height: 36rem;" class="mx-auto justify-center items-end pb-4 flex rounded-3xl " >
-        <h2 class="text-white font-bold text-3xl">YBlog</h2>
-      </div>
+      <img src="@/static/main/okinawa.png" alt=""  class="mx-auto justify-center items-end pb-4 flex rounded-3xl ">
     </div>
 
     <div class="main-container">
-      <!-- <Searchbar />
-      <BestBoardCard v-if="mainContent[0]" :articleList="mainContent[0].content" />
-      <div class="board-card-container">
-        <BoardCard
-          v-for="b in mainContent"
-          :key="b.slug"
-          :title="b.title"
-          :slug="b.slug"
-          :articleList="b.content"
-        />
-      </div>
-      <RealtimeFamousCompany /> -->
+
     </div>
 
   </div>
 </template>
 <script>
-// import BestBoardCard from "@/components/Main/BestBoardCard";
-// import BoardCard from "@/components/Main/BoardCard";
-// import RealtimeFamousCompany from "@/components/Main/RealtimeFamousCompany";
 
 export default {
   components: {
-    // BestBoardCard,
-    // BoardCard,
-    // RealtimeFamousCompany,
   },
   data() {
     return {
@@ -47,6 +28,10 @@ export default {
       const data = await this.$api.get("http://localhost:8080/main");
 
       if (data.error) {
+        return;
+      }
+
+      if(!data.content){
         return;
       }
 
