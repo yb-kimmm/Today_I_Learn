@@ -24,7 +24,7 @@
           <svg class="group-hover:text-light-blue-600 text-light-blue-500 mr-2" width="18" height="20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <!-- {{!user.email   ? "로그인": "로그아웃"}} -->
+          {{!user.email   ? "로그인": "로그아웃"}}
         </button>
 
         
@@ -42,26 +42,28 @@ export default {
   computed: {
     ...mapState(["user","modal"])
   },
+  created() {
+  },
   methods: {
     clickWritingButton() {
-      // if (!this.user.email) {
-      //   this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
-      //   return;
-      // }
-      // this.$store.commit("modal/SET_WRITING_MODAL_STATE", true);
+      if (!this.user.email) {
+        this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
+        return;
+      }
+      this.$store.commit("modal/SET_WRITING_MODAL_STATE", true);
     },
     clickLoginButton() {
-      // if (!this.user.email) {
-      //   this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
-      //   return;
-      // }
-      // this.logout();
+      if (!this.user.email) {
+        this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
+        return;
+      }
+      this.logout();
     },
     logout() {
-      // this.$store.commit("user/SET_USER", {
-      //   email: null,
-      //   nickname: null
-      // });
+      this.$store.commit("user/SET_USER", {
+        email: null,
+        nickname: null
+      });
 
       alert("로그아웃.!")
     }
