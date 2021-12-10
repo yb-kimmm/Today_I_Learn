@@ -29,15 +29,21 @@
 
         
       </div>
+      <LoginModal />
+      <WritingModal />
     </nav>
   </div>
 </template>
 <script>
-// import SmallSearchbar from "@/components/GNB/SmallSearchbar";
+
+import LoginModal from "@/components/Modal/LoginAndRegister";
+import WritingModal from "@/components/Modal/Writing";
+
 import { mapState } from "vuex";
 export default {
   components: {
-    // SmallSearchbar,
+    LoginModal,
+    WritingModal,
   },
   computed: {
     ...mapState(["user","modal"])
@@ -47,20 +53,20 @@ export default {
   methods: {
     clickWritingButton() {
       if (!this.user.email) {
-        this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
+        this.$store.commit("SET_LOGIN_MODAL_OPEN");
         return;
       }
-      this.$store.commit("modal/SET_WRITING_MODAL_STATE", true);
+      this.$store.commit("SET_WRITING_MODAL_STATE", true);
     },
     clickLoginButton() {
       if (!this.user.email) {
-        this.$store.commit("modal/SET_LOGIN_MODAL_OPEN");
+        this.$store.commit("SET_LOGIN_MODAL_OPEN");
         return;
       }
       this.logout();
     },
     logout() {
-      this.$store.commit("user/SET_USER", {
+      this.$store.commit("SET_USER", {
         email: null,
         nickname: null
       });

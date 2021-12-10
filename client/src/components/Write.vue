@@ -24,9 +24,9 @@
     <input type="hidden" v-model="content" placeholder="제목을 입력해주세요." />
 
     <div>
-      <!-- <editor  :initialValue="getEditorText" ref="editor" align="left" height="650px"> 
-      </editor> 
-      <viewer v-if="toggle" :initialValue="getEditorText"></viewer>  -->
+      <Editor  :initialValue="getEditorText" ref="editor" align="left" height="650px"> 
+      </Editor> 
+      <Viewer v-if="toggle" :initialValue="getEditorText"></Viewer> 
     </div>
 
 
@@ -57,6 +57,10 @@
 import { mapState } from "vuex";
 import ConfirmModal from "@/components/Modal/Confirm";
 
+import { Editor } from '@toast-ui/vue-editor';
+import { Viewer } from '@toast-ui/vue-editor';
+
+
 // import {
 //   ChevronDownIcon,
 //   CameraIcon,
@@ -72,6 +76,8 @@ import ConfirmModal from "@/components/Modal/Confirm";
       // BarChart2Icon,
       // AtSignIcon,
       // HashIcon,
+      Viewer,
+      Editor,
       ConfirmModal
     },
 

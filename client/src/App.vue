@@ -10,6 +10,10 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Layout from './layout/Layout'
 
+import 'codemirror/lib/codemirror.css';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import '@toast-ui/editor/dist/toastui-editor-viewer.css';
+
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
@@ -17,7 +21,7 @@ Vue.use(VueRouter)
 export default {
   name: "App",
   components: {
-    Layout
+    Layout,
   }
 };
 </script>

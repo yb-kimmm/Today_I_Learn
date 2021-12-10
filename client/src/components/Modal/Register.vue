@@ -99,7 +99,7 @@ export default {
       if (data.error) {
         return;
       }
-      this.$store.commit("modal/SET_LOGIN_MODAL_CLOSE");
+      this.$store.commit("SET_LOGIN_MODAL_CLOSE");
     },
     
   }

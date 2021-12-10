@@ -88,7 +88,7 @@ export default {
       let file = this.$refs.img.files[0];
       formData.append("file", file);
       setTimeout(async () => {
-        const data = await this.$api.$post("/upload", formData);
+        const data = await this.$api.post("http://localhost:8080/upload", formData);
         if (!data || data.error) {
           return;
         }
@@ -96,7 +96,7 @@ export default {
       }, 300);
     },
     async getBoardList() {
-      const data = await this.$api.$get("/board/list");
+      const data = await this.$api.get("http://localhost:8080/board/list");
       if (!Array.isArray(data)) {
         return;
       }
@@ -120,7 +120,7 @@ export default {
       }'에 글을 등록하시겠습니까?`;
     },
     async uploadArticle() {
-      const data = await this.$api.$post("/article/create", {
+      const data = await this.$api.post("http://localhost:8080/article/create", {
         title: this.title,
         content: this.content,
         board: this.boardList[this.currentSelectedBoard]._id,
@@ -131,7 +131,7 @@ export default {
         return;
       }
       this.closeConfirmModal();
-      this.$store.commit("modal/SET_WRITING_MODAL_STATE", false);
+      this.$store.commit("SET_WRITING_MODAL_STATE", false);
     }
   }
 };

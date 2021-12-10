@@ -85,13 +85,13 @@ export default {
         return;
       }
 
-      this.$store.commit("user/SET_USER", {
+      this.$store.commit("SET_USER", {
         email: data.email,
         nickname: data.nickname,
         token: data.token
       });
 
-      this.$store.commit("modal/SET_LOGIN_MODAL_CLOSE");
+      this.$store.commit("SET_LOGIN_MODAL_CLOSE");
     },
     
   }
