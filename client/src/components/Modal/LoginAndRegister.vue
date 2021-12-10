@@ -4,8 +4,10 @@
       <div class="head">
         <h5>{{!modal.login.directLogin ? "회원가입": "로그인"}}</h5>
 
-        <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_CLOSE')" class="close-btn">
-          <img src="/icon/close.png" alt="닫기" />
+        <a @click.prevent="$store.commit('SET_LOGIN_MODAL_CLOSE')" class="close-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </a>
       </div>
 
@@ -62,13 +64,13 @@ export default {
         return;
       }
 
-      this.$store.commit("user/SET_USER", {
+      this.$store.commit("SET_USER", {
         email: data.email,
         nickname: data.nickname,
         token: data.token
       });
 
-      this.$store.commit("modal/SET_LOGIN_MODAL_CLOSE");
+      this.$store.commit("SET_LOGIN_MODAL_CLOSE");
     },
     
   }
