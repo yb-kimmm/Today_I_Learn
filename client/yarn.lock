@@ -7898,7 +7898,7 @@
     "scss-tokenizer" "^0.2.3"
     "yargs" "^13.3.2"
 
-"sass-loader@^10.1.0":
+"sass-loader@^10.2.0":
   "integrity" "sha512-kUceLzC1gIHz0zNJPpqRsJyisWatGYNFRmv2CKZK2/ngMJgLqxTbXwe/hJ85luyvZkgqU3VlJ33UVF2T/0g6mw=="
   "resolved" "https://registry.npmjs.org/sass-loader/-/sass-loader-10.2.0.tgz"
   "version" "10.2.0"

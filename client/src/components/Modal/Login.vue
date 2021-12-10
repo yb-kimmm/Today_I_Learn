@@ -48,7 +48,7 @@
         </div>
 
         <div class="justify-center relative w-full text-center">
-          <a @click.prevent="$store.commit('modal/SET_LOGIN_MODAL_DIRECT_REGISTER')">블라인드에 처음이신가요?</a>
+          <a @click.prevent="$store.commit('SET_LOGIN_MODAL_DIRECT_REGISTER')">블라인드에 처음이신가요?</a>
         </div>
       </div>
     </div>
