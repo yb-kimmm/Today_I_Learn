@@ -78,8 +78,8 @@ export default {
   },
   methods: {
     async getCompany(){
-      const data =  await this.$axios.$get(`http://localhost:8080/company/list`)
-      this.companys = data
+      const data =  await this.$api.get(`http://localhost:8080/company/list`)
+      this.companys = data.data
     },
     async createRegister() {
       if( !this.email || !this.password ){
@@ -87,8 +87,7 @@ export default {
         return;
       }
 
-
-      const data = await this.$axios.$post(`http://localhost:8080/user/create`, {
+      const data = await this.$api.post(`http://localhost:8080/user/create`, {
         email: this.email,
         password: this.password,
         nickname: this.nickname,
