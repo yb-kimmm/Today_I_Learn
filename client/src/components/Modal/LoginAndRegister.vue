@@ -54,7 +54,7 @@ export default {
         return;
       }
 
-      const data = await this.$axios.$post(`http://localhost:3000/user/login`, {
+      const data = await this.$api.post(`http://localhost:8080/user/login`, {
         email: this.email,
         password: this.password
       });

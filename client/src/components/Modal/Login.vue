@@ -75,7 +75,7 @@ export default {
         return
       }
 
-      const data = await this.$axios.$post(`http://localhost:8080/user/login`, {
+      const data = await this.$api.post(`http://localhost:8080/user/login`, {
         email: this.email,
         password: this.password
       });
@@ -85,10 +85,12 @@ export default {
         return;
       }
 
+      console.log(data)
+
       this.$store.commit("SET_USER", {
-        email: data.email,
-        nickname: data.nickname,
-        token: data.token
+        email: data.data.email,
+        nickname: data.data.nickname,
+        token: data.data.token
       });
 
       this.$store.commit("SET_LOGIN_MODAL_CLOSE");
