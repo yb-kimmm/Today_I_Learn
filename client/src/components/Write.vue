@@ -3,7 +3,7 @@
     <div v-if="boardList.length > 0" class="py-4">
         <a class="flex" @click.prevent="isBoardSelected = !isBoardSelected">
           <span>{{boardList[currentSelectedBoard].title}}</span>
-          <!-- <ChevronDownIcon :class="[isBoardSelected && 'rotated', 'down-icon']" /> -->
+          <ChevronDownIcon :class="[isBoardSelected && 'rotated', 'down-icon']" />
         </a>
       <!-- 드롭다운 부분 -->
 
@@ -61,21 +61,13 @@ import { Editor } from '@toast-ui/vue-editor';
 import { Viewer } from '@toast-ui/vue-editor';
 
 
-// import {
-//   ChevronDownIcon,
-//   CameraIcon,
-//   BarChart2Icon,
-//   AtSignIcon,
-//   HashIcon
-// } from "vue-feather-icons";
+import {
+  ChevronDownIcon,
+} from "vue-feather-icons";
 
   export default { 
     components: {
-      // ChevronDownIcon,
-      // CameraIcon,
-      // BarChart2Icon,
-      // AtSignIcon,
-      // HashIcon,
+      ChevronDownIcon,
       Viewer,
       Editor,
       ConfirmModal
@@ -92,7 +84,7 @@ import { Viewer } from '@toast-ui/vue-editor';
         title: null,
         content: null,
         showConfirmModal: false,
-        confirmTitle: null,
+        confirmTitle: '',
         imgFile: null,
         getEditorText: '# 이곳에 글을 써주세요! 오른쪽은 미리보기 입니다.', 
         toggle: false, 
@@ -116,10 +108,7 @@ import { Viewer } from '@toast-ui/vue-editor';
       },
       async getBoardList() {
         const data = await this.$api.get("http://localhost:8080/board/list");
-        if (!Array.isArray(data)) {
-          return;
-        }
-        this.boardList = data;
+        this.boardList = data.data;
       },
       clickBoard(index) {
         this.currentSelectedBoard = index;
@@ -127,7 +116,7 @@ import { Viewer } from '@toast-ui/vue-editor';
       },
       closeConfirmModal() {
         this.showConfirmModal = false;
-        this.confirmTitle = null;
+        this.confirmTitle = '';
       },
       listenConfirm(confirm) {
         !confirm ? this.closeConfirmModal() : this.uploadArticle();
@@ -158,7 +147,7 @@ import { Viewer } from '@toast-ui/vue-editor';
           return;
         }
         this.closeConfirmModal();
-        this.$store.commit("modal/SET_WRITING_MODAL_STATE", false);
+        this.$store.commit("SET_WRITING_MODAL_STATE", false);
       }
     }
     
