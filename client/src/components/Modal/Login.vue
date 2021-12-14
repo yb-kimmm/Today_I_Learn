@@ -77,20 +77,21 @@ export default {
 
       const data = await this.$api.post(`http://localhost:8080/user/login`, {
         email: this.email,
-        password: this.password
+        password: this.password,
       });
 
       // 로그인 에러 캐칭
-      if (data.error) {
+      if (data.data.error) {
+        alert(data.data.msg);
         return;
       }
 
-      console.log(data)
 
       this.$store.commit("SET_USER", {
         email: data.data.email,
         nickname: data.data.nickname,
-        token: data.data.token
+        token: data.data.token,
+        authYn : data.data.authYn
       });
 
       this.$store.commit("SET_LOGIN_MODAL_CLOSE");
