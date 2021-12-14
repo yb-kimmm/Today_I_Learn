@@ -8,6 +8,7 @@ const User = new Schema({
   salt: { type: String, required: true },
   createdAt: { type: Date, default: Date.now, required: true },
   nickname: { type: String, required: true, unique: true },
+  authYn: { type: String, required: true, default: "N" },
   company: { type: Schema.Types.ObjectId, ref: "Company" },
 });
 

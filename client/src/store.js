@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     user: {
       email: null,
       nickname: null,
+      authYn: null,
     },
     modal: {
       login: { show: false, directLogin: false },
@@ -24,9 +25,10 @@ export const store = new Vuex.Store({
 
   mutations: {
     // user
-    SET_USER(state, { email, nickname, token }) {
+    SET_USER(state, { email, nickname, authYn, token }) {
       state.user.email = email;
       state.user.nickname = nickname;
+      state.user.authYn = authYn;
       if (token) {
         localStorage.setItem("token", token);
       } else {

@@ -8,7 +8,8 @@ router.post("/user/login", async (req, res) => {
   const { email, password } = req.body;
 
   const loginUser = await User.findOne({ email: email });
-  if (!loginUser._id) {
+
+  if (!loginUser) {
     return res.send({
       error: true,
       msg: "존재하지 않는 이메일",
@@ -41,6 +42,7 @@ router.post("/user/login", async (req, res) => {
   res.send({
     email: loginUser.email,
     nickname: loginUser.nickname,
+    authYn: loginUser.authYn,
     token: token,
     error: false,
     msg: "로그인 성공",
