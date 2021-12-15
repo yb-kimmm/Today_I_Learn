@@ -3,11 +3,11 @@ import router from "./router";
 import App from "./App.vue";
 import "./assets/tailwind.css";
 import "es6-promise/auto";
-import axios from "axios";
+import api from "./main";
 
 import { store } from "./store";
 
-Vue.prototype.$api = axios;
+Vue.prototype.$api = api;
 Vue.config.productionTip = false;
 Vue.use(require("vue-moment"));
 
