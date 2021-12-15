@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     async getRecentBoardArticleList() {
-      const data = await this.$api.get("http://localhost:8080/main");
+      const data = await this.$api.$get("/main");
 
       if (data.error) {
         return;

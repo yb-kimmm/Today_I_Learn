@@ -22,14 +22,15 @@ export default {
 
 
         const data = await this.$api.get("http://localhost:8080/user/token");
+        console.log(data)
 
-        if (!data.email) {
+        if (!data.data.email) {
           return;
         }
 
         this.$store.commit("user/SET_USER", {
-          email: data.email,
-          nickname: data.nickname,
+          email: data.data.email,
+          nickname: data.data.nickname,
           token: token
         });
       }
