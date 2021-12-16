@@ -30,7 +30,11 @@ export default {
   },
   methods: {
     async getRealtimeFamousCompany() {
-      const data = await this.$api.get("http://localhost:8080/company/list/famous");
+      const data = await this.$api({
+          url : '/company/list/famous',
+          method: 'get'
+      });
+
       this.companyList = data;
     }
   }

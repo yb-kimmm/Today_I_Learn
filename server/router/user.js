@@ -30,7 +30,7 @@ router.post("/user/login", async (req, res) => {
       id: loginUser._id,
       email: loginUser.email,
       nickname: loginUser.nickname,
-      authYn: loginUser.autYn,
+      authYn: loginUser.authYn,
     },
     secret,
     {
@@ -78,7 +78,7 @@ router.get("/user/token", (req, res) => {
     res.send({
       email: data.email,
       nickname: data.nickname,
-      authYn: data.autnYn,
+      authYn: data.authYn,
     });
   });
 });
