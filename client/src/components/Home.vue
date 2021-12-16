@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mx-auto px-4 my-4 ">
+    <div class="container mx-auto px-44 my-4 ">
       <img src="@/static/main/okinawa.png" alt=""  class="mx-auto justify-center items-end pb-4 flex rounded-3xl ">
     </div>
 

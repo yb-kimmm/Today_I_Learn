@@ -2,22 +2,25 @@
   <div class="nav-container">
     <nav>
       <div class="side-block">
+        <router-link to="/" id="logo-btn">
+          <img src="@/static/logo/main.png" alt="블라인드 로고" width="150" />
+        </router-link>
+
         <router-link to="/">
           홈
         </router-link>
-
       </div>
+
       <div class="side-block">
         <!-- <SmallSearchbar /> -->
         <button v-if="user.authYn == 'Y'" class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
-          <svg class="group-hover:text-light-blue-600 text-light-blue-500 mr-2" width="12" height="20" fill="currentColor">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 5a1 1 0 011 1v3h3a1 1 0 110 2H7v3a1 1 0 11-2 0v-3H2a1 1 0 110-2h3V6a1 1 0 011-1z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
 
           <router-link to="/admin">
             관리자
           </router-link>
-          
         </button>
 
         <!-- <SmallSearchbar /> -->
@@ -29,7 +32,6 @@
           <router-link to="/write">
             글쓰기
           </router-link>
-          
         </button>
 
         <button @click.prevent="clickLoginButton"  class="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
@@ -38,7 +40,6 @@
           </svg>
           {{!user.email   ? "로그인": "로그아웃"}}
         </button>
-
         
       </div>
       <LoginModal />
