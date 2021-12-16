@@ -47,31 +47,7 @@ export default {
   },
   
   methods: {
-    async loginWithEmail() {
-
-      if( this.email || this.password ){
-        alert("다시 입력해주세요.!")
-        return;
-      }
-
-      const data = await this.$api.post(`http://localhost:8080/user/login`, {
-        email: this.email,
-        password: this.password
-      });
-
-      // 로그인 에러 캐칭
-      if (data.error) {
-        return;
-      }
-
-      this.$store.commit("SET_USER", {
-        email: data.email,
-        nickname: data.nickname,
-        token: data.token
-      });
-
-      this.$store.commit("SET_LOGIN_MODAL_CLOSE");
-    },
+  
     
   }
 };

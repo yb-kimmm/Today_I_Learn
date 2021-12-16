@@ -3,7 +3,7 @@ import router from "./router";
 import App from "./App.vue";
 import "./assets/tailwind.css";
 import "es6-promise/auto";
-import api from "./main";
+import api from "./api";
 
 import { store } from "./store";
 

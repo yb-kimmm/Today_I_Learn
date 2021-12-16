@@ -25,7 +25,11 @@ export default {
   },
   methods: {
     async getRecentBoardArticleList() {
-      const data = await this.$api.$get("/main");
+      // const data = await this.$api.$get("/main");
+      const data = await this.$api({
+        url : '/main',
+        method: 'get'
+      });
 
       if (data.error) {
         return;

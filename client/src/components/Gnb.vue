@@ -114,7 +114,6 @@ nav {
       font-size: 20px;
       margin-right: 30px;
     }
-    
   }
 }
 </style>

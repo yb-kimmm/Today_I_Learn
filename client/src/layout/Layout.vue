@@ -20,18 +20,20 @@ export default {
         const token = localStorage.getItem("token");
         if (!token) return;
 
+        const data = await this.$api({
+          url : '/user/token',
+          method: 'get'
+        });
 
-        const data = await this.$api.get("http://localhost:8080/user/token");
-        console.log(data)
-
-        if (!data.data.email) {
+        if (!data.email) {
           return;
         }
 
-        this.$store.commit("user/SET_USER", {
-          email: data.data.email,
-          nickname: data.data.nickname,
-          token: token
+        this.$store.commit("SET_USER", {
+          email: data.email,
+          nickname: data.nickname,
+          authYn : data.authYn,
+          token: token,
         });
       }
     }
