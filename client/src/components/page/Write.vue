@@ -119,7 +119,7 @@ import {
             method: 'get' ,
         });
 
-        this.boardList = data.data;
+        this.boardList = data;
       },
       clickBoard(index) {
         this.currentSelectedBoard = index;
