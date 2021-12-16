@@ -88,7 +88,17 @@ export default {
       let file = this.$refs.img.files[0];
       formData.append("file", file);
       setTimeout(async () => {
-        const data = await this.$api.post("http://localhost:8080/upload", formData);
+        // const data = await this.$api.post("http://localhost:8080/upload", formData);
+        const data = await this.$api({
+            url : '/upload',
+            method: 'post' ,
+            data : {
+              formData 
+            }
+        });
+
+      this.companyList = data;
+
         if (!data || data.error) {
           return;
         }
@@ -96,7 +106,11 @@ export default {
       }, 300);
     },
     async getBoardList() {
-      const data = await this.$api.get("http://localhost:8080/board/list");
+      const data = await this.$api({
+          url : '/board/list',
+          method: 'get' ,
+      });
+      
       if (!Array.isArray(data)) {
         return;
       }
@@ -120,13 +134,17 @@ export default {
       }'에 글을 등록하시겠습니까?`;
     },
     async uploadArticle() {
-      const data = await this.$api.post("http://localhost:8080/article/create", {
-        title: this.title,
-        content: this.content,
-        board: this.boardList[this.currentSelectedBoard]._id,
-        image: this.imgFile
+      const data = await this.$api({
+          url : '/article/create',
+          method: 'post' ,
+          data : {
+            title: this.title,
+            content: this.content,
+            board: this.boardList[this.currentSelectedBoard]._id,
+            image: this.imgFile
+          }
       });
-
+      
       if (!data) {
         return;
       }
