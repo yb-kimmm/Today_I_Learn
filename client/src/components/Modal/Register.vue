@@ -78,8 +78,13 @@ export default {
   },
   methods: {
     async getCompany(){
-      const data =  await this.$api.get(`http://localhost:8080/company/list`)
-      this.companys = data.data
+
+      const data = await this.$api({
+        url : '/company/list',
+        method: 'get',
+      });
+
+      this.companys = data
     },
     async createRegister() {
       if( !this.email || !this.password ){
@@ -87,13 +92,17 @@ export default {
         return;
       }
 
-      const data = await this.$api.post(`http://localhost:8080/user/create`, {
-        email: this.email,
-        password: this.password,
-        nickname: this.nickname,
-        company: this.company,
+      const data = await this.$api({
+        url : '/user/create',
+        method: 'post',
+        data : {
+          email: this.email,
+          password: this.password,
+          nickname: this.nickname,
+          company: this.company,
+        }
       });
-      
+
       // 로그인 에러 캐칭
       if (data.error) {
         return;

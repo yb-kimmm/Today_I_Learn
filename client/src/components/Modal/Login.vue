@@ -75,23 +75,26 @@ export default {
         return
       }
 
-      const data = await this.$api.post(`http://localhost:8080/user/login`, {
-        email: this.email,
-        password: this.password,
+      const data = await this.$api({
+        url : '/user/login',
+        method: 'post',
+        data : {
+          email: this.email,
+          password: this.password,
+        }
       });
 
       // 로그인 에러 캐칭
-      if (data.data.error) {
-        alert(data.data.msg);
+      if (data.error) {
+        alert(data.msg);
         return;
       }
 
-
       this.$store.commit("SET_USER", {
-        email: data.data.email,
-        nickname: data.data.nickname,
-        token: data.data.token,
-        authYn : data.data.authYn
+        email: data.email,
+        nickname: data.nickname,
+        token: data.token,
+        authYn : data.authYn
       });
 
       this.$store.commit("SET_LOGIN_MODAL_CLOSE");
