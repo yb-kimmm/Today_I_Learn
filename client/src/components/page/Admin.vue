@@ -15,7 +15,7 @@
   ```
 -->
 <template>
-  <div class="mx-44">
+  <div class="mx-auto max-w-6xl my-4">
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="md:col-span-1">
         <div class="px-4 sm:px-0">
