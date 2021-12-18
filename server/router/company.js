@@ -8,14 +8,12 @@ router.post("/company/create", async (req, res) => {
 
   const isSameNameCheck = await Company.find({ name: name });
 
-  if (isSameNameCheck[0]._id) {
+  if (isSameNameCheck.length > 0) {
     return res.send({
       error: true,
       msg: "이미 존재하는 회사명입니다.",
     });
   }
-
-  console.log(isSameNameCheck[0]._id);
 
   const newCompany = await Company({
     name,
