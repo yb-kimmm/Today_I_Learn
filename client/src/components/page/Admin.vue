@@ -29,6 +29,18 @@
         <form action="#" method="POST">
           <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">
+                  Company Name
+                </label>
+                <div class="mt-1">
+                  <input type="text" v-model="name" class="shadow-sm h-8 focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-1/2 sm:text-sm border border-gray-300 rounded-md"  />
+                </div>
+                <p class="mt-2 text-sm text-gray-500">
+                  회사명을 적어주세요.
+                </p>
+              </div>
+
               <div class="grid grid-cols-3 gap-6">
                 <div class="col-span-3 sm:col-span-2">
                   <label for="company-website" class="block text-sm font-medium text-gray-700">
@@ -38,7 +50,7 @@
                     <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                       http://
                     </span>
-                    <input type="text" name="company-website" id="company-website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com" />
+                    <input type="text"  v-model="url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com" />
                   </div>
                 </div>
               </div>
@@ -48,7 +60,7 @@
                   About
                 </label>
                 <div class="mt-1">
-                  <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com" />
+                  <textarea v-model="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com" />
                 </div>
                 <p class="mt-2 text-sm text-gray-500">
                   Brief description for your profile. URLs are hyperlinked.
@@ -95,7 +107,7 @@
               </div>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                <button @click.prevent=""  class="inline-flex justify-center text-sky-700 hover:text-white border border-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-sky-400 dark:text-sky-400 dark:hover:text-white dark:hover:bg-sky-500 dark:focus:ring-sky-900">
+                <button @click.prevent="createdCompany"  class="inline-flex justify-center text-sky-700 hover:text-white border border-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-sky-400 dark:text-sky-400 dark:hover:text-white dark:hover:bg-sky-500 dark:focus:ring-sky-900">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 px-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
@@ -114,6 +126,44 @@
 </template>
 
 <script>
-export default {}
+export default {
+  created() {
+    
+  },
+  data () {
+    return  {
+      name : null,
+      about : null , 
+      url : null
+    }
+  },
+  methods:{
+    async createdCompany(){
+
+
+      const data = await this.$api({
+          url : '/company/create',
+          method: 'post' ,
+          data : {
+            name : this.name,
+            about : this.about,
+            url : this.url
+          }
+      });
+      
+      if(data.error){
+        alert(data.msg)
+        return;
+      }else{
+        alert("성공!")
+        return; 
+      }
+
+
+    }
+  }
+
+
+}
 </script>
 

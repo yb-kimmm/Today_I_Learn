@@ -4,13 +4,26 @@ const { Company } = require("../mongoose/model");
 
 // 회사 추가
 router.post("/company/create", async (req, res) => {
-  const { name } = req.body;
-  console.log(name);
+  const { name, about, url } = req.body;
+
+  const isSameNameCheck = await Company.find({ name: name });
+
+  if (isSameNameCheck[0]._id) {
+    return res.send({
+      error: true,
+      msg: "이미 존재하는 회사명입니다.",
+    });
+  }
+
+  console.log(isSameNameCheck[0]._id);
+
   const newCompany = await Company({
     name,
+    about,
+    url,
   }).save();
 
-  res.send(newCompany._id ? true : false);
+  res.send(newCompany);
 });
 
 // 회사 추가
