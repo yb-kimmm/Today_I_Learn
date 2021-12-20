@@ -11,9 +11,33 @@ import Home from "./components/Home";
 import Admin from "./components/Admin";
 import Write from "./components/Write";
 import Gnb from "./components/Gnb";
+import api from "./api";
 
-const store = createStore(rootReducer); // 스토어를 만듭니다.
-console.log(store.getState()); // 스토어의 상태를 확인해봅시다.
+async function initLogin() {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const data = await api({
+    url: "/user/token",
+    method: "get",
+  });
+
+  if (!data.email) {
+    return;
+  }
+
+  this.$store.commit("SET_USER", {
+    email: data.email,
+    nickname: data.nickname,
+    authYn: data.authYn,
+    token: token,
+  });
+}
+
+createStore(rootReducer); // 스토어를 만듭니다.
+
+initLogin();
+// React.prototype.$api = api;
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-// import Write from './Write';
 import styles from "../assets/gnb.scss";
-
-// user-circle
 
 const Gnb = ({ user }) => {
   return (
@@ -22,7 +19,7 @@ const Gnb = ({ user }) => {
           <Link to="/admin">
             <button
               // v-if="user.authYn == 'Y'"
-              className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2"
+              className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +40,7 @@ const Gnb = ({ user }) => {
           </Link>
 
           <Link to="/write">
-            <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
+            <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2  py-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -63,7 +60,7 @@ const Gnb = ({ user }) => {
           </Link>
 
           {/* @click.prevent="clickLoginButton" */}
-          <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
+          <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
