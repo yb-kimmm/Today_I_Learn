@@ -6,15 +6,13 @@ const initialState = {
 
 const SET_USER = "SET_USER";
 
-export const setUser = () => ({
+export const setUser = (user) => ({
   type: SET_USER, // 액션 객체에는 type 값이 필수입니다.
+  user,
 });
 
 export default function user(state = initialState, action) {
   // state 의 초깃값을 initialState 로 지정했습니다.
-
-  const SET_USER = "SET_USER";
-
   switch (action.type) {
     case SET_USER:
       if (action.token) {
@@ -25,11 +23,9 @@ export default function user(state = initialState, action) {
 
       return {
         ...state,
-        user: {
-          email: action.email,
-          nickname: action.nickname,
-          authYn: action.authYn,
-        },
+        email: action.email,
+        nickname: action.nickname,
+        authYn: action.authYn,
       };
 
     default:
