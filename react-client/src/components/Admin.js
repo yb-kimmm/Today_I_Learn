@@ -1,7 +1,7 @@
 const Admin = () => {
   return (
-    <div>
-      <div className="md:grid md:grid-cols-3 md:gap-6 mx-64 my-12">
+    <div className="mx-auto max-w-6xl  py-10 h-full">
+      <div className="md:grid md:grid-cols-3 md:gap-6  ">
         <div className="md:col-span-1">
           <div className="px-4 sm:px-0">
             <h3 className="text-lg font-medium leading-6 text-gray-900">
@@ -145,10 +145,21 @@ const Admin = () => {
                 </div>
               </div>
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                <button
-                  type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
+                <button class="inline-flex justify-end text-sky-700 hover:text-white border border-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-sky-400 dark:text-sky-400 dark:hover:text-white dark:hover:bg-sky-500 dark:focus:ring-sky-900">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 px-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
                   Save
                 </button>
               </div>

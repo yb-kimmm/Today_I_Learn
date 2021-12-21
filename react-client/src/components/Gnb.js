@@ -1,10 +1,31 @@
 import { Link } from "react-router-dom";
-// import Write from './Write';
 import styles from "../assets/gnb.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../store/user";
 
-// user-circle
+const Gnb = () => {
+  const { authYn, email, nickname } = useSelector((state) => ({
+    authYn: state.user.authYn,
+    email: state.user.email,
+    nickname: state.user.nickname,
+  }));
 
-const Gnb = ({ user }) => {
+  const user = {
+    email: "1",
+    nickname: "1",
+  };
+
+  const dispatch = useDispatch();
+
+  const onClickLoginButton = () => {
+    if (!email) {
+      dispatch(setUser(user));
+
+      return;
+    }
+    this.logout();
+  };
+
   return (
     <div className={styles.navContainer}>
       <nav>
@@ -19,11 +40,9 @@ const Gnb = ({ user }) => {
         </div>
 
         <div className="flex h-full items-center">
+          {authYn}
           <Link to="/admin">
-            <button
-              // v-if="user.authYn == 'Y'"
-              className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2"
-            >
+            <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -43,7 +62,7 @@ const Gnb = ({ user }) => {
           </Link>
 
           <Link to="/write">
-            <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
+            <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2  py-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -62,8 +81,10 @@ const Gnb = ({ user }) => {
             </button>
           </Link>
 
-          {/* @click.prevent="clickLoginButton" */}
-          <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-4 py-2">
+          <button
+            onClick={onClickLoginButton}
+            className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -78,8 +99,8 @@ const Gnb = ({ user }) => {
                 d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-
-            {!user ? "로그인" : "로그아웃"}
+            {email}
+            {!email ? "로그인" : "로그아웃"}
           </button>
 
           {/* </div>
