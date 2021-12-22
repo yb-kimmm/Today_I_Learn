@@ -42,14 +42,16 @@ const LoginAndRegister = () => {
                 </svg>
               </button>
             </div>
+
             {modal.register.directRegister ? (
               <div className="foot">
-                <RegisterModal modal={modal} />
+                <RegisterModal />
               </div>
             ) : null}
+
             {modal.login.directLogin ? (
               <div className="foot">
-                <LoginModal modal={modal} />
+                <LoginModal />
               </div>
             ) : null}
           </div>
