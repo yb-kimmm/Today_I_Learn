@@ -31,16 +31,3 @@ instance.interceptors.request.use(
 
 // 생성한 인스턴스를 익스포트 합니다.
 export default instance;
-
-// export const api = function() {
-//   // Create a custom axios instance
-
-//     // Set baseURL to something different
-//     api.setBaseURL(
-//       // process.env.NODE_ENV === "production"
-//       //   ? "http://fastcampusblindclone-env.eba-p687fdja.us-east-1.elasticbeanstalk.com/"
-//       //   : "http://localhost:8080"
-//       "http://localhost:8080"
-//     );
-//   }
-// };
