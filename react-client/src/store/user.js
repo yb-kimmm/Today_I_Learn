@@ -12,6 +12,7 @@ export const setUser = (user) => ({
 });
 
 export default function user(state = initialState, action) {
+  // console.log(action);
   // state 의 초깃값을 initialState 로 지정했습니다.
   switch (action.type) {
     case SET_USER:
@@ -23,9 +24,9 @@ export default function user(state = initialState, action) {
 
       return {
         ...state,
-        email: action.email,
-        nickname: action.nickname,
-        authYn: action.authYn,
+        email: action.user.email,
+        nickname: action.user.nickname,
+        authYn: action.user.authYn,
       };
 
     default:

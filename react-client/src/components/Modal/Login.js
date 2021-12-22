@@ -1,7 +1,18 @@
 import { useDispatch } from "react-redux";
-import { setLoginModalDirectRegister } from "../../store/modal";
+import {
+  setLoginModalDirectRegister,
+  setLoginModalClose,
+} from "../../store/modal";
+import { setUser } from "../../store/user";
+import axios from "../../api";
+import React, { useState } from "react";
 
 const Login = (modals) => {
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+
   const dispatch = useDispatch();
 
   const onRegister = () => {
@@ -9,8 +20,32 @@ const Login = (modals) => {
     // $store.commit('SET_LOGIN_MODAL_DIRECT_REGISTER')
   };
 
-  const loginWithEmail = () => {
-    console.log(1);
+  const onChange = (e) => {
+    const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const loginWithEmail = async () => {
+    const data = await axios({
+      url: "/user/login",
+      method: "post",
+      data: {
+        email: inputs.email,
+        password: inputs.password,
+      },
+    });
+    // 로그인 에러 캐칭
+    if (data.error) {
+      alert(data.msg);
+      return;
+    }
+
+    dispatch(setUser(data));
+    dispatch(setLoginModalClose());
   };
 
   return (
@@ -28,8 +63,12 @@ const Login = (modals) => {
             </h2>
           </div>
           <div className="mt-8 space-y-6">
-            <input type="hidden" name="remember" value="true" />
-            <div className="rounded-md shadow-sm -space-y-px">
+            <div
+              className="rounded-md shadow-sm -spacsetInputs({
+  ...inputs,
+  [name]: value
+});e-y-px"
+            >
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email address
@@ -37,6 +76,7 @@ const Login = (modals) => {
                 <input
                   name="email"
                   type="email"
+                  onChange={onChange}
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
@@ -49,6 +89,7 @@ const Login = (modals) => {
                 <input
                   name="password"
                   type="password"
+                  onChange={onChange}
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
