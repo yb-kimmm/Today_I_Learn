@@ -1,13 +1,15 @@
 import LoginModal from "./Login";
 import RegisterModal from "./Register";
-import "../../assets/gnb.scss";
-import "../../assets/global.scss";
-import "../../assets/modal.scss";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { setLoginModalClose } from "../../store/modal";
 
-const LoginAndRegister = (modals) => {
-  const modal = modals.modal;
+const LoginAndRegister = () => {
+  const { modal } = useSelector(
+    (state) => ({
+      modal: state.modal,
+    }),
+    shallowEqual
+  );
 
   const dispatch = useDispatch();
 
@@ -56,28 +58,5 @@ const LoginAndRegister = (modals) => {
     </div>
   );
 };
-
-// import { mapState } from "vuex";
-
-// export default {
-//   components: {
-//       LoginModal,
-//       RegisterModal
-//   },
-//   computed: { ...mapState(["modal"]) },
-//   data() {
-//     return {
-//       leftTime: 180,
-//       displayTime: "3분",
-//       email: null,
-//       password: null,
-//       otpYn : false
-//       };
-//   },
-
-//   methods: {
-
-//   }
-// };
 
 export default LoginAndRegister;

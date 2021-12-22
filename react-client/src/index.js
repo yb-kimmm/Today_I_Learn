@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import "./index.css";
+import "./assets/gnb.scss";
+import "./assets/global.scss";
+import "./assets/modal.scss";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // * BrowserRouter 불러오기
