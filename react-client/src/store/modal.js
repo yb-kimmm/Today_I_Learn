@@ -43,26 +43,48 @@ export default function modal(state = initialState, action) {
     case SET_LOGIN_MODAL_OPEN:
       return {
         ...state,
+        login: {
+          show: true,
+          directLogin: true,
+        },
+        register: {
+          directRegister: false,
+        },
       };
     case SET_LOGIN_MODAL_DIRECT_LOGIN:
       return {
         ...state,
-        text: action.text,
+        login: {
+          directLogin: true,
+        },
+        register: {
+          directRegister: false,
+        },
       };
     case SET_LOGIN_MODAL_DIRECT_REGISTER:
       return {
         ...state,
-        list: state.list.concat(action.item),
+        login: {
+          directLogin: false,
+        },
+        register: {
+          directRegister: true,
+        },
       };
     case SET_LOGIN_MODAL_CLOSE:
       return {
         ...state,
-        list: state.list.concat(action.item),
+        login: {
+          directLogin: false,
+        },
+        register: {
+          directRegister: true,
+        },
       };
     case SET_WRITING_MODAL_STATE:
       return {
         ...state,
-        list: state.list.concat(action.item),
+        writing: action.display,
       };
 
     default:
