@@ -18,7 +18,10 @@ instance.interceptors.request.use(
     // 요청 에러 처리를 작성합니다.
     console.log(error);
     return Promise.reject(error);
-  },
+  }
+);
+
+instance.interceptors.response.use(
   function (response) {
     /*
       http status가 200인 경우
@@ -26,6 +29,16 @@ instance.interceptors.request.use(
       .then() 으로 이어집니다.
   */
     return response.data;
+  },
+
+  function (error) {
+    /*
+      http status가 200이 아닌 경우
+      응답 에러 처리를 작성합니다.
+      .catch() 으로 이어집니다.    
+  */
+    console.log(error);
+    return Promise.reject(error);
   }
 );
 
