@@ -1,15 +1,24 @@
 import { Link } from "react-router-dom";
 import styles from "../assets/gnb.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { setLoginModalOpen } from "../store/modal";
 // import { setUser } from "../store/user";
 import LoginAndRegister from "../components/Modal/LoginAndRegister";
 
 const Gnb = () => {
-  const { user, modal } = useSelector((state) => ({
-    user: state.user,
-    modal: state.modal,
-  }));
+  const { user, modal } = useSelector(
+    (state) => ({
+      user: state.user,
+      modal: state.modal,
+    }),
+    shallowEqual
+  );
+
+  let showAuthMenu = false;
+
+  if (user.authYn === "Y") {
+    showAuthMenu = true;
+  }
 
   const dispatch = useDispatch();
 
@@ -36,26 +45,27 @@ const Gnb = () => {
         </div>
 
         <div className="flex h-full items-center">
-          {user.authYn}
-          <Link to="/admin">
-            <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                />
-              </svg>
-              관리자
-            </button>
-          </Link>
+          {showAuthMenu ? (
+            <Link to="/admin">
+              <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                  />
+                </svg>
+                관리자
+              </button>
+            </Link>
+          ) : null}
 
           <Link to="/write">
             <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2  py-2">

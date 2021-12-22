@@ -20,7 +20,7 @@ export const setLoginModaldirectLogin = () => ({
   type: SET_LOGIN_MODAL_DIRECT_LOGIN, // 액션 객체에는 type 값이 필수입니다.
 });
 
-export const setLoginModalDerictRegister = () => ({
+export const setLoginModalDirectRegister = () => ({
   type: SET_LOGIN_MODAL_DIRECT_REGISTER, // 액션 객체에는 type 값이 필수입니다.
 });
 export const setLoginModalClose = () => ({
