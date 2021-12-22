@@ -1,4 +1,4 @@
-#login-modal {
+.loginModal {
   background: white;
   width: 520px;
   .body {
@@ -27,7 +27,7 @@
         padding: 12px;
       }
     }
-    .otp-btn {
+    .otpBtn {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -39,7 +39,7 @@
       width: 100%;
       height: 82px;
     }
-    .login-btn {
+    .loginBtn {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -52,7 +52,7 @@
       height: 64px;
       margin-bottom: 30px;
     }
-    .left-time {
+    .leftTime {
       text-align: center;
       color: rgb(55, 172, 201);
       font-size: 14px;

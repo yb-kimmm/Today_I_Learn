@@ -1,25 +1,21 @@
 import { Link } from "react-router-dom";
 import styles from "../assets/gnb.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../store/user";
+import { setLoginModalOpen } from "../store/modal";
+// import { setUser } from "../store/user";
+import LoginAndRegister from "../components/Modal/LoginAndRegister";
 
 const Gnb = () => {
-  const { authYn, email, nickname } = useSelector((state) => ({
-    authYn: state.user.authYn,
-    email: state.user.email,
-    nickname: state.user.nickname,
+  const { user, modal } = useSelector((state) => ({
+    user: state.user,
+    modal: state.modal,
   }));
-
-  const user = {
-    email: "1",
-    nickname: "1",
-  };
 
   const dispatch = useDispatch();
 
   const onClickLoginButton = () => {
-    if (!email) {
-      dispatch(setUser(user));
+    if (!user.email) {
+      dispatch(setLoginModalOpen());
 
       return;
     }
@@ -40,7 +36,7 @@ const Gnb = () => {
         </div>
 
         <div className="flex h-full items-center">
-          {authYn}
+          {user.authYn}
           <Link to="/admin">
             <button className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2">
               <svg
@@ -99,13 +95,10 @@ const Gnb = () => {
                 d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            {email}
-            {!email ? "로그인" : "로그아웃"}
+            {!user.email ? "로그인" : "로그아웃"}
           </button>
 
-          {/* </div>
-          <LoginModal />
-          <WritingModal /> */}
+          <LoginAndRegister modal={modal} />
         </div>
       </nav>
     </div>

@@ -16,8 +16,6 @@ function App() {
         method: "get",
       });
 
-      console.log(data);
-
       dispatch("SET_USER", data);
     } catch (e) {}
   };
