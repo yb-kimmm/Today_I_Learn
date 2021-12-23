@@ -134,7 +134,7 @@ const Register = () => {
                   name="company"
                   onChange={onChange}
                 >
-                  <option value="null">콘텐츠를 선택하세요.</option>
+                  <option value={null}>콘텐츠를 선택하세요.</option>
                   {totalCompany.map((company) => (
                     <option key={company._id} value={company._id}>
                       {company.name}

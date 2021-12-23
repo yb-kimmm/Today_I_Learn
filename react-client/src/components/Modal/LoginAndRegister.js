@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { setLoginModalClose } from "../../store/modal";
 
 const LoginAndRegister = (modals) => {
-  console.log(modals);
   const modal = modals.modal;
 
   const dispatch = useDispatch();

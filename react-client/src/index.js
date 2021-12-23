@@ -26,8 +26,6 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ); // 스토어를 만듭니다.
 
-console.log(store);
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
