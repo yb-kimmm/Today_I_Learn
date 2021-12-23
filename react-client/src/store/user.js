@@ -6,13 +6,13 @@ const initialState = {
 
 const SET_USER = "SET_USER";
 
-export const setUser = (user) => ({
+export const setUser = (user, token) => ({
   type: SET_USER, // 액션 객체에는 type 값이 필수입니다.
   user,
+  token,
 });
 
 export default function user(state = initialState, action) {
-  // console.log(action);
   // state 의 초깃값을 initialState 로 지정했습니다.
   switch (action.type) {
     case SET_USER:

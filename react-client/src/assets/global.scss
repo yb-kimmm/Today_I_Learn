@@ -61,3 +61,13 @@ picture {
     background-color: #222;
   }
 }
+
+#confirm-modal {
+  width: 320px;
+  padding: 24px;
+  background: white;
+  .btn-container {
+    display: flex;
+    margin-top: 30px;
+  }
+}

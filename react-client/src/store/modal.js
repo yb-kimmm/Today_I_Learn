@@ -65,6 +65,7 @@ export default function modal(state = initialState, action) {
       return {
         ...state,
         login: {
+          show: true,
           directLogin: false,
         },
         register: {

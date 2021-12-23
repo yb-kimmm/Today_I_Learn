@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "../assets/gnb.scss";
+import { useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { setLoginModalOpen } from "../store/modal";
-// import { setUser } from "../store/user";
+import { setUser } from "../store/user";
 import LoginAndRegister from "../components/Modal/LoginAndRegister";
 
 const Gnb = () => {
@@ -13,6 +14,13 @@ const Gnb = () => {
     }),
     shallowEqual
   );
+
+  useEffect(() => {
+    console.log("컴포넌트가 화면에 나타남");
+    return () => {
+      console.log("컴포넌트가 화면에서 사라짐");
+    };
+  }, [modal]);
 
   let showAuthMenu = false;
 
@@ -25,10 +33,21 @@ const Gnb = () => {
   const onClickLoginButton = () => {
     if (!user.email) {
       dispatch(setLoginModalOpen());
-
       return;
     }
-    this.logout();
+
+    logout();
+  };
+
+  const logout = () => {
+    let user = {
+      email: null,
+      nickname: null,
+      authYn: null,
+    };
+
+    dispatch(setUser(user));
+    alert("로그아웃");
   };
 
   return (
