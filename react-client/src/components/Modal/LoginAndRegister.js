@@ -1,15 +1,11 @@
 import LoginModal from "./Login";
 import RegisterModal from "./Register";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLoginModalClose } from "../../store/modal";
 
-const LoginAndRegister = () => {
-  const { modal } = useSelector(
-    (state) => ({
-      modal: state.modal,
-    }),
-    shallowEqual
-  );
+const LoginAndRegister = (modals) => {
+  console.log(modals);
+  const modal = modals.modal;
 
   const dispatch = useDispatch();
 

@@ -2,6 +2,7 @@ import Home from "./components/Home";
 import React, { useEffect } from "react";
 import axios from "./api";
 import { useDispatch } from "react-redux";
+import { setUser } from "./store/user";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,13 +17,19 @@ function App() {
         method: "get",
       });
 
-      dispatch("SET_USER", data);
+      const user = {
+        email: data.email,
+        authYn: data.authYn,
+        nickname: data.nickname,
+      };
+
+      dispatch(setUser(user, token));
     } catch (e) {}
   };
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  });
 
   return (
     <div>

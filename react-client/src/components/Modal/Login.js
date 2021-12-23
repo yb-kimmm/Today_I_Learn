@@ -7,7 +7,7 @@ import { setUser } from "../../store/user";
 import axios from "../../api";
 import React, { useState } from "react";
 
-const Login = (modals) => {
+const Login = () => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -17,7 +17,6 @@ const Login = (modals) => {
 
   const onRegister = () => {
     dispatch(setLoginModalDirectRegister());
-    // $store.commit('SET_LOGIN_MODAL_DIRECT_REGISTER')
   };
 
   const onChange = (e) => {
@@ -44,7 +43,7 @@ const Login = (modals) => {
       return;
     }
 
-    dispatch(setUser(data));
+    dispatch(setUser(data, data.token));
     dispatch(setLoginModalClose());
   };
 
@@ -63,12 +62,7 @@ const Login = (modals) => {
             </h2>
           </div>
           <div className="mt-8 space-y-6">
-            <div
-              className="rounded-md shadow-sm -spacsetInputs({
-  ...inputs,
-  [name]: value
-});e-y-px"
-            >
+            <div className="rounded-md shadow-sm -spac">
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email address
