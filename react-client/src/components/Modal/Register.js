@@ -16,6 +16,10 @@ const Register = () => {
 
   const dispatch = useDispatch();
 
+  const onClickLoginButton = () => {
+    dispatch(setLoginModalClose());
+  };
+
   const fetchHotels = async () => {
     try {
       // 요청 처음에 초기화
@@ -71,64 +75,137 @@ const Register = () => {
 
   return (
     <div>
-      <div>
-        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md w-full space-y-8">
+      <section className="flex max-h-full">
+        <main className="w-96 bg-yellow-300 p-7 space-y-5 hidden md:block">
+          <header>
+            <nav className="p-3">
+              <h4 className="text-xl text-white font-normal uppercase">
+                Laibrus
+              </h4>
+            </nav>
+          </header>
+
+          <div className="p-3 my7 space-y-6">
+            <h1 className="text-2xl  text-white font-semibold">
+              The best resource for finding a book
+            </h1>
+            <p className="text-white text-sm">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+              iusto nostrum sit placeat reprehenderit temporibus, fuga nihil
+              mollitia id culpa?
+            </p>
+          </div>
+
+          <div>
+            <img src={require("../../static/icon/reader.png")} alt="reader" />
+          </div>
+        </main>
+
+        <main className="flex-auto bg-white space-y-7 p-2">
+          <header className="py-5 px-5 my-4 flex flex-col items-end justify-items-end">
+            <button onClick={onClickLoginButton} className="closeBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </header>
+
+          <div className="flex items-center justify-center p-5">
+            <h4 className="text-3xl font-black text-black">Sign Up</h4>
+          </div>
+
+          <section className="flex flex-col items-center justify-center">
             <div>
-              <img
-                className="mx-auto h-12 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt="Workflow"
-              />
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Sign in to your account
-              </h2>
-            </div>
-            <input type="hidden" name="remember" value="true" />
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label for="email-address" className="sr-only">
-                  Email address
-                </label>
+              <div className="relative mt-1">
                 <input
                   onChange={onChange}
                   name="email"
                   type="email"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-yellow-400 font-light"
                   placeholder="Email address"
                 />
-              </div>
 
-              <div>
-                <label for="nickname" className="sr-only">
-                  nickname
-                </label>
+                <svg
+                  className="w-4 h-4 absolute top-0 m-3 text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <div className="relative mt-1 mb-2">
                 <input
                   onChange={onChange}
                   name="nickname"
                   type="text"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-red-400 font-light"
                   placeholder="nickname"
                 />
-              </div>
 
-              <div>
-                <label for="password" className="sr-only">
-                  Password
-                </label>
+                <svg
+                  className="w-4 h-4 absolute top-0 m-3 text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <div className="relative mt-1 mb-2">
                 <input
-                  onChange={onChange}
                   name="password"
                   type="password"
+                  onChange={onChange}
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-red-400 font-light"
                   placeholder="Password"
                 />
-              </div>
 
-              <div className="relative">
+                <svg
+                  className="w-4 h-4 absolute top-0 m-3 text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <div className="relative mt-1 mb-2">
                 <select
                   className="block appearance-none w-full  bg-gray-200 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   name="company"
@@ -141,51 +218,18 @@ const Register = () => {
                     </option>
                   ))}
                 </select>
-
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                    />
-                  </svg>
-                </div>
               </div>
             </div>
 
-            <div>
-              <button
-                onClick={createRegister}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <svg
-                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                    />
-                  </svg>
-                </span>
-                Sign up
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+            <button
+              onClick={createRegister}
+              className="focus:outline-none bg-yellow-300 focus:bg-yellow-400 focus:ring focus:ring-yellow-100 w-80 h-9 text-white rounded"
+            >
+              Sign Up
+            </button>
+          </section>
+        </main>
+      </section>
     </div>
   );
 };
