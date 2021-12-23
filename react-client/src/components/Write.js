@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import { Editor } from "@toast-ui/react-editor";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -99,15 +98,15 @@ const Write = () => {
             {/* <ChevronDownIcon /> */}
           </button>
 
-          <div className="absolute overflow-auto	border-b-1 border-b-solid border-b-sky h-full max-h-72">
+          {/* <div className="absolute overflow-auto	border-b-1 border-b-solid border-b-sky h-full max-h-72">
             {totalBoard.map((board) => (
               <div key={board._id}>{board.title}</div>
             ))}
-          </div>
-        </div>
+          </div> */}
 
-        <input type="text" name="title" placeholder="제목을 입력해주세요." />
-        <input type="hidden" name="content" />
+          <input type="text" name="title" placeholder="제목을 입력해주세요." />
+          <input type="hidden" name="content" />
+        </div>
 
         <Editor
           previewStyle="vertical"
