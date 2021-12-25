@@ -3,7 +3,7 @@ import React from "react";
 function Home() {
   return (
     <div>
-      <div className="container mx-auto px-44 my-4 ">
+      <div className="container mx-auto my-4 max-w-screen-xl">
         <img
           src={require("../static/main/okinawa.png")}
           alt=""

@@ -66,6 +66,7 @@ router.get("/article/:key", async (req, res) => {
 // 게시글 추가
 router.post("/article/create", async (req, res) => {
   const { title, content, board, image } = req.body;
+
   const { authorization } = req.headers;
 
   if (!authorization) {

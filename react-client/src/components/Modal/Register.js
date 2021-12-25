@@ -3,6 +3,9 @@ import axios from "../../api";
 import { useState, useEffect } from "react";
 import { setLoginModalClose } from "../../store/modal";
 
+// import { Listbox, Transition } from "@headlessui/react";
+// import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+
 import { useDispatch } from "react-redux";
 
 const Register = () => {
@@ -76,7 +79,7 @@ const Register = () => {
   return (
     <div>
       <section className="flex max-h-full">
-        <main className="w-96 bg-yellow-300 p-7 space-y-5 hidden md:block">
+        <main className="w-96 bg-sky-900 p-7 space-y-5 hidden md:block">
           <header>
             <nav className="p-3">
               <h4 className="text-xl text-white font-normal uppercase">
@@ -133,12 +136,12 @@ const Register = () => {
                   name="email"
                   type="email"
                   required
-                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-yellow-400 font-light"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-sky-900 font-light"
                   placeholder="Email address"
                 />
 
                 <svg
-                  className="w-4 h-4 absolute top-0 m-3 text-gray-300"
+                  className="w-4 h-4 absolute top-0 m-3 text-gray-900"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -159,12 +162,12 @@ const Register = () => {
                   name="nickname"
                   type="text"
                   required
-                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-red-400 font-light"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-sky-900 font-light"
                   placeholder="nickname"
                 />
 
                 <svg
-                  className="w-4 h-4 absolute top-0 m-3 text-gray-300"
+                  className="w-4 h-4 absolute top-0 m-3 text-gray-900"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -185,12 +188,12 @@ const Register = () => {
                   type="password"
                   onChange={onChange}
                   required
-                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-red-400 font-light"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-sky-900 font-light"
                   placeholder="Password"
                 />
 
                 <svg
-                  className="w-4 h-4 absolute top-0 m-3 text-gray-300"
+                  className="w-4 h-4 absolute top-0 m-3 text-gray-900"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -205,25 +208,36 @@ const Register = () => {
             </div>
 
             <div>
-              <div className="relative mt-1 mb-2">
-                <select
-                  className="block appearance-none w-full  bg-gray-200 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  name="company"
-                  onChange={onChange}
-                >
-                  <option value={null}>콘텐츠를 선택하세요.</option>
-                  {totalCompany.map((company) => (
-                    <option key={company._id} value={company._id}>
-                      {company.name}
-                    </option>
-                  ))}
-                </select>
+              <div className="md:flex md:items-center mb-6">
+                <div className="">
+                  <label
+                    className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4"
+                    for="inline-password"
+                  >
+                    회사
+                  </label>
+                </div>
+
+                <div className="relative mt-1 mb-2">
+                  <select
+                    className="block appearance-none w-full  bg-gray-200 border border-gray-900 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    name="company"
+                    onChange={onChange}
+                  >
+                    <option value={null}>콘텐츠를 선택하세요.</option>
+                    {totalCompany.map((company) => (
+                      <option key={company._id} value={company._id}>
+                        {company.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
             <button
               onClick={createRegister}
-              className="focus:outline-none bg-yellow-300 focus:bg-yellow-400 focus:ring focus:ring-yellow-100 w-80 h-9 text-white rounded"
+              className="focus:outline-none bg-sky-900 focus:bg-sky-900 focus:ring focus:ring-sky-100 w-80 h-9 text-white rounded"
             >
               Sign Up
             </button>
