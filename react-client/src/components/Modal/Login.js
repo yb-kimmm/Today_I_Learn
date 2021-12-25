@@ -54,7 +54,7 @@ const Login = () => {
   return (
     <div>
       <section className="flex max-h-full">
-        <main className="w-96 bg-yellow-300 p-7 space-y-5 hidden md:block">
+        <main className="w-96 bg-sky-900 p-7 space-y-5 hidden md:block">
           <header>
             <nav className="p-3">
               <h4 className="text-xl text-white font-normal uppercase">
@@ -111,7 +111,7 @@ const Login = () => {
                   type="email"
                   onChange={onChange}
                   required
-                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-yellow-400 font-light"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-sky-900 font-light"
                   placeholder="Email address"
                 />
 
@@ -122,9 +122,9 @@ const Login = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
@@ -137,7 +137,7 @@ const Login = () => {
                   type="password"
                   onChange={onChange}
                   required
-                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-red-400 font-light"
+                  className="p-4 w-80 h-10 rounded pl-10 text-sm focus:outline-none border border-gray-200 focus:border-red-900 font-light"
                   placeholder="Password"
                 />
 
@@ -148,9 +148,9 @@ const Login = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
@@ -158,38 +158,38 @@ const Login = () => {
 
             <button
               onClick={loginWithEmail}
-              className="focus:outline-none bg-yellow-300 focus:bg-yellow-400 focus:ring focus:ring-yellow-100 w-80 h-9 text-white rounded"
+              className="focus:outline-none bg-sky-700 focus:bg-sky-900 focus:ring focus:ring-sky-100 w-80 h-9 text-white rounded"
             >
               Log in
             </button>
           </section>
 
           <section className="flex flex-col items-center justify-center space-y-4">
-            <h2 className="text-gray-400">
+            <h2 className="text-gray-900">
               <span> or login with</span>
             </h2>
             <div>
               <ul className="flex items-center justify-around space-x-5">
                 <button>
-                  <li className="border border-yellow-400 w-10 h-10 rounded flex items-center justify-center text-yellow-400 hover:bg-yellow-400 hover:text-white">
+                  <li className="border border-sky-900 w-10 h-10 rounded flex items-center justify-center text-sky-900 hover:bg-sky-900 hover:text-white">
                     <i className="fab fa-google"></i>
                   </li>
                 </button>
 
                 <button>
-                  <li className="border border-yellow-400 w-10 h-10 rounded flex items-center justify-center text-yellow-400 hover:bg-yellow-400 hover:text-white">
+                  <li className="border border-sky-900 w-10 h-10 rounded flex items-center justify-center text-sky-900 hover:bg-sky-900 hover:text-white">
                     <i className="fab fa-facebook-f"></i>
                   </li>
                 </button>
 
                 <button>
-                  <li className="border border-yellow-400 w-10 h-10 rounded flex items-center justify-center text-yellow-400 hover:bg-yellow-400 hover:text-white">
+                  <li className="border border-sky-900 w-10 h-10 rounded flex items-center justify-center text-sky-900 hover:bg-sky-900 hover:text-white">
                     <i className="fab fa-linkedin"></i>
                   </li>
                 </button>
 
                 <button>
-                  <li className="border border-yellow-400 w-10 h-10 rounded flex items-center justify-center text-yellow-400 hover:bg-yellow-400 hover:text-white">
+                  <li className="border border-sky-900 w-10 h-10 rounded flex items-center justify-center text-sky-900 hover:bg-sky-900 hover:text-white">
                     <i className="fab fa-apple"></i>
                   </li>
                 </button>
@@ -200,7 +200,7 @@ const Login = () => {
               <span className="text-sm font-light">Don't have an account?</span>{" "}
               <button
                 onClick={onRegister}
-                className="text-yellow-500 hover:text-yellow-600 text-sm font-light hover:underline"
+                className="text-sky-900 hover:text-sky-900 text-sm font-light hover:underline"
               >
                 Sign up
               </button>
