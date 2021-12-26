@@ -9,11 +9,11 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import Confirm from "./Modal/Confirm";
 
 import axios from "../api";
+
 import { useDispatch } from "react-redux";
+import { setWritingModalState } from "../store/modal";
 
 import { RadioGroup } from "@headlessui/react";
-
-import { setWritingModalState } from "../store/modal";
 
 const Write = () => {
   const [totalBoard, setTotalBoard] = useState([]);
@@ -75,20 +75,11 @@ const Write = () => {
       },
     });
 
-    console.log(data);
-
     if (!data) {
       return;
     }
 
     dispatch(setWritingModalState());
-  };
-
-  const confirmUploadModal = () => {
-    this.showConfirmModal = true;
-    this.confirmTitle = `'${
-      this.boardList[this.currentSelectedBoard].title
-    }'에 글을 등록하시겠습니까?`;
   };
 
   function CheckIcon(props) {
@@ -235,7 +226,7 @@ const Write = () => {
           </button>
         </div>
       </div>
-      <Confirm />
+      <Confirm title={"asd"} />
     </div>
   );
 };
