@@ -62,12 +62,13 @@ picture {
   }
 }
 
-#confirm-modal {
+.confirmModal {
   width: 320px;
   padding: 24px;
   background: white;
-  .btn-container {
+  .btnContainer {
     display: flex;
     margin-top: 30px;
+    justify-content: end;
   }
 }
