@@ -7,18 +7,11 @@ import "./assets/global.scss";
 import "./assets/modal.scss";
 
 import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // * BrowserRouter 불러오기
 
 //redux
 import { createStore } from "redux";
 import rootReducer from "./store";
 import { Provider } from "react-redux";
-
-//componenet
-import Home from "./components/Home";
-import Admin from "./components/Admin";
-import Write from "./components/Write";
-import Gnb from "./components/Gnb";
 
 const store = createStore(
   rootReducer,
@@ -27,17 +20,9 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <Gnb />
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="home" element={<Home />} />
-          <Route path="write" element={<Write />} />
-          <Route path="admin" element={<Admin />} />
-        </Routes>
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

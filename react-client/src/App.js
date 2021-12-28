@@ -1,8 +1,14 @@
-import Home from "./components/Home";
 import React, { useEffect } from "react";
 import axios from "./api";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/user";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // * BrowserRouter 불러오기
+//componenet
+import Home from "./components/Home";
+import Admin from "./components/Admin";
+import Write from "./components/Write";
+import Gnb from "./components/Gnb";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,9 +38,14 @@ function App() {
   });
 
   return (
-    <div>
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Gnb />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="write" element={<Write />} />
+        <Route path="admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
