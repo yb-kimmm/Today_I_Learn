@@ -7,6 +7,7 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 
 import "tui-color-picker/dist/tui-color-picker.css";
 import Confirm from "./Modal/Confirm";
+import Button from "./common/Button";
 
 import axios from "../api";
 
@@ -196,6 +197,10 @@ const Write = () => {
         />
 
         <div className="mx-auto x-full py-10 justify-end flex">
+          {/* <Button title={"취소"} color={"red"} />
+
+          <Button onClickFn={uploadArticle} title={"작성"} color={"sky"} /> */}
+
           <button className="flex text-red-900 hover:text-white border border-red-900 hover:bg-red-900 focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-red-900 dark:text-red-900 dark:hover:text-white dark:hover:bg-red-900 dark:focus:ring-red-900">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -222,7 +227,6 @@ const Write = () => {
             >
               <path d="M5 13l4 4L19 7" />
             </svg>
-            작성
           </button>
         </div>
       </div>
