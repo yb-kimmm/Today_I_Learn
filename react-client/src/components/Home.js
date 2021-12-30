@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "../api";
+import TabUI from "./common/TabUI";
 import { useEffect, useState } from "react";
 
 function Home() {
   const [boardList, setBoardList] = useState([]);
-  console.log(boardList);
 
   const fetchHotels = async () => {
     try {
@@ -16,9 +16,7 @@ function Home() {
         method: "get",
       });
 
-      console.log(data.content[0].content);
-
-      setBoardList(data);
+      setBoardList(data.content);
     } catch (e) {
       console.err(e);
     }
@@ -36,12 +34,8 @@ function Home() {
           alt=""
           className="mx-auto justify-center items-end pb-4 flex rounded-3xl "
         />
-      </div>
-      <div>
-        {/* {boardList.map(
-          (board) => console.log(board)
-          // <div>{board.title}</div>
-        )} */}
+
+        <TabUI prop={boardList} />
       </div>
     </div>
   );
