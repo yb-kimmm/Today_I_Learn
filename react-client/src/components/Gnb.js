@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "../assets/gnb.scss";
-import { useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { setLoginModalOpen } from "../store/modal";
 import { setUser } from "../store/user";
 
 import LoginAndRegister from "../components/Modal/LoginAndRegister";
-import Button from "./common/Button";
 
 const Gnb = () => {
   const { user, modal } = useSelector(
@@ -101,12 +99,12 @@ const Gnb = () => {
             </button>
           </Link>
 
-          <Button
+          {/* <Button
             onClickFn={onClickLoginButton}
             title={!user.email ? "로그인" : "로그아웃"}
             color={"blue"}
-          />
-          {/* <button
+          /> */}
+          <button
             onClick={onClickLoginButton}
             className="hover:bg-light-blue-200 hover:text-light-blue-800 group flex items-center rounded-md bg-light-blue-100 text-light-blue-600 text-sm font-medium px-2 py-2"
           >
@@ -124,8 +122,8 @@ const Gnb = () => {
                 d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            {}
-          </button> */}
+            {!user.email ? "로그인" : "로그아웃"}
+          </button>
 
           <LoginAndRegister modal={modal} />
         </div>
