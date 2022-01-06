@@ -7,7 +7,6 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 
 import "tui-color-picker/dist/tui-color-picker.css";
 import Confirm from "./Modal/Confirm";
-import Button from "./common/Button";
 
 import axios from "../api";
 
