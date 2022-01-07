@@ -9,6 +9,10 @@ function classNames(...classes) {
 const TabUI = ({ prop }) => {
   const boardList = prop;
 
+  const onClickArticle = async (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="max-w-md px-2 py-16 sm:px-0 w-72">
       <Tab.Group>
@@ -39,18 +43,17 @@ const TabUI = ({ prop }) => {
                 "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-sky-700 ring-white ring-opacity-60"
               )}
             >
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <div
+                className="max-w-sm rounded overflow-hidden shadow-lg"
+                key={board.content[idx]._id}
+              >
                 <img
                   className="w-full"
                   src={require("../../static/main/default.jpg")}
-                  // src="/img/card-top.jpg"
                   alt="Sunset in the mountains"
                 />
                 <div className="px-6 py-4">
-                  <div
-                    key={board.content[idx]._id}
-                    className="font-bold text-xl mb-2"
-                  >
+                  <div className="font-bold text-xl mb-2">
                     {board.content[idx].title}
                   </div>
                   <p className="text-gray-700 text-base">
@@ -77,7 +80,7 @@ const TabUI = ({ prop }) => {
                       {board.content[idx].createdAt}
                     </Moment>
                   </span>
-                  <span class="inline-flex rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
+                  <span className="inline-flex rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 mr-1 pb-1"
