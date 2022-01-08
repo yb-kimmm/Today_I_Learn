@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Admin from "./components/Admin";
 import Write from "./components/Write";
 import Gnb from "./components/Gnb";
+import Article from "./components/Article";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="write" element={<Write />} />
         <Route path="admin" element={<Admin />} />
+        
+        <Route path="article" element={<Article />}>
+          <Route path=":article" element={<Article />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
