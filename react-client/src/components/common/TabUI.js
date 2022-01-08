@@ -36,9 +36,9 @@ const TabUI = ({ prop }) => {
         className="mt-2"
         >
           {boardList.map((board, idx) => (
-            <Link  to={`/article/${board.content[idx].key}`} key={board.content[idx]._id}>
+            <Link  to={`/article/${board.content[idx].key}`} key={board.content[idx].key}>
               <Tab.Panel
-                key={board.content[idx]._id}
+                key={board.content[idx].key}
                 className={classNames(
                   "bg-white rounded-xl p-3",
                   "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-sky-700 ring-white ring-opacity-60"
@@ -46,7 +46,6 @@ const TabUI = ({ prop }) => {
               >
                 <div
                   className="max-w-sm rounded overflow-hidden shadow-lg"
-                  key={board.content[idx]._id}
                 >
                   <img
                     className="w-full"
