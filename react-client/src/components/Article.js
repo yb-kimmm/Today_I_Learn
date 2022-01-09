@@ -3,6 +3,7 @@ import axios from "../api";
 import { Viewer } from "@toast-ui/react-editor";
 import { useEffect, useState } from "react";
 import Moment from "react-moment";
+import "../assets/board.scss";
 
 const Article = () => {
   const params = useParams();
@@ -112,7 +113,7 @@ const Article = () => {
         </div>
       </div>
 
-      <div className="w-8/12 justify-center mx-auto mt-24 text-xl">
+      <div className="w-6/12 justify-center mx-auto mt-24 text-xl">
         <Viewer initialValue={article.content} />
       </div>
     </div>

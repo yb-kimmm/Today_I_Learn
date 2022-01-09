@@ -9,9 +9,7 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import Confirm from "./Modal/Confirm";
 
 import axios from "../api";
-
-import { useDispatch } from "react-redux";
-import { setWritingModalState } from "../store/modal";
+import { useNavigate } from "react-router-dom";
 
 import { RadioGroup } from "@headlessui/react";
 
@@ -33,7 +31,6 @@ const Write = () => {
     });
   };
 
-  const dispatch = useDispatch();
   const editorRef = useRef();
 
   const fetchHotels = async () => {
@@ -53,6 +50,8 @@ const Write = () => {
   useEffect(() => {
     fetchHotels();
   }, []);
+
+  let navigate = useNavigate();
 
   const uploadArticle = async () => {
     const html = editorRef.current.getInstance().getHtml();
@@ -79,7 +78,7 @@ const Write = () => {
       return;
     }
 
-    dispatch(setWritingModalState());
+    navigate(`/article/${data.key}`);
   };
 
   function CheckIcon(props) {
@@ -226,6 +225,7 @@ const Write = () => {
             >
               <path d="M5 13l4 4L19 7" />
             </svg>
+            작성
           </button>
         </div>
       </div>
