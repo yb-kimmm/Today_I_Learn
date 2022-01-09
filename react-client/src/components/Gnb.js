@@ -128,6 +128,8 @@ const Gnb = () => {
           <LoginAndRegister modal={modal} />
         </div>
       </nav>
+
+      <hr />
     </div>
   );
 };
