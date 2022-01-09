@@ -17,9 +17,7 @@ function Home() {
       });
 
       setBoardList(data.content);
-    } catch (e) {
-      console.err(e);
-    }
+    } catch (e) {}
   };
 
   useEffect(() => {

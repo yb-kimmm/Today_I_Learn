@@ -6,14 +6,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
 const TabUI = ({ prop }) => {
   const boardList = prop;
 
   return (
     <div className="max-w-md px-2 py-16 sm:px-0 w-72">
       <Tab.Group>
-      
         <Tab.List className="flex p-1 space-x-1 bg-sky-900 rounded-xl">
           {boardList.map((board) => (
             <Tab
@@ -32,11 +30,12 @@ const TabUI = ({ prop }) => {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels 
-        className="mt-2"
-        >
+        <Tab.Panels className="mt-2">
           {boardList.map((board, idx) => (
-            <Link  to={`/article/${board.content[idx].key}`} key={board.content[idx].key}>
+            <Link
+              to={`/article/${board.content[idx].key}`}
+              key={board.content[idx].key}
+            >
               <Tab.Panel
                 key={board.content[idx].key}
                 className={classNames(
@@ -44,9 +43,7 @@ const TabUI = ({ prop }) => {
                   "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-sky-700 ring-white ring-opacity-60"
                 )}
               >
-                <div
-                  className="max-w-sm rounded overflow-hidden shadow-lg"
-                >
+                <div className="max-w-sm rounded overflow-hidden shadow-lg">
                   <img
                     className="w-full"
                     src={require("../../static/main/default.jpg")}
