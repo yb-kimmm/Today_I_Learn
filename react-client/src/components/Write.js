@@ -12,6 +12,15 @@ import axios from "../api";
 import { useNavigate } from "react-router-dom";
 
 import { RadioGroup } from "@headlessui/react";
+import tw from "tailwind-styled-components";
+
+const BlueButton = tw.button`
+  flex justify-end text-sky-700 hover:text-white border border-sky-900 hover:bg-sky-900 focus:ring-4 focus:ring-sky-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-sky-900 dark:text-sky-900 dark:hover:text-white dark:hover:bg-sky-900 dark:focus:ring-sky-900
+`;
+
+const RedButton = tw.button`
+  flex text-red-900 hover:text-white border border-red-900 hover:bg-red-900 focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-red-900 dark:text-red-900 dark:hover:text-white dark:hover:bg-red-900 dark:focus:ring-red-900
+`;
 
 const Write = () => {
   const [totalBoard, setTotalBoard] = useState([]);
@@ -195,11 +204,7 @@ const Write = () => {
         />
 
         <div className="mx-auto x-full py-10 justify-end flex">
-          {/* <Button title={"취소"} color={"red"} />
-
-          <Button onClickFn={uploadArticle} title={"작성"} color={"sky"} /> */}
-
-          <button className="flex text-red-900 hover:text-white border border-red-900 hover:bg-red-900 focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-red-900 dark:text-red-900 dark:hover:text-white dark:hover:bg-red-900 dark:focus:ring-red-900">
+          <RedButton>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 px-1"
@@ -210,12 +215,9 @@ const Write = () => {
               <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             취소
-          </button>
+          </RedButton>
 
-          <button
-            onClick={uploadArticle}
-            className="flex justify-end text-sky-700 hover:text-white border border-sky-900 hover:bg-sky-900 focus:ring-4 focus:ring-sky-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-sky-900 dark:text-sky-900 dark:hover:text-white dark:hover:bg-sky-900 dark:focus:ring-sky-900"
-          >
+          <BlueButton onClick={uploadArticle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 px-1"
@@ -226,7 +228,7 @@ const Write = () => {
               <path d="M5 13l4 4L19 7" />
             </svg>
             작성
-          </button>
+          </BlueButton>
         </div>
       </div>
       <Confirm title={"asd"} />
