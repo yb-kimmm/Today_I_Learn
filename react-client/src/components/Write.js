@@ -13,6 +13,20 @@ import { useNavigate } from "react-router-dom";
 
 import { RadioGroup } from "@headlessui/react";
 import tw from "tailwind-styled-components";
+import AWS from "aws-sdk";
+
+const S3_BUCKET = "nanyb-bucket";
+const REGION = "ap-northeast-2";
+
+// AWS.config.update({
+//   accessKeyId: "AKIA5EITWKEV6X6JNGFO",
+//   secretAccessKey: "9EGk8bW2p4kNQkHBW8OWkuGicP3N36cbB13H",
+// });
+
+// const myBucket = new AWS.S3({
+//   params: { Bucket: S3_BUCKET },
+//   region: REGION,
+// });
 
 const BlueButton = tw.button`
   flex justify-end text-sky-700 hover:text-white border border-sky-900 hover:bg-sky-900 focus:ring-4 focus:ring-sky-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-sky-900 dark:text-sky-900 dark:hover:text-white dark:hover:bg-sky-900 dark:focus:ring-sky-900
@@ -42,6 +56,53 @@ const Write = () => {
 
   const editorRef = useRef();
 
+  if (editorRef.current) {
+    editorRef.current
+      .getInstance()
+      .addHook("addImageBlobHook", (blob, callback) => {
+        (async () => {
+          let formData = new FormData();
+          formData.append("file", blob);
+
+          console.log(formData);
+
+          console.log("이미지가 업로드 됐습니다.");
+
+          // const params = {
+          //   ACL: "public-read",
+          //   Body: formData,
+          //   Bucket: S3_BUCKET,
+          //   Key: formData.name,
+          // };
+
+          // myBucket
+          //   .putObject(params)
+          //   .on("httpUploadProgress", (evt) => {
+          //     // setProgress(Math.round((evt.loaded / evt.total) * 100))
+          //   })
+          //   .send((err) => {
+          //     if (err) console.log(err);
+          //   });
+
+          const { data: filename } = await axios({
+            headers: { "content-type": "multipart/formdata" },
+            data: formData,
+            url: "/upload/file",
+            method: "post",
+          });
+          .then((response) => {
+            console.log(response);
+          });
+
+          const imageUrl = `/file/upload/` + filename;
+
+          // // Image 를 가져올 수 있는 URL 을 callback 메서드에 넣어주면 자동으로 이미지를 가져온다.
+          callback(imageUrl, "iamge");
+        })();
+
+        return false;
+      });
+  }
   const fetchHotels = async () => {
     try {
       // 요청 처음에 초기화
