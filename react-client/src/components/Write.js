@@ -13,10 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 import { RadioGroup } from "@headlessui/react";
 import tw from "tailwind-styled-components";
-import AWS from "aws-sdk";
 
-const S3_BUCKET = "nanyb-bucket";
-const REGION = "ap-northeast-2";
+// const S3_BUCKET = "nanyb-bucket";
+// const REGION = "ap-northeast-2";
 
 // AWS.config.update({
 //   accessKeyId: "AKIA5EITWKEV6X6JNGFO",
@@ -39,6 +38,7 @@ const RedButton = tw.button`
 const Write = () => {
   const [totalBoard, setTotalBoard] = useState([]);
   const [selected, setSelected] = useState();
+  const [thumbImageUrl, setThumbImageUrl] = useState();
   const [inputs, setInputs] = useState({
     title: "",
     content: "",
@@ -84,20 +84,23 @@ const Write = () => {
           //     if (err) console.log(err);
           //   });
 
-          const { data: filename } = await axios({
+          const data = await axios({
             headers: { "content-type": "multipart/formdata" },
             data: formData,
             url: "/upload/file",
             method: "post",
           });
-          .then((response) => {
-            console.log(response);
-          });
 
-          const imageUrl = `/file/upload/` + filename;
+          console.log(data);
+          const imageUrl = `http://localhost:8080/uploads/` + data.filename;
 
+          // 처음 등록한 이미지를 thumbNailUrl로..
+          // Todo 처음 등록한 이미지가 아닌 썸네일 등록할 수 있는 페이지 구현 예정
+          if (!thumbImageUrl) {
+            setThumbImageUrl(imageUrl);
+          }
           // // Image 를 가져올 수 있는 URL 을 callback 메서드에 넣어주면 자동으로 이미지를 가져온다.
-          callback(imageUrl, "iamge");
+          callback(imageUrl, "alt text");
         })();
 
         return false;
@@ -141,6 +144,7 @@ const Write = () => {
         content: inputs.content,
         board: inputs.board,
         title: inputs.title,
+        thumbImageUrl: thumbImageUrl,
       },
     });
 
@@ -193,6 +197,12 @@ const Write = () => {
 
           <input type="hidden" name="board" onChange={onChange} />
           <input type="hidden" name="content" onChange={onChange} />
+          <input
+            type="text"
+            name="thumbImageUrl"
+            onChange={onChange}
+            value={thumbImageUrl}
+          />
         </div>
 
         <div className="min-h-30 h-30 ">
