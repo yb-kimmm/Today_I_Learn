@@ -65,7 +65,7 @@ router.get("/article/:key", async (req, res) => {
 
 // 게시글 추가
 router.post("/article/create", async (req, res) => {
-  const { title, content, board, image } = req.body;
+  const { title, content, board, thumbImageUrl } = req.body;
 
   const { authorization } = req.headers;
 
@@ -88,7 +88,7 @@ router.post("/article/create", async (req, res) => {
       title,
       content,
       board,
-      articleImgAddress: image,
+      thumbImageUrl,
     };
     const newArticle = await Article(payload).save();
     res.send(newArticle);

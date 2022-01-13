@@ -14,8 +14,6 @@ const TabUI = ({ prop }) => {
 
   if (!articleList) return <div>123</div>;
 
-  console.log(boardList);
-
   return (
     <div className="max-w-md px-2 py-16 sm:px-0 w-72">
       <Tab.Group>
@@ -48,9 +46,14 @@ const TabUI = ({ prop }) => {
               {Object.values(board.content).map((article, idx) => (
                 <Link to={`/article/${article.key}`} key={article.key}>
                   <div className="max-w-sm rounded overflow-hidden shadow-lg mb-8">
+                    {/* {article.thumbImageUrl ? } */}
                     <img
                       className="w-full"
-                      src={require("../../static/main/default.jpg")}
+                      src={
+                        article.thumbImageUrl
+                          ? article.thumbImageUrl
+                          : require("../../static/main/default.jpg")
+                      }
                       alt="Sunset in the mountains"
                     />
                     <div className="px-6 py-4">
