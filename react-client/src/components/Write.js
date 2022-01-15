@@ -91,15 +91,15 @@ const Write = () => {
             method: "post",
           });
 
-          console.log(data);
-          const imageUrl = `http://localhost:8080/uploads/` + data.filename;
+          // console.log(data.data);
+          const imageUrl = data.data.filename;
 
           // 처음 등록한 이미지를 thumbNailUrl로..
           // Todo 처음 등록한 이미지가 아닌 썸네일 등록할 수 있는 페이지 구현 예정
           if (!thumbImageUrl) {
             setThumbImageUrl(imageUrl);
           }
-          // // Image 를 가져올 수 있는 URL 을 callback 메서드에 넣어주면 자동으로 이미지를 가져온다.
+          // Image 를 가져올 수 있는 URL 을 callback 메서드에 넣어주면 자동으로 이미지를 가져온다.
           callback(imageUrl, "alt text");
         })();
 
@@ -198,7 +198,7 @@ const Write = () => {
           <input type="hidden" name="board" onChange={onChange} />
           <input type="hidden" name="content" onChange={onChange} />
           <input
-            type="text"
+            type="hidden"
             name="thumbImageUrl"
             onChange={onChange}
             value={thumbImageUrl}
