@@ -1,4 +1,5 @@
 const express = require("express");
+const formidable = require("express-formidable");
 const cors = require("cors");
 const {
   article,
@@ -31,6 +32,8 @@ app.use(user);
 app.use(comment);
 app.use(reply);
 app.use(common);
+
+app.use(formidable());
 
 app.get("/", (req, res) => {
   res.send("Server is Running!");
