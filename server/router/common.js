@@ -43,34 +43,50 @@ router.post("/upload/file", upload.single("file"), function (req, res, next) {
     if (!check) {
       // 폴더 생성
       makeFolderS3Bucket();
-    } else {
-      const raw = req.file;
-      const buffer = req.file.buffer;
-      const filename = req.file.originalname + "_" + new Date().getTime();
-
-      s3.upload({
-        Bucket: BUCKET_NAME,
-        Key: "assets/" + filename, // ex) assets/
-        Body: buffer, // input.files[0]
-      })
-        .on("httpUploadProgress", (evt) => {
-          // parseInt((evt.loaded * 100) / evt.total);
-        })
-        .send((err, data) => {
-          res.send({
-            error: false,
-            data: { filename: data.Location },
-            msg: "성공",
-          });
-        });
     }
+
+    const raw = req.file;
+    const buffer = req.file.buffer;
+    const filename = req.file.originalname + "_" + new Date().getTime();
+
+    s3.upload({
+      Bucket: BUCKET_NAME,
+      Key: "assets/" + filename, // ex) assets/
+      Body: buffer, // input.files[0]
+    })
+      .on("httpUploadProgress", (evt) => {
+        // parseInt((evt.loaded * 100) / evt.total);
+      })
+      .send((err, data) => {
+        res.send({
+          error: false,
+          data: { filename: data.Location },
+          msg: "성공",
+        });
+      });
   });
 });
 
-// router.post("/upload/file", upload.single("file"), function (req, res, next) {
-//   // req.body는 텍스트 필드를 포함합니다.
-//   res.send(req.file);
-// });
+router.post("/upload/cancel", function (req, res) {
+  var image = req.body.imageArr;
+
+  image.forEach((image) => {
+    var imageUrl = image.substring(image.indexOf("assets"));
+
+    s3.deleteObject(
+      {
+        Bucket: BUCKET_NAME, // 사용자 버켓 이름
+        Key: imageUrl, // 버켓 내 경로
+      },
+      (err, data) => {
+        if (err) {
+          throw err;
+        }
+        console.log("s3 deleteObject ", data);
+      }
+    );
+  });
+});
 
 router.get("/uploads/:filename", function (req, res) {
   var upload_folder = "./uploads/";

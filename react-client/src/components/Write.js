@@ -39,6 +39,8 @@ const Write = () => {
   const [totalBoard, setTotalBoard] = useState([]);
   const [selected, setSelected] = useState();
   const [thumbImageUrl, setThumbImageUrl] = useState();
+  const [imageArr, setImageArr] = useState([]);
+
   const [inputs, setInputs] = useState({
     title: "",
     content: "",
@@ -64,26 +66,6 @@ const Write = () => {
           let formData = new FormData();
           formData.append("file", blob);
 
-          console.log(formData);
-
-          console.log("이미지가 업로드 됐습니다.");
-
-          // const params = {
-          //   ACL: "public-read",
-          //   Body: formData,
-          //   Bucket: S3_BUCKET,
-          //   Key: formData.name,
-          // };
-
-          // myBucket
-          //   .putObject(params)
-          //   .on("httpUploadProgress", (evt) => {
-          //     // setProgress(Math.round((evt.loaded / evt.total) * 100))
-          //   })
-          //   .send((err) => {
-          //     if (err) console.log(err);
-          //   });
-
           const data = await axios({
             headers: { "content-type": "multipart/formdata" },
             data: formData,
@@ -93,7 +75,7 @@ const Write = () => {
 
           // console.log(data.data);
           const imageUrl = data.data.filename;
-
+          setImageArr([...imageArr, imageUrl]);
           // 처음 등록한 이미지를 thumbNailUrl로..
           // Todo 처음 등록한 이미지가 아닌 썸네일 등록할 수 있는 페이지 구현 예정
           if (!thumbImageUrl) {
@@ -153,6 +135,22 @@ const Write = () => {
     }
 
     navigate(`/article/${data.key}`);
+  };
+
+  const cancleArticle = async () => {
+    console.log(imageArr);
+
+    if (imageArr) {
+      await axios({
+        url: "/upload/cancel",
+        method: "post",
+        data: {
+          imageArr: imageArr,
+        },
+      });
+    }
+
+    // navigate(`/`);
   };
 
   function CheckIcon(props) {
@@ -275,7 +273,7 @@ const Write = () => {
         />
 
         <div className="mx-auto x-full py-10 justify-end flex">
-          <RedButton>
+          <RedButton onClick={cancleArticle}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 px-1"
