@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize');
-const User = require('./user');
-const Comment = require('./comment');
-
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
-const db = {};
+const User = require('./user');
+const Post = require('./post');
+const Hashtag = require('./hashtag');
 
+const db = {};
 const sequelize = new Sequelize(
   config.database,
   config.username,
@@ -14,15 +14,16 @@ const sequelize = new Sequelize(
 );
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
 db.User = User;
-db.Comment = Comment;
+db.Post = Post;
+db.Hashtag = Hashtag;
 
 User.init(sequelize);
-Comment.init(sequelize);
+Post.init(sequelize);
+Hashtag.init(sequelize);
 
 User.associate(db);
-Comment.associate(db);
+Post.associate(db);
+Hashtag.associate(db);
 
 module.exports = db;
