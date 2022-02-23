@@ -3,6 +3,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const User = require('../models/user');
+// const { isRegularExpressionLiteral } = require('typescript');
 
 const router = express.Router();
 
@@ -53,5 +54,17 @@ router.get('/logout', isLoggedIn, (req, res) => {
   req.session.destroy();
   req.redirect('/');
 });
+
+router.get('/kakao', passport.authenticate('kakao'));
+
+router.get(
+  '/kakao/callback',
+  passport.authenticate('kakao', {
+    failureRedirect: '/',
+  }),
+  (req, res) => {
+    res.redirect('/');
+  }
+);
 
 module.exports = router;

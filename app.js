@@ -10,13 +10,13 @@ const passport = require('passport');
 dotenv.config();
 const { sequelize } = require('./models');
 const pageRouter = require('./routes/page');
-// const authRouter = require('./routes/auth');
+const authRouter = require('./routes/auth');
 // const postRouter = require('./routes/post');
 // const userRouter = require('./routes/user');
-// const passportConfig = require('./passport');
+const passportConfig = require('./passport');
 
 const app = express();
-// passportConfig(); // 패스포트 설정
+passportConfig(); // 패스포트 설정
 app.set('port', process.env.PORT || 8001);
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -53,7 +53,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', pageRouter);
-// app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 // app.use('/post', postRouter);
 // app.use('/user', userRouter);
 
