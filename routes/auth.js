@@ -26,6 +26,26 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     return next(error);
   }
 });
+router.post('/editProfile', isNotLoggedIn, async (req, res, next) => {
+  const { email, nick, password } = req.body;
+  console.log(email, nick, password);
+  try {
+    const exUser = await User.findOne({ where: { email } });
+    if (!exUser) {
+      return res.redirect('/');
+    }
+    const hash = await bcrypt.hash(password, 12);
+    await User.update({
+      email,
+      nick,
+      password: hash,
+    });
+    return res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+});
 
 router.post('/login', isNotLoggedIn, async (req, res, next) => {
   passport.authenticate('local', (authError, user, info) => {
@@ -53,7 +73,7 @@ router.post('/login', isNotLoggedIn, async (req, res, next) => {
 router.get('/logout', isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
-  req.redirect('/');
+  res.redirect('/');
 });
 
 router.get('/kakao', passport.authenticate('kakao'));
