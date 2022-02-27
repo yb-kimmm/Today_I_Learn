@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { Post, User, HashTag } = require('../models');
+const { Post, User, Hashtag } = require('../models');
 
 const router = express.Router();
 
@@ -46,10 +46,11 @@ router.get('/join', isNotLoggedIn, (req, res) => {
 router.get('/hashtag', async (req, res, next) => {
   const query = req.query.hashtag;
   if (!query) {
+    z;
     return res.redirect('/');
   }
   try {
-    const hashtag = await HashTag.findOne({
+    const hashtag = await Hashtag.findOne({
       where: {
         title: query,
       },
