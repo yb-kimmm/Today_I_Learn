@@ -26,7 +26,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     return next(error);
   }
 });
-router.post('/editProfile', isNotLoggedIn, async (req, res, next) => {
+router.post('/editProfile', isLoggedIn, async (req, res, next) => {
   const { email, nick, password } = req.body;
   console.log(email, nick, password);
   try {
@@ -35,11 +35,13 @@ router.post('/editProfile', isNotLoggedIn, async (req, res, next) => {
       return res.redirect('/');
     }
     const hash = await bcrypt.hash(password, 12);
-    await User.update({
-      email,
-      nick,
-      password: hash,
-    });
+    await User.update(
+      {
+        nick,
+        password: hash,
+      },
+      { where: { email } }
+    );
     return res.redirect('/');
   } catch (error) {
     console.error(error);
