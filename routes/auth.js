@@ -3,7 +3,6 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const User = require('../models/user');
-// const { isRegularExpressionLiteral } = require('typescript');
 
 const router = express.Router();
 
@@ -26,54 +25,24 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     return next(error);
   }
 });
-router.post('/editProfile', isLoggedIn, async (req, res, next) => {
-  const { email, nick, password } = req.body;
-  console.log(email, nick, password);
-  try {
-    const exUser = await User.findOne({ where: { email } });
-    if (!exUser) {
+
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+  passport.authenticate('local', (authError, user, info) => {
+    if (authError) {
+      console.error(authError);
+      return next(authError);
+    }
+    if (!user) {
+      return res.redirect(`/?loginError=${info.message}`);
+    }
+    return req.login(user, (loginError) => {
+      if (loginError) {
+        console.error(loginError);
+        return next(loginError);
+      }
       return res.redirect('/');
-    }
-    const hash = await bcrypt.hash(password, 12);
-    await User.update(
-      {
-        nick,
-        password: hash,
-      },
-      { where: { email } }
-    );
-    return res.redirect('/');
-  } catch (error) {
-    console.error(error);
-    return next(error);
-  }
-});
-
-router.post('/login', isNotLoggedIn, async (req, res, next) => {
-  passport.authenticate(
-    'local',
-    { session: false },
-    (authError, user, info) => {
-      console.log(1);
-      if (authError) {
-        console.error(authError);
-        return next(authError);
-      }
-
-      if (!user) {
-        return res.redirect(`/?loginError=${info.message}`);
-      }
-
-      return req.login(user, (loginError) => {
-        if (loginError) {
-          console.error(loginError);
-          return next(loginError);
-        }
-
-        return res.redirect('/');
-      });
-    }
-  )(req, res, next);
+    });
+  })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
 });
 
 router.get('/logout', isLoggedIn, (req, res) => {
@@ -84,14 +53,10 @@ router.get('/logout', isLoggedIn, (req, res) => {
 
 router.get('/kakao', passport.authenticate('kakao'));
 
-router.get(
-  '/kakao/callback',
-  passport.authenticate('kakao', {
-    failureRedirect: '/',
-  }),
-  (req, res) => {
-    res.redirect('/');
-  }
-);
+router.get('/kakao/callback', passport.authenticate('kakao', {
+  failureRedirect: '/',
+}), (req, res) => {
+  res.redirect('/');
+});
 
 module.exports = router;
