@@ -31,3 +31,9 @@ template 상속
 
 1. morgan : log 출력
 2. express-rate-limit API 사용 할 수 있는 횟수제한
+
+### `7.실제서비스를 부하 테스트 할 떄 `
+
+1. 실제서비스에 올릴 경우(AWS , GCP) 과다한 요금이 청구될 수 있습니다.
+   따라서 staging 서버(loadtest)를 만든 후 그 서버에 부하테스트를 진행
+   npx artillery run loadtest.json
