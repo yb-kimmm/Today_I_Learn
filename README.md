@@ -36,4 +36,4 @@ template 상속
 
 1. 실제서비스에 올릴 경우(AWS , GCP) 과다한 요금이 청구될 수 있습니다.
    따라서 staging 서버(loadtest)를 만든 후 그 서버에 부하테스트를 진행
-   npx artillery run loadtest.json
+   npx artillery run loadtest.json.
