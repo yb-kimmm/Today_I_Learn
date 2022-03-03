@@ -4,3 +4,5 @@
 *.py linguist-detectable=false
 *.js linguist-detectable=false
 *.scss linguist-detectable=false
+*.vue linguist-detectable=false
+
