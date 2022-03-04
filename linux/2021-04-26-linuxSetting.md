@@ -48,6 +48,6 @@ comments: true
 
 - 실행을 한다.
 
-> 이후 설치 과정은 다음 포스트에서 진행한다.
+- [이후 설치 과정은 다음 포스트에서 진행한다.](https://github.com/nan-yb/Today_I_Learn/blob/main/linux/2021-04-26-linuxSetting2.md)
 
 <!--- 설치 소스는 http://mirror.centos.org/centos/8/BaseOS/x86_64/os/ 링크를 입력한 후 확인을 누른다. !-->
