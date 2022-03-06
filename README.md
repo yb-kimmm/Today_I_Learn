@@ -32,7 +32,7 @@
 
 ### Node
 
-- [Node.js 교과서 example](https://github.com/nan-yb/Today_I_Learn/tree/main/node/nodebook)
+- [Node.js 교과서](https://github.com/nan-yb/Today_I_Learn/tree/main/node/nodebook)
 
 ### React
 
@@ -43,3 +43,29 @@
 - [배열](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-03-28-array.md)
 
 - [스택 , 큐](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-03-28-stackAndQuque.md)
+
+- [링크드리스트](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-03-29-linkedList.md)
+
+- [트리](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-03-tree.md)
+
+- [힙](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-04-heap.md)
+
+- [버블정렬](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-24-bubbleSort.md)
+
+- [삽입정렬](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-24-insertionSort.md)
+
+- [병합정렬](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-24-mergeSort.md)
+
+- [선택정렬 ](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-24-selectionSort.md)
+
+- [순차탐색 , 이진탐색 ](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-24-seqSearchAndBinarySearch.md)
+
+- [동적계획법과 분할정복](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-04-24-dpadc.md)
+
+- [그래프 ](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-05-05-Graph.md)
+
+- [BFS](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-05-05-bfs.md)
+
+- [DFS](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-05-05-dfs.md)
+
+- [그리디](https://github.com/nan-yb/Today_I_Learn/blob/main/algorithm/2021-05-05-greedy.md)
