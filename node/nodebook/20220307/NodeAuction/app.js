@@ -3,9 +3,7 @@ const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const passport = rqeuire("passport");
-const sse = require("./sse");
-const webSocket = require("./socket");
+const passport = require("passport");
 const nunjucks = require("nunjucks");
 const dotenv = require("dotenv");
 
@@ -14,22 +12,21 @@ const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const { sequelize } = require("./models");
 const passportConfig = require("./passport");
-const { noExtendRight } = require("sequelize/types/lib/operators");
+const sse = require("./sse");
+const webSocket = require("./socket");
 
 const app = express();
 passportConfig();
 app.set("port", process.env.PORT || 8010);
 app.set("view engine", "html");
-nunjucks.configure("views", "html");
 nunjucks.configure("views", {
   express: app,
   watch: true,
 });
-
 sequelize
   .sync({ force: false })
   .then(() => {
-    console.log("데이터 베이스 연결 성공");
+    console.log("데이터베이스 연결 성공");
   })
   .catch((err) => {
     console.error(err);
@@ -71,6 +68,9 @@ app.use((err, req, res, next) => {
   res.render("error");
 });
 
-app.listen(app.get("port"), () => {
-  console.log(app.get("port"), "번 포트에서 대기 중");
+const server = app.listen(app.get("port"), () => {
+  console.log(app.get("port"), "번 포트에서 대기중");
 });
+
+webSocket(server, app);
+sse(server);

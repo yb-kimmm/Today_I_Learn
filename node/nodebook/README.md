@@ -31,6 +31,8 @@ template 상속
 
 1. morgan : log 출력
 2. express-rate-limit API 사용 할 수 있는 횟수제한
+3. sse : Server-Sent Events 서버와 통신은 해야하지만 양방향 통신이 필요하지않은 경우
+4. node-schedule : 스케줄링 구현
 
 ### `7.실제서비스를 부하 테스트 할 떄 `
 
