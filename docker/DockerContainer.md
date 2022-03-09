@@ -27,7 +27,7 @@ $docker run -d -p 80 nginx
 
 # 2. Docker Volume
 
-1. 볼륨을 사용하는 이유
+### 볼륨을 사용하는 이유
 
 - 특정 이미지가 데이터를 계속 쌓아두는 경우 해당 데이터를 보관할 필요가 있을 때
 
@@ -67,5 +67,37 @@ $ docker run -d \
 $ docker run -d \
   --name nginx \
   -v web-volume:/usr/share/nginx/html:ro \
+  nginx
+```
+
+# 도커 컨테이너 - 로그
+
+로그 확인하기
+
+```
+# 전체 로그 확인
+$ docker logs [container]
+
+# 마지막 로그 10줄 확인
+$ docker logs --tail 10 [container]
+
+# 실시간 로그 스트림 확인
+$ docker logs -f [container]
+
+# 로그마다 타임스탬프 표시
+$ docker logs -f -t [container]
+```
+
+로그 용량 제한하기
+
+- 컨테이너 단위로 로그 용량 제한을 할 수 있지만 , 도커 엔진에서 기본 설정을 진행할 수 도 있습니다. (운영환경에서 필수 설정)
+
+```
+# 한 로그 파일 당 최대 크기를 3Mb로 제한하고 , 최대 로그 파일 3개로 로테이팅.
+$ docker run \
+  -d
+  --log-driver=json-file \
+  --log-opt max-size=3m
+  --log-opt max-file=5 \
   nginx
 ```
