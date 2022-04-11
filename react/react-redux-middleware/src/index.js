@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./modules";
+import rootReducer, { rootSaga } from "./modules";
 // import myLogger from "./middleware/myLogger";
 import logger from "redux-logger";
 import { BrowserRouter } from "react-router-dom";
@@ -12,11 +12,16 @@ import { BrowserRouter } from "react-router-dom";
 // Redux 개발자도구 익스텐션 활용
 import { composeWithDevTools } from "redux-devtools-extension";
 import ReduxThunk from "redux-thunk";
+import createSagaMiddleware from "redux-saga";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(ReduxThunk, logger))
+  composeWithDevTools(applyMiddleware(ReduxThunk, sagaMiddleware, logger))
 );
+
+sagaMiddleware.run(rootSaga);
 
 const root = ReactDOMClient.createRoot(document.getElementById("root"));
 
