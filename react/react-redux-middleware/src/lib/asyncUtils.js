@@ -1,3 +1,5 @@
+import { call, put } from "redux-saga/effects";
+
 // Promise에 기반한 Thunk를 만들어주는 함수입니다.
 export const createPromiseThunk = (type, promiseCreator) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
@@ -14,6 +16,47 @@ export const createPromiseThunk = (type, promiseCreator) => {
       dispatch({ type: SUCCESS, payload }); // 성공
     } catch (e) {
       dispatch({ type: ERROR, payload: e, error: true }); // 실패
+    }
+  };
+};
+
+export const createPromiseSaga = (type, promiseCreator) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+  return function* saga(action) {
+    try {
+      const result = yield call(promiseCreator, action.payload);
+      yield put({
+        type: SUCCESS,
+        payload: result,
+      });
+    } catch (e) {
+      yield put({
+        type: ERROR,
+        payload: e,
+        error: true,
+      });
+    }
+  };
+};
+
+export const createPromiseSagaById = (type, promiseCreator) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+  return function* saga(action) {
+    const id = action.meta;
+    try {
+      const result = yield call(promiseCreator, action.payload);
+      yield put({
+        type: SUCCESS,
+        payload: result,
+        meta: id,
+      });
+    } catch (error) {
+      yield put({
+        type: ERROR,
+        payload: error,
+        error: true,
+        meta: id,
+      });
     }
   };
 };
@@ -48,6 +91,31 @@ export const reducerUtils = {
   }),
 };
 
+// 특정 id 를 처리하는 Thunk 생성함수
+const defaultIdSelector = (param) => param;
+export const createPromiseThunkById = (
+  type,
+  promiseCreator,
+  // 파라미터에서 id 를 어떻게 선택 할 지 정의하는 함수입니다.
+  // 기본 값으로는 파라미터를 그대로 id로 사용합니다.
+  // 하지만 만약 파라미터가 { id: 1, details: true } 이런 형태라면
+  // idSelector 를 param => param.id 이런식으로 설정 할 수 있곘죠.
+  idSelector = defaultIdSelector
+) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return (param) => async (dispatch) => {
+    const id = idSelector(param);
+    dispatch({ type, param, meta: id });
+    try {
+      const payload = await promiseCreator(param);
+      dispatch({ type: SUCCESS, payload, meta: id });
+    } catch (e) {
+      dispatch({ type: ERROR, error: true, payload: e, meta: id });
+    }
+  };
+};
+
 // 비동기 관련 액션들을 처리하는 리듀서를 만들어줍니다.
 // type 은 액션의 타입, key 는 상태의 key (예: posts, post) 입니다.
 export const handleAsyncActions = (type, key, keepData = false) => {
@@ -71,31 +139,6 @@ export const handleAsyncActions = (type, key, keepData = false) => {
         };
       default:
         return state;
-    }
-  };
-};
-
-// 특정 id 를 처리하는 Thunk 생성함수
-const defaultIdSelector = (param) => param;
-export const createPromiseThunkById = (
-  type,
-  promiseCreator,
-  // 파라미터에서 id 를 어떻게 선택 할 지 정의하는 함수입니다.
-  // 기본 값으로는 파라미터를 그대로 id로 사용합니다.
-  // 하지만 만약 파라미터가 { id: 1, details: true } 이런 형태라면
-  // idSelector 를 param => param.id 이런식으로 설정 할 수 있곘죠.
-  idSelector = defaultIdSelector
-) => {
-  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
-
-  return (param) => async (dispatch) => {
-    const id = idSelector(param);
-    dispatch({ type, param, meta: id });
-    try {
-      const payload = await promiseCreator(param);
-      dispatch({ type: SUCCESS, payload, meta: id });
-    } catch (e) {
-      dispatch({ type: ERROR, error: true, payload: e, meta: id });
     }
   };
 };

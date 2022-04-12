@@ -8,9 +8,8 @@ import CounterContainer from "./containers/CounterContainer";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<CounterContainer />} />
-      {/* <Route path="/" element={<PostListPage />} />
-      <Route path="/:id" element={<PostPage />} /> */}
+      <Route path="/" element={<PostListPage />} />
+      <Route path="/:id" element={<PostPage />} />
     </Routes>
   );
 }

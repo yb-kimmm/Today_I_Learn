@@ -13,8 +13,13 @@ import { BrowserRouter } from "react-router-dom";
 import { composeWithDevTools } from "redux-devtools-extension";
 import ReduxThunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
+import { createBrowserHistory } from "history";
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware({
+  context: {
+    history: createBrowserHistory(),
+  },
+});
 
 const store = createStore(
   rootReducer,
