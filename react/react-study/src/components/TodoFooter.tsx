@@ -1,10 +1,7 @@
 import styles from "../Todo.module.css"
-// import { TodoConsumer } from "../contexts/todo";
+import { useSelector , useStore} from "react-redux"
+import {TodoState} from "../modules/todos";
 
-import { useContext } from 'react';
-import TodoContext from "../contexts/todo"
-
-import { Todo }  from "../App";
 
 interface Props { 
   readonly onClearAll : () => void;
@@ -12,26 +9,36 @@ interface Props {
 
 const TodoFooter = ({onClearAll} : Props) =>{
 
-  // const {actions} = useContext(TodoContext);
+  const { todos , nextTodoId} = useSelector((state : TodoState) => ({
+    todos : state.todos ,
+    nextTodoId : state.nextTodoId ,
+  }));
+
+  const data = {
+    todos , 
+    nextTodoId,
+  }
+  const onSave = () => {
+    localStorage.setItem('todo-app-data' , JSON.stringify(data))
+  }
+
+  // const store = useStore();
+  // const state = store.getState();
+
+  // const data = {
+  //   todos : state.todos ,  
+  //   nextTodoId : state.nextTodoId,
+  // }
+
+
 
   return (
-    // <TodoConsumer>
-    //     {({ actions})=>(
         <div className = {styles.footer}>
           <button onClick = {() => onClearAll()}>모두 삭제</button>
+          <button onClick = {onSave}>저장</button>
         </div>
-        // )}
-    // </TodoConsumer>
   )
 }
 
-// interface Props {
-//   readonly onClearAll : () => void;
-// }
-// const TodoFooter = ({onClearAll } : Props) =>{
-//   return <div className = {styles.footer}>
-//     <button onClick = {() => onClearAll()}>모두 삭제</button>
-//   </div>
-// }
 
 export default TodoFooter;

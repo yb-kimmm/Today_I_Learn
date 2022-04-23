@@ -1,8 +1,6 @@
 // import React, { useState} from "react";
 // import { TodoConsumer } from "../contexts/todo";
 
-import { useContext } from 'react';
-import TodoContext from "../contexts/todo"
 import styles from "../Todo.module.css"
 
 

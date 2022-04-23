@@ -1,5 +1,4 @@
 import React from 'react';
-import Todos from './components/Todos';
 import TodosContainers from './containers/TodosContainers';
 
 export interface Todo{
