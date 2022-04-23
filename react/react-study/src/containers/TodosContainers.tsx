@@ -1,69 +1,70 @@
-import React from "react";
-import { connect } from "react-redux";
+import React  , {useCallback} from "react";
+// import { connect } from "react-redux";
+import { useSelector , useDispatch} from "react-redux"
 import Todos from "../components/Todos";
-import { TodoState} from "../modules/todos";
-import { Dispatch} from "redux";
-
-
+import { TodoState} from "../modules/todos"
 import { 
   changeTodoInput , 
   clearAllTodos , 
   toggleTodoStatus ,
   removeTodo ,
-  addTodo
+  addTodo ,
+  changeFilter
 } from "../modules/todos";
 
-type PropsState = ReturnType<typeof mapStateToProps>;
-type PropsDispatch = ReturnType<typeof mapDispatchToProps>;
+import {Todo} from "../App";
 
-interface Props extends PropsState , PropsDispatch{}
 
-const TodosContainer = ({
-  input , 
-  todos , 
-  changeTodoInput , 
-  addTodo , 
-  toggleTodoStatus,
-  removeTodo ,
-  clearAllTodos 
-} : Props) =>{
+const TodosContainer = () =>{
+
+  const {input , filter , todos } = useSelector((state : TodoState) => ({
+    input : state.input , 
+    todos : state.todos ,
+    filter : state.filter
+  }));
+
+  const dispatch = useDispatch();
+
+  const onChangeInput = useCallback((input : string) => dispatch(changeTodoInput(input)) , [dispatch]) ;
+  const onInsert = useCallback((input : string) =>  dispatch(addTodo(input)), [dispatch]) ;
+  const onToggle  = useCallback((id : number) => dispatch(toggleTodoStatus(id)), [dispatch]) ;
+  const onRemove = useCallback((id : number) => dispatch(removeTodo(id)), [dispatch]) ;
+  const onClearAll = useCallback(() =>dispatch(clearAllTodos() ), [dispatch]) ;
+  const onChangeFilter = useCallback((filter:string) => dispatch(changeFilter(filter)) , [dispatch]);
+
+
+  const getFilteredTodos = (todos : Todo[] , filter : string) => {
+    if (filter === "ALL") {
+      return todos ; 
+    }
+
+    if( filter === "A"){
+      return todos.filter((todo) => {
+        return todo.done ===false ;
+      });
+    }
+
+    if(filter === "B"){
+      return todos.filter((todo) => {
+        return todo.done === true;
+      })
+    }
+  }
+
+  const filteredTodos = getFilteredTodos(todos , filter);
+
   return (
     <Todos
       input = {input}
-      todos = {todos} 
-      onChangeInput = {changeTodoInput}
-      onInsert = {addTodo} 
-      onToggle = {toggleTodoStatus}
-      onRemove = {removeTodo}
-      onClearAll = {clearAllTodos}
+      todos = {filteredTodos} 
+      filter = {filter}
+      onChangeInput = {onChangeInput}
+      onInsert = {onInsert} 
+      onToggle = {onToggle}
+      onRemove = {onRemove}
+      onClearAll = {onClearAll}
+      onChangeFilter = {onChangeFilter}
     />
   )
 }
-
-const mapStateToProps = (state : TodoState) =>({
-  input : state.input,
-  todos : state.todos,
-});
-
-const mapDispatchToProps = (dispatch:Dispatch) =>({
-  changeTodoInput : (input : string)=> {
-    dispatch(changeTodoInput(input));
-  },
-  clearAllTodos : () =>{
-    dispatch (clearAllTodos());
-  },
-  addTodo : (input : string ) => {
-    dispatch (addTodo(input));
-  },
-  toggleTodoStatus : (id : number) => {
-    dispatch (toggleTodoStatus(id));
-  },
-  removeTodo : (id : number) => {
-    dispatch(removeTodo(id))
-  }
-})
-
-export default connect ( 
-  mapStateToProps ,
-  mapDispatchToProps,
-)(TodosContainer);
+export default TodosContainer;
