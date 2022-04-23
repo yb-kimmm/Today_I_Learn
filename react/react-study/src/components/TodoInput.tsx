@@ -1,23 +1,52 @@
 // import React, { useState} from "react";
+// import { TodoConsumer } from "../contexts/todo";
 
-import { TodoConsumer } from "../contexts/todo";
-
+import { useContext } from 'react';
+import TodoContext from "../contexts/todo"
 import styles from "../Todo.module.css"
 
 
-const TodoInput = () =>{
+interface Props {
+  readonly input : string ;
+  readonly onInsert : (input : string) => void;
+  readonly onChangeInput : (input : string) => void;
+}
+
+const TodoInput = ( {input , onInsert , onChangeInput} : Props) =>{
+
+
+  const onSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    onInsert(input);
+    onChangeInput("");
+  }
+
+  const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    onChangeInput(e.target.value);
+  }
+
+  // const { state , actions } = useContext(TodoContext);
+  
   return (
-    <TodoConsumer>
-      {({state, actions}) =>(
-        <div className = {styles.input}>
-          <form onSubmit={actions.onSubmit}>
-            <input placeholder = "할 일을 입력하세요" value={state.input} onChange = {actions.onChange}/>
-            <button type = "submit" > 추가</button>
-          </form>
-        </div>
-      )}
-    </TodoConsumer>
+    <div className = {styles.input}>
+      <form onSubmit={onSubmit}>
+        <input placeholder = "할 일을 입력하세요" value={input} onChange = {onChange}/>
+        <button type = "submit" > 추가</button>
+      </form>
+    </div>
   )
+  // return (
+  //   <TodoConsumer>
+  //     {({state, actions}) =>(
+  //       <div className = {styles.input}>
+  //         <form onSubmit={actions.onSubmit}>
+  //           <input placeholder = "할 일을 입력하세요" value={state.input} onChange = {actions.onChange}/>
+  //           <button type = "submit" > 추가</button>
+  //         </form>
+  //       </div>
+  //     )}
+  //   </TodoConsumer>
+  // )
 }
 
 // interface Props { 

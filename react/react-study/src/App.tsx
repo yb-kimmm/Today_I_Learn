@@ -1,5 +1,6 @@
 import React from 'react';
 import Todos from './components/Todos';
+import TodosContainers from './containers/TodosContainers';
 
 export interface Todo{
   id : number; 
@@ -10,7 +11,7 @@ export interface Todo{
 function App() {
   return (
     <div className="App">
-      <Todos/>
+      <TodosContainers/>
     </div>
   );
 }
