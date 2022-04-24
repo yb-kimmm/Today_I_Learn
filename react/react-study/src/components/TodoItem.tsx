@@ -1,6 +1,8 @@
 import styles from "../Todo.module.css"
 import {Todo} from "../App";
 import React , {useState , useEffect} from "react";
+import {TodoState} from "../modules/todos";
+import {useSelector} from "react-redux"
 
 interface Props {
   readonly todo : Todo;
@@ -14,6 +16,10 @@ const TodoItem = ({todo , onRemove, onToggle , onEdit} : Props)=>{
   const [showInput , setShowInput] = useState(false);
   const [inputText , setInputText]  = useState("");
   const editInput : React.RefObject<HTMLInputElement> = React.createRef();
+  const { editingId } = useSelector((state : TodoState) => ({
+    editingId : state.editingId
+  }))
+
 
   const onDoubleClick = () => {
     console.log("onDoubleClick");
@@ -32,7 +38,7 @@ const TodoItem = ({todo , onRemove, onToggle , onEdit} : Props)=>{
       console.log("handleKeyPress" + inputText);
 
       onEdit(id , inputText);
-      
+
       setShowInput(false);
     }
   }
