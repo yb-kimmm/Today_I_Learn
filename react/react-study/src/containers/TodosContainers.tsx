@@ -8,7 +8,8 @@ import {
   toggleTodoStatus ,
   removeTodo ,
   addTodo ,
-  changeFilter
+  changeFilter ,
+  editTodo
 } from "../modules/todos";
 
 // import {Todo} from "../App";
@@ -26,6 +27,7 @@ const TodosContainer = () =>{
   const dispatch = useDispatch();
 
   const onChangeInput = useCallback((input : string) => dispatch(changeTodoInput(input)) , [dispatch]) ;
+  const onEdit = useCallback((id : number , input : string) => dispatch(editTodo(id , input)) , [dispatch]);
   const onInsert = useCallback((input : string) =>  dispatch(addTodo(input)), [dispatch]) ;
   const onToggle  = useCallback((id : number) => dispatch(toggleTodoStatus(id)), [dispatch]) ;
   const onRemove = useCallback((id : number) => dispatch(removeTodo(id)), [dispatch]) ;
@@ -43,6 +45,7 @@ const TodosContainer = () =>{
       onRemove = {onRemove}
       onClearAll = {onClearAll}
       onChangeFilter = {onChangeFilter}
+      onEdit = {onEdit}
     />
   )
 }
