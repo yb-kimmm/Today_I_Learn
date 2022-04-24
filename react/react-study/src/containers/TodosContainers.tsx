@@ -1,5 +1,4 @@
 import React  , {useCallback} from "react";
-// import { connect } from "react-redux";
 import { useSelector , useDispatch} from "react-redux"
 import Todos from "../components/Todos";
 import { TodoState} from "../modules/todos"
@@ -12,16 +11,17 @@ import {
   changeFilter
 } from "../modules/todos";
 
-import {Todo} from "../App";
-
+// import {Todo} from "../App";
+import { getFilteredTodos } from "../modules/selector";
 
 const TodosContainer = () =>{
 
-  const {input , filter , todos } = useSelector((state : TodoState) => ({
-    input : state.input , 
-    todos : state.todos ,
-    filter : state.filter
-  }));
+  const { input , filter , filteredTodos } = useSelector((state : 
+    TodoState) => ({
+      input : state.input , 
+      filter : state.filter , 
+      filteredTodos : getFilteredTodos(state),
+    }));
 
   const dispatch = useDispatch();
 
@@ -31,27 +31,6 @@ const TodosContainer = () =>{
   const onRemove = useCallback((id : number) => dispatch(removeTodo(id)), [dispatch]) ;
   const onClearAll = useCallback(() =>dispatch(clearAllTodos() ), [dispatch]) ;
   const onChangeFilter = useCallback((filter:string) => dispatch(changeFilter(filter)) , [dispatch]);
-
-
-  const getFilteredTodos = (todos : Todo[] , filter : string) => {
-    if (filter === "ALL") {
-      return todos ; 
-    }
-
-    if( filter === "A"){
-      return todos.filter((todo) => {
-        return todo.done ===false ;
-      });
-    }
-
-    if(filter === "B"){
-      return todos.filter((todo) => {
-        return todo.done === true;
-      })
-    }
-  }
-
-  const filteredTodos = getFilteredTodos(todos , filter);
 
   return (
     <Todos
