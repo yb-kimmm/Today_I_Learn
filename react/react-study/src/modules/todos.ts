@@ -10,11 +10,16 @@ const REMOVE_TODO = "REMOVE_TODO"
 const CLEAR_ALL_TODOS = "CLEAR_ALL_TODOS"
 const RESTORE = "RESTORE"
 const CHANGE_FILTER = "CHANGE_FILTER";
+const EDIT_TODO = "EDIT_TODO";
 
 export const changeTodoInput = createAction(CHANGE_TODO_INPUT , (input : string) => input);
 export const addTodo = createAction(ADD_TODO , (input : string) => ({
-  text : input , 
-  done : false , 
+text : input , 
+done : false , 
+}))
+export const editTodo = createAction(EDIT_TODO , (id : number, input :string) =>({
+  id , 
+  input 
 }))
 
 export const toggleTodoStatus = createAction(TOGGLE_TODO_STATUS , (id:number) => id);
@@ -22,32 +27,6 @@ export const removeTodo  = createAction(REMOVE_TODO , (id :number ) => id);
 export const clearAllTodos = createAction(CLEAR_ALL_TODOS);
 export const restore = createAction(RESTORE , (data : string) => data);
 export const changeFilter = createAction(CHANGE_FILTER , (filter: string) => filter);
-// export const changeTodoInput = ( input : string) =>({
-//   type : CHANGE_TODO_INPUT , 
-//   input
-// })
-
-// export const addTodo = (input : string) => ({
-//   type : ADD_TODO , 
-//   todo : {
-//     text : input , 
-//     done : false
-//   }
-// }) 
-
-// export const toggleTodoStatus = (id : number) => ({
-//   type : TOGGLE_TODO_STATUS,
-//   id ,
-// })
-
-// export const removeTodo = (id : number) => ({
-//   type : REMOVE_TODO , 
-//   id ,
-// })
-
-// export const clearAllTodos = () => ({
-//   type : CLEAR_ALL_TODOS
-// })
 
 export interface TodoState { 
   input : string ; 
@@ -78,6 +57,14 @@ const todos = createReducer (
         nextTodoId
       })
     } ,
+    [EDIT_TODO] : (state , action) =>{
+      return ({
+        ...state , 
+        todos : state.todos.map((todo) => 
+        todo.id === action.payload.id ? 
+        {...todo , text : action.payload.input } : todo)
+      })
+    },
     [TOGGLE_TODO_STATUS] : (state , {payload : id}) => ({
       ...state , 
       todos : state.todos.map((todo) =>

@@ -4,16 +4,16 @@ import React , {useState , useEffect} from "react";
 
 interface Props {
   readonly todo : Todo;
-  
   readonly onRemove:(id : number) => void;
   readonly onToggle:(id : number) => void;
+  readonly onEdit: (id : number , input : string) => void;
 }
-const TodoItem = ({todo , onRemove, onToggle} : Props)=>{
+const TodoItem = ({todo , onRemove, onToggle , onEdit} : Props)=>{
 
   const { id , text , done} = todo;
-
   const [showInput , setShowInput] = useState(false);
   const [inputText , setInputText]  = useState("");
+  const editInput : React.RefObject<HTMLInputElement> = React.createRef();
 
   const onDoubleClick = () => {
     console.log("onDoubleClick");
@@ -30,6 +30,9 @@ const TodoItem = ({todo , onRemove, onToggle} : Props)=>{
   const handleKeyPress = (e:React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter"){
       console.log("handleKeyPress" + inputText);
+
+      onEdit(id , inputText);
+      
       setShowInput(false);
     }
   }
@@ -38,8 +41,19 @@ const TodoItem = ({todo , onRemove, onToggle} : Props)=>{
     console.log("handleBlur inputText" + inputText);
     setShowInput(false);
   }
+  useEffect(()=>{
+    console.log("useEffect todo =" + todo );
+    if(todo ){
+      console.log("todo.text = "  + todo.text);
+      setInputText(todo.text);
+    }
+  } , [todo])
 
-  const editInput : React.RefObject<HTMLInputElement> = React.createRef();
+  useEffect(() => {
+    if(editInput.current){
+      editInput.current.focus();
+    }
+  } , [editInput])
 
   return <div className = {styles.item}>
     <input type = "checkbox" checked={done} onChange={()=> onToggle(id) }/>
@@ -53,8 +67,8 @@ const TodoItem = ({todo , onRemove, onToggle} : Props)=>{
         />
       )
     }
-    <span>{text}</span>
-    <button onClick = {()=> onRemove(id)}>삭제 </button>
+    {!showInput && <span onDoubleClick  = {onDoubleClick}>{text}</span>}
+      <button onClick = {() => onRemove(id)}>삭제</button>
   </div>
 }
 

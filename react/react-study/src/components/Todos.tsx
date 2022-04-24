@@ -17,6 +17,7 @@ interface Props {
   readonly onInsert : (input : string) => void;
   readonly onChangeInput : (input : string) => void;
   readonly onChangeFilter : (filter : string) => void;
+  readonly onEdit : (id : number , input:string) => void;
 }
 
 const Todos = ({
@@ -28,14 +29,15 @@ const Todos = ({
   onToggle , 
   onRemove , 
   onClearAll ,
-  onChangeFilter 
+  onChangeFilter ,
+  onEdit 
 } : Props) => {
   return (
     <div>
       <TodoHeader />
       <TodoInput input={input} onInsert={onInsert} onChangeInput = {onChangeInput}/>
       <TodoFilter filter={filter} onChangeFilter= {onChangeFilter}/>
-      <TodoList todos = {todos} onRemove= {onRemove} onToggle = {onToggle} />
+      <TodoList todos = {todos} onRemove= {onRemove} onToggle = {onToggle} onEdit = {onEdit}/>
       <TodoFooter onClearAll = {onClearAll} />
     </div>
   )
