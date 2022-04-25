@@ -1,8 +1,8 @@
 import styles from "../Todo.module.css"
 import {Todo} from "../App";
-import React , {useState , useEffect} from "react";
-import {TodoState} from "../modules/todos";
-import {useSelector} from "react-redux"
+import React , {useState , useEffect , useCallback} from "react";
+import {setEditingId, TodoState , resetEditingId} from "../modules/todos";
+import {useSelector , useDispatch} from "react-redux"
 
 interface Props {
   readonly todo : Todo;
@@ -13,19 +13,25 @@ interface Props {
 const TodoItem = ({todo , onRemove, onToggle , onEdit} : Props)=>{
 
   const { id , text , done} = todo;
-  const [showInput , setShowInput] = useState(false);
+  // const [showInput , setShowInput] = useState(false);
   const [inputText , setInputText]  = useState("");
   const editInput : React.RefObject<HTMLInputElement> = React.createRef();
   const { editingId } = useSelector((state : TodoState) => ({
     editingId : state.editingId
   }))
+  
+  const dispatch = useDispatch();
+
+  const showInput = (id === editingId);
+  const onSetEditingId= useCallback((id:number) => dispatch(setEditingId(id)) , [dispatch]);
+  const onResetEditingId = useCallback(() => dispatch(resetEditingId()) , [dispatch]);
 
 
   const onDoubleClick = () => {
     console.log("onDoubleClick");
-
+    onSetEditingId(id);
     setInputText(text);
-    setShowInput(true);
+    // setShowInput(true);
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
@@ -36,16 +42,16 @@ const TodoItem = ({todo , onRemove, onToggle , onEdit} : Props)=>{
   const handleKeyPress = (e:React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter"){
       console.log("handleKeyPress" + inputText);
-
       onEdit(id , inputText);
-
-      setShowInput(false);
+      onResetEditingId();
+      // setShowInput(false);
     }
   }
 
   const handleBlur = () =>{
     console.log("handleBlur inputText" + inputText);
-    setShowInput(false);
+    onResetEditingId();
+    // setShowInput(false);
   }
   useEffect(()=>{
     console.log("useEffect todo =" + todo );
