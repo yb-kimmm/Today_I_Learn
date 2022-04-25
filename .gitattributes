@@ -6,3 +6,5 @@
 *.scss linguist-detectable=false
 *.vue linguist-detectable=false
 *.ruby linguist-detectable=false
+*.ts linguist-detectable=false
+*.tsx linguist-detectable=false
