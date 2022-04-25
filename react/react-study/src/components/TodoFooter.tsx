@@ -1,5 +1,5 @@
 import styles from "../Todo.module.css"
-import { useSelector , useStore} from "react-redux"
+import { useSelector } from "react-redux"
 import {TodoState} from "../modules/todos";
 
 
