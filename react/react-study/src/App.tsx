@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route  } from "react-router-dom";
 import BoardListContainer from "./containers/BoardListContainer";
 import BoardRegisterContainer from "./containers/BoardRegisterContainer";
 import BoardModifyContainer from "./containers/BoardModifyContainer";
