@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int gbc(int a , int b);
+int lcm(int a , int b);
 
 int main(){
 	
@@ -22,7 +22,7 @@ int main(){
 		}
 		
 		
-		cout << gbc(A , B) << endl;
+		cout << lcm(A , B) << endl;
 		
 	}
 
@@ -30,7 +30,7 @@ int main(){
 	return 0;
 }
 
-int gbc(int a , int b){
+int lcm(int a , int b){
 	
 	int result = 1;
 	
