@@ -2,7 +2,7 @@
 
 - 2023-01-17 실버 4 
 
-![Github_Logo](./image/20230117.png)  
+![Github_Logo](./image/S4_20230117.png)  
 
 
 # 노션
