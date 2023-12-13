@@ -42,19 +42,6 @@
 
 - [Linux Setting](https://github.com/nan-yb/Today_I_Learn/blob/main/linux/2021-04-26-linuxSetting.md)
 
-### Node
-
-- [Node.js 교과서](https://github.com/nan-yb/Today_I_Learn/tree/main/node/nodebook)
-
-### React
-
-- 리액트 프로젝트
-  - [01. 리액트 튜토리얼](https://github.com/nan-yb/Today_I_Learn/tree/main/react/react)
-  - [02. 리액트 API](https://github.com/nan-yb/Today_I_Learn/tree/main/react/react-api)
-  - [03. 리액트 라우트](https://github.com/nan-yb/Today_I_Learn/tree/main/react/react-router)
-  - [04. 리액트 리덕스](https://github.com/nan-yb/Today_I_Learn/tree/main/react/react-redux)
-  - [05. {책}\_실전 SPA 개발 React with TypeScript ](https://github.com/nan-yb/Today_I_Learn/tree/main/react/react-study)
-
 ### algorithm
 
 - 개념
