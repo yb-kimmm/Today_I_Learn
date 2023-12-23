@@ -48,14 +48,8 @@ instagram-scheduler나 kakao-scheduler가 커졌을 때 유연하게 분리가 �
 
 
 ## 참고사이트
-1. [Spring Multi Module]
-2. [멀티모듈 설계 이야기]
-3. [Maven Multi-Module Project 생성]
-4. [Maven 멀티 모듈 구성방법]
+1. [Spring Multi Module](https://spring.io/guides/gs/multi-module/)
+2. [멀티모듈 설계 이야기](https://techblog.woowahan.com/2637/)
+3. [Maven Multi-Module Project 생성](https://moonsiri.tistory.com/74)
+4. [Maven 멀티 모듈 구성방법](https://batory.tistory.com/461)
 ---
-
-
-[Spring Multi Module]: (https://spring.io/guides/gs/multi-module/)
-[멀티모듈 설계 이야기]: (https://techblog.woowahan.com/2637/)
-[Maven Multi-Module Project 생성]: (https://moonsiri.tistory.com/74)
-[Maven 멀티 모듈 구성방법]: (https://batory.tistory.com/461)
