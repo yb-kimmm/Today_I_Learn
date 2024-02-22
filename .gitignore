@@ -119,3 +119,4 @@ dist
 
 .env
 *.env
+db/mysql-replication/.DS_Store
