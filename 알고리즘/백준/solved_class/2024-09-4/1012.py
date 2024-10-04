@@ -16,7 +16,8 @@ for i in range(int(input())):
         lst[b][a] = 1;
 
     for j in lst : 
-        print(j)
+        for t in j : 
+            print(j)
 
     print()     
     # m , n , k = map(int , input().split())
