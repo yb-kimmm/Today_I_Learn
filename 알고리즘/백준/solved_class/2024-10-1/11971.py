@@ -12,8 +12,6 @@ for i in range(n):
 
 for i in range(n):
     print(mLst[i][1] - nLst[i][1])
-    
-    print(100 / nLst[i][0] )
-
+    rate = 100 / nLst[i][0];
     mLst[i][0]
     
